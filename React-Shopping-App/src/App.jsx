@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, createContext } from 'react'
+import Login from './Login';
 import './App.css'
 
+export const UserContext = createContext();
 function App() {
-  const [user, setUser] = useState([
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([
     {
       id: 1,
       name: 'username',
@@ -44,12 +45,19 @@ function App() {
     imgUrl: 'https://store-images.s-microsoft.com/image/apps.808.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.c8274c53-105e-478b-9f4b-41b8088210a3?q=90&w=177&h=265',
     price: 30
   }]);
-
-
-  return (
-    <>
-    </>
-  )
+  console.log(user);
+  if(user === null){
+    return(
+      <UserContext.Provider >
+        <Login value={user}/>
+      </UserContext.Provider>
+    )
+  }
+  else{
+    return(
+     
+        <h1>Not Login page</h1>
+    )
+  }
 }
-
 export default App
