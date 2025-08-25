@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Login from './components/Login';
 import Header from './components/Header';
+import ItemCarousel from './components/ItemCarousel';
 import Footer from './components/Footer';
 import './App.css'
 
@@ -30,7 +31,7 @@ function App() {
     id: 2,
     name: 'Video Games',
   }]);
-  const [item, setItem] = useState([{
+  const [items, setItems] = useState([{
     id: 1,
     category: 1,
     name: 'Toy',
@@ -58,6 +59,7 @@ function App() {
     return(
      <>
         <Header />
+        <ItemCarousel items={items} />
         <Footer />
      </>
     )
