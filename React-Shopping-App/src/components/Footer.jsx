@@ -1,9 +1,9 @@
 import React from "react"
 function Footer(){
     return(
-        <div>
-            <h1>Footer</h1>
-        </div>
+      <footer className="footer">
+            <p>© 2025 Shopping Site. All rights reserved.</p>
+        </footer>
     )
 }
 
