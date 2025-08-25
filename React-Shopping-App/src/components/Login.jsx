@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Login({users, setUser}){
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -16,12 +20,19 @@ function Login({users, setUser}){
         });
    }
     return(
-        <div>
-            <h1>Login</h1>
-            <input placeholder='email' value={email}  onChange={(event)=>updateEmail(event)}/>
-            <input placeholder='password' value={password}  onChange={(event)=>updatePassword(event)}/>
-            <button onClick={login}>Login</button>
-        </div>
+    <div className='login-container'>
+        <Form className='login' >
+            <Form.Group className="mb-3" controlId="emailInput" >
+                <Form.Label>Email address</Form.Label>
+                <Form.Control size='large' type="email" placeholder="name@example.com" value={email} onChange={(event)=>updateEmail(event)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="passwordInput">
+                <Form.Label>Password</Form.Label>
+                <Form.Control size='large' type='password' value={password} onChange={(event)=>updatePassword(event)}/>
+            </Form.Group>
+            <Button onClick={login}>Login</Button>
+        </Form>
+    </div>
     )
 }
 
