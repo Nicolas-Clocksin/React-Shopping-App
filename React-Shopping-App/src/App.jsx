@@ -4,6 +4,7 @@ import Header from './components/Header';
 import ItemCarousel from './components/ItemCarousel';
 import Footer from './components/Footer';
 import './App.css'
+import CategoryList from './components/CategoryList';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -60,6 +61,7 @@ function App() {
      <>
         <Header user={user} setUser={setUser}/>
         <ItemCarousel items={items} />
+        <CategoryList categories={categories} items={items}/>
         <Footer />
      </>
     )
