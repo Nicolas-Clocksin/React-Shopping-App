@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import Login from './Login';
+import Login from './components/Login';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css'
 
 function App() {
@@ -54,8 +56,10 @@ function App() {
   }
   else{
     return(
-     
-        <h1>Not Login page</h1>
+     <>
+        <Header />
+        <Footer />
+     </>
     )
   }
 }
