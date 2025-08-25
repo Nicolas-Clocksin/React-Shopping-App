@@ -58,7 +58,7 @@ function App() {
   else{
     return(
      <>
-        <Header />
+        <Header user={user}/>
         <ItemCarousel items={items} />
         <Footer />
      </>

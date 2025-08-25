@@ -1,8 +1,10 @@
+
 import React from "react"
-function Header(){
+function Header({user}){
     return(
-        <div>
-            <h1>Header</h1>
+        <div className="header">
+            <h1>Shopping Site</h1>
+            <p>Welcome {user.name}</p>
         </div>
     )
 }
