@@ -1,8 +1,7 @@
-import { useState, createContext } from 'react'
+import { useState } from 'react'
 import Login from './Login';
 import './App.css'
 
-export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([
@@ -48,9 +47,9 @@ function App() {
   console.log(user);
   if(user === null){
     return(
-      <UserContext.Provider >
-        <Login value={user}/>
-      </UserContext.Provider>
+    
+        <Login users={users} setUser={setUser} />
+  
     )
   }
   else{
