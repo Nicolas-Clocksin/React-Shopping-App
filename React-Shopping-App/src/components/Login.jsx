@@ -31,8 +31,10 @@ function Login({users, setUser, setUsers}){
                 <Form.Label>Password</Form.Label>
                 <Form.Control size='large' type='password' value={password} onChange={(event)=>updatePassword(event)}/>
             </Form.Group>
-            <Button onClick={login}>Login</Button>
-            <SignUpModal setUsers={setUsers} />
+            <div className='login-buttons'>
+                <Button onClick={login}>Login</Button>
+                <SignUpModal setUsers={setUsers} />
+            </div>
         </Form>
 
        

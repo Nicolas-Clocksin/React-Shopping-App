@@ -56,3 +56,8 @@
 .categoryList {
   padding: 20px;
 }
+
+.login-buttons{
+  display: flex;
+  justify-content: space-evenly;
+}

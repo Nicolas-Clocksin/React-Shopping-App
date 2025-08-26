@@ -39,7 +39,7 @@ function SignUpModal({users, setUsers}){
 
     return(
         <div>
-        <Button onClick={handleShow}>Sign Up</Button>
+        <Button variant='secondary' onClick={handleShow}>Sign Up</Button>
         <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
                     <Form>
@@ -61,8 +61,9 @@ function SignUpModal({users, setUsers}){
                         </Form.Group>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{justifyContent: 'space-evenly'}}>
                     <Button onClick={createUser}>Sign Up</Button>
+                    <Button onClick={handleClose} variant="secondary">Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>
