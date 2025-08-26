@@ -1,9 +1,10 @@
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
-function Header({user, setUser}){
+function Header({user, setUser, categories}){
  function logout(){
     setUser(null);
  }
+ console.log(categories);
     return(
         <div className="header">
             <Navbar expand="lg" className="bg-body-tertiary">
@@ -15,7 +16,12 @@ function Header({user, setUser}){
                         <Nav className="me-auto">
                             <Nav.Link href="#home">Home</Nav.Link>
                             <NavDropdown title="Categories" id="nav-categories">
-                            <NavDropdown.Item href="#action/1">Need to Fill In</NavDropdown.Item>
+                                {
+                                    categories.map((category, index)=>{
+                                      return  <NavDropdown.Item key={category.id || index} href="#action/1">{category.name}</NavDropdown.Item>
+                                    })
+                         
+                                }
                             </NavDropdown>
                         </Nav>
                         <Nav className="ms-auto align-items-center">
