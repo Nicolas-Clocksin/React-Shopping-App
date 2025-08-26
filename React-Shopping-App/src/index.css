@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #e1dedeb7;
 }
 .header h1,
 .header p {
