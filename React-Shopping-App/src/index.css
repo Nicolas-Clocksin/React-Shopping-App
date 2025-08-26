@@ -1,7 +1,7 @@
 .carouselImage{
  width: auto;
  height: 100%;
- object-fit: contain;
+ object-fit: fill;
  margin: 0 auto; 
 }
 .carousel-inner{
@@ -11,13 +11,7 @@
   align-items: center;
   text-align: center;
 }
-.header {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;           
-  padding: 0 20px;                
-  border-bottom: 2px solid #ccc;
-}
+
 .card-body{
   text-align: center;
   display: flex;
@@ -25,9 +19,8 @@
   justify-content: flex-start;
   background-color: #e1dedeb7;
 }
-.header h1,
-.header p {
-  margin: 0;
+.header{
+
 }
 .login-container{
     display: flex;

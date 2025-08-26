@@ -1,16 +1,34 @@
 
-import React, {useState} from "react"
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
 function Header({user, setUser}){
  function logout(){
     setUser(null);
  }
     return(
         <div className="header">
-            <h1>Shopping Site</h1>
-            <div>
-                <p>Welcome <b>{user.name}</b></p>
-                <p><a onClick={logout}>Logout</a></p>
-            </div>
+            <Navbar expand="lg" className="bg-body-tertiary">
+                <Container fluid>
+                   
+                        <Navbar.Brand href="#home">Shopping Application</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="main-navbar" />
+                        <Navbar.Collapse id="main-navbar">
+                        <Nav className="me-auto">
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <NavDropdown title="Categories" id="nav-categories">
+                            <NavDropdown.Item href="#action/1">Need to Fill In</NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                        <Nav className="ms-auto align-items-center">
+                            <Navbar.Text className="me-3">
+                            Welcome {user?.name || "Guest"}
+                            </Navbar.Text>
+                            <Nav.Link as="button" onClick={logout} className="btn btn-link p-0">
+                            Logout
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </div>
     )
 }
