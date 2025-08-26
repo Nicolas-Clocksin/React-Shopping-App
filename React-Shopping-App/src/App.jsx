@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Login from './components/Login';
 import Header from './components/Header';
 import ItemCarousel from './components/ItemCarousel';
 import Footer from './components/Footer';
 import './App.css'
 import CategoryList from './components/CategoryList';
+import { itemList } from './api/items';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,30 +33,13 @@ function App() {
     id: 2,
     name: 'Video Games',
   }]);
-  const [items, setItems] = useState([{
-    id: 1,
-    category: 1,
-    name: 'Toy',
-    description: 'this is a toy',
-    imgUrl: 'https://media.istockphoto.com/id/909772478/photo/brown-teddy-bear-isolated-in-front-of-a-white-background.jpg?s=612x612&w=0&k=20&c=F4252bOrMfRTB8kWm2oM2jlb9JXY08tKCaO5G_ms1Uw=',
-    price: 30
-  },
-  {
-    id: 2,
-    category: 2,
-    name: 'Game',
-    description: 'this is a toy',
-    imgUrl: 'https://store-images.s-microsoft.com/image/apps.808.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.c8274c53-105e-478b-9f4b-41b8088210a3?q=90&w=177&h=265',
-    price: 30
-  },
-  {
-    id: 2,
-    category: 2,
-    name: 'Game',
-    description: 'this is a toy',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/250px-God_of_War_4_cover.jpg',
-    price: 30
-  }]);
+  const [items, setItems] = useState([]);
+
+  useEffect(()=>{
+    itemList().then((items)=>{
+      setItems(items);
+    })
+  }, []);
   console.log(user);
   if(user === null){
     return(
