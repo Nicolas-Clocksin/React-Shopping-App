@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {use, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import SignUpModal from '../modals/SignUpModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Login({users, setUser}){
+function Login({users, setUser, setUsers}){
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    function updateEmail(event){
@@ -31,7 +32,13 @@ function Login({users, setUser}){
                 <Form.Control size='large' type='password' value={password} onChange={(event)=>updatePassword(event)}/>
             </Form.Group>
             <Button onClick={login}>Login</Button>
+            <SignUpModal setUsers={setUsers} />
         </Form>
+
+       
+      
+          
+        
     </div>
     )
 }

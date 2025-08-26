@@ -38,7 +38,7 @@ function App() {
   if(user === null){
     return(
     
-        <Login users={users} setUser={setUser} />
+        <Login users={users} setUser={setUser} setUsers={setUsers} />
   
     )
   }

@@ -14,3 +14,13 @@ export async function UserList(){
       password: 'test'
     }]
 }
+
+export async function addUser({name, role, email, password}){
+    return{
+        id: Math.random(),
+        name,
+        role,
+        email,
+        password
+    }
+}
