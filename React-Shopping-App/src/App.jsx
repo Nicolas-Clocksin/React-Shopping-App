@@ -47,6 +47,14 @@ function App() {
     description: 'this is a toy',
     imgUrl: 'https://store-images.s-microsoft.com/image/apps.808.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.c8274c53-105e-478b-9f4b-41b8088210a3?q=90&w=177&h=265',
     price: 30
+  },
+  {
+    id: 2,
+    category: 2,
+    name: 'Game',
+    description: 'this is a toy',
+    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/250px-God_of_War_4_cover.jpg',
+    price: 30
   }]);
   console.log(user);
   if(user === null){

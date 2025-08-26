@@ -18,7 +18,12 @@
   padding: 0 20px;                
   border-bottom: 2px solid #ccc;
 }
-
+.card-body{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .header h1,
 .header p {
   margin: 0;
@@ -46,4 +51,7 @@
   background-color: #f5f5f5;
   border-top: 1px solid #ccc;
   margin-top: auto; 
+}
+.categoryList {
+  padding: 20px;
 }
