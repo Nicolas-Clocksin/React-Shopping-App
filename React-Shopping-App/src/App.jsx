@@ -34,7 +34,6 @@ function App() {
       setUsers(users);
     })
   }, []);
-  console.log(user);
   if(user === null){
     return(
     
