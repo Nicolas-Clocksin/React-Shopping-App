@@ -34,6 +34,7 @@ function App() {
       setUsers(users);
     })
   }, []);
+ 
   if(user === null){
     return(
     
@@ -44,7 +45,7 @@ function App() {
   else{
     return(
      <>
-        <Header user={user} setUser={setUser}/>
+        <Header user={user} setUser={setUser} categories={categories}/>
         <ItemCarousel items={items} />
         <CategoryList categories={categories} items={items}/>
         <Footer />
