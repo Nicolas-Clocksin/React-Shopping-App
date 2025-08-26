@@ -61,3 +61,8 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.categoryItems{
+  overflow: auto;
+  white-space: nowrap;
+}
