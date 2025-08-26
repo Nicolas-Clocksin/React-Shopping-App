@@ -8,13 +8,14 @@ import CategoryList from './components/CategoryList';
 import { CategoriesList } from './api/catergories';
 import { UserList } from './api/users';
 import { itemList } from './api/items';
+import ItemPage from './components/ItemPage';
 
 function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
-
+  const [itemSelected, setItemSelected] = useState(null);
   useEffect(()=>{
     itemList().then((items)=>{
       setItems(items);
@@ -37,17 +38,24 @@ function App() {
  
   if(user === null){
     return(
-    
         <Login users={users} setUser={setUser} setUsers={setUsers} />
-  
+    )
+  }
+  else if(itemSelected != null){
+    return(
+      <>
+        <Header user={user} setUser={setUser} categories={categories}/>
+        <ItemPage item={itemSelected}/>
+        <Footer />
+      </>
     )
   }
   else{
     return(
      <>
         <Header user={user} setUser={setUser} categories={categories}/>
-        <ItemCarousel items={items} />
-        <CategoryList categories={categories} items={items}/>
+        <ItemCarousel items={items} setItemSelected={setItemSelected}/>
+        <CategoryList categories={categories} items={items} setItemSelected={setItemSelected}/>
         <Footer />
      </>
     )
