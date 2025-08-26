@@ -44,7 +44,7 @@ function App() {
   else if(itemSelected != null){
     return(
       <>
-        <Header user={user} setUser={setUser} categories={categories}/>
+        <Header user={user} setUser={setUser} categories={categories} setItemSelected={setItemSelected}/>
         <ItemPage item={itemSelected}/>
         <Footer />
       </>
@@ -53,7 +53,7 @@ function App() {
   else{
     return(
      <>
-        <Header user={user} setUser={setUser} categories={categories}/>
+        <Header user={user} setUser={setUser} categories={categories} setItemSelected={setItemSelected}/>
         <ItemCarousel items={items} setItemSelected={setItemSelected}/>
         <CategoryList categories={categories} items={items} setItemSelected={setItemSelected}/>
         <Footer />
