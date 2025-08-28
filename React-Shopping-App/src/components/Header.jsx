@@ -1,8 +1,11 @@
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
-function Header({user, setUser, categories}){
+function Header({user, setUser, categories, setItemSelected}){
  function logout(){
     setUser(null);
+ }
+ function updateSelectedItem(){
+    setItemSelected(null);
  }
  console.log(categories);
     return(
@@ -14,7 +17,7 @@ function Header({user, setUser, categories}){
                         <Navbar.Toggle aria-controls="main-navbar" />
                         <Navbar.Collapse id="main-navbar">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#home" onClick={updateSelectedItem}>Home</Nav.Link>
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
