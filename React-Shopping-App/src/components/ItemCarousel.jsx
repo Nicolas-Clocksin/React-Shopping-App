@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom'
-function ItemCarousel({ items, setItemSelected }) {
-  function itemClicked(item){
-    setItemSelected(item)
-  }
+import { itemList } from '../api/items';
+function ItemCarousel() {
+  const [items, setItems] = useState([]);
+  useEffect(()=>{
+    itemList().then(setItems);
+  }, []);
     return (
       <div className='carousel'>
         <Carousel>
           {items.map((item, index) => (
            
-            <Carousel.Item key={item.id || index} to="/item"onClick={(item)=>itemClicked(item)}>
+            <Carousel.Item key={item.id || index}>
               <Link to={`item/${item.id}`}>
               <img
                 className='carouselImage'

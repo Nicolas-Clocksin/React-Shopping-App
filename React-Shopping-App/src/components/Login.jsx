@@ -31,7 +31,6 @@ function Login(){
    }
 
    function login(){
-        e.preventDefault();
         const found = users.find(u => u.email === email && u.password === password);
         if (found) {
         setUser(found);

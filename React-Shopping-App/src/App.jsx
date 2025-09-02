@@ -12,7 +12,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [items, setItems] = useState([]);
   const [itemSelected, setItemSelected] = useState(null);
   
 

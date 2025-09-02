@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/esm/Button";
 import CardBody from "react-bootstrap/esm/CardBody";
-function CategoryList({categories, items, setItemSelected}){
-    function itemClicked(item){
-      setItemSelected(item)
-    }
+import { itemList } from "../api/items";
+import { CategoriesList } from "../api/catergories";
+function CategoryList(){
+  const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(()=>{
+    itemList().then(setItems);
+  }, []);
+  useEffect(()=>{
+    CategoriesList().then(setCategories);
+  }, []);
+
     return (
         <div className="categoryList">
           {categories.map((category) => (

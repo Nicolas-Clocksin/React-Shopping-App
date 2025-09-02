@@ -19,7 +19,7 @@ function Header(){
                         <Navbar.Toggle aria-controls="main-navbar" />
                         <Navbar.Collapse id="main-navbar">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home" onClick={updateSelectedItem}>Home</Nav.Link>
+                            <Nav.Link href="#home">Home</Nav.Link>
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
