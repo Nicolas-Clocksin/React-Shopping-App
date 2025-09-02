@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
 import { useEffect, useState } from "react";
 import { useAuth } from '../auth/AuthContext.jsx';
 import { CategoriesList } from "../api/catergories.js";
-function Header({user}){
+function Header(){
  const { user } = useAuth();
  const [ categories, setCategories] = useState([]);
  useEffect(()=>{ CategoriesList().then(setCategories); },[]);
