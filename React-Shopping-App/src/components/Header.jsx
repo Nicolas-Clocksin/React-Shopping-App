@@ -1,13 +1,15 @@
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
-function Header({user, setUser, categories, setItemSelected}){
+import { useEffect, useState } from "react";
+import { useAuth } from '../auth/AuthContext.jsx';
+import { CategoriesList } from "../api/catergories.js";
+function Header(){
+ const { user } = useAuth();
+ const [ categories, setCategories] = useState([]);
+ useEffect(()=>{ CategoriesList().then(setCategories); },[]);
  function logout(){
-    setUser(null);
+    user = null;
  }
- function updateSelectedItem(){
-    setItemSelected(null);
- }
- console.log(categories);
     return(
         <div className="header">
             <Navbar expand="lg" className="bg-body-tertiary">
@@ -17,7 +19,7 @@ function Header({user, setUser, categories, setItemSelected}){
                         <Navbar.Toggle aria-controls="main-navbar" />
                         <Navbar.Collapse id="main-navbar">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home" onClick={updateSelectedItem}>Home</Nav.Link>
+                            <Nav.Link href="#home">Home</Nav.Link>
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
