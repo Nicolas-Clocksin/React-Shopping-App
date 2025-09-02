@@ -1,24 +1,44 @@
-import React, {use, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import SignUpModal from '../modals/SignUpModal';
+import { UserList } from '../api/users';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Login({users, setUser, setUsers}){
+function Login(){
+   const navigate = useNavigate();
+   const { setUser } = useAuth();
+   const[users, setUsers] = useState([]);
+
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+
+   useEffect(()=>{
+
+    UserList().then((users)=>{
+      setUsers(users);
+    })
+   }, []);
+
    function updateEmail(event){
     setEmail(event.target.value);
    }
+
    function updatePassword(event){
     setPassword(event.target.value);
    }
+
    function login(){
-        users.map((user)=>{
-            if(user.email === email && user.password === password){
-                setUser(user);
-            }
-        });
+        e.preventDefault();
+        const found = users.find(u => u.email === email && u.password === password);
+        if (found) {
+        setUser(found);
+        navigate('/home', { replace: true });
+        } else {
+        alert('Invalid credentials');
+        }
    }
     return(
     <div className='login-container'>
