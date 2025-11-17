@@ -104,6 +104,30 @@
   padding: 20px;
 }
 
+.categoryListHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.categoryListHeader h1{
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.seeAllLink{
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+.seeAllLink:hover{
+  text-decoration: underline;
+}
+
 .login-buttons{
   display: flex;
   justify-content: space-evenly;
