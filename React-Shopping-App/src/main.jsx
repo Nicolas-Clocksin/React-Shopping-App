@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage.jsx'
 import CategoryPage from './pages/CategoryPage.jsx'
 import ProtectedRoute from './auth/ProtectedRoute.jsx'
 import AppLayout from './layouts/AppLayout.jsx'
+import CartPage from './pages/CartPage.jsx'
 import { AuthProvider } from './auth/AuthContext.jsx'
 const router = createBrowserRouter([
 
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
           { index: true, element: <HomePage /> },    
           { path: '/home', element: <HomePage /> },
           { path: '/item/:id', element: <ItemPage /> },
-          { path: '/category/:id', element: <CategoryPage />}
+          { path: '/category/:id', element: <CategoryPage />},
+          { path: '/cart', element: <CartPage />}
         ],
       },
     ],

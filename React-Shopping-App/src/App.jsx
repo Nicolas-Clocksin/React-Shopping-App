@@ -7,12 +7,12 @@ import { UserList } from './api/users';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import ItemPage from './pages/ItemPage';
-// import ItemPage from './pages/ItemPage';
 function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
   const [itemSelected, setItemSelected] = useState(null);
+  const [cart, setCart] = useState([]);
   
 
   useEffect(()=>{

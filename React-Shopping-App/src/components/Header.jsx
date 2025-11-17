@@ -33,7 +33,9 @@ const { user, setUser } = useAuth();
                         </Nav>
                         <Nav className="ms-auto align-items-center">
                             <Navbar.Text className="me-3">
+                            <Link to={`/cart`}>
                             <i className="bi bi-cart"></i>
+                            </Link>
                             </Navbar.Text>
                             <Navbar.Text className="me-3">
                             Welcome {user?.name || "Guest"}
