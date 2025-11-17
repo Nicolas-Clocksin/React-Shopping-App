@@ -10,7 +10,7 @@ const { user, setUser } = useAuth();
  const [ categories, setCategories] = useState([]);
  useEffect(()=>{ CategoriesList().then(setCategories); },[]);
  function logout(){
-    user = setUser(null);
+    setUser(null);
  }
     return(
         <div className="header">
