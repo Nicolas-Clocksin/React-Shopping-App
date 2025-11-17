@@ -9,21 +9,23 @@ function ItemCarousel() {
     itemList().then(setItems);
   }, []);
     return (
-      <div className='carousel'>
-        <Carousel>
+      <div className='hero-carousel'>
+        <Carousel indicators controls interval={5000}>
           {items.map((item, index) => (
            
             <Carousel.Item key={item.id || index}>
               <Link to={`/item/${item.id}`}>
-              <img
-                className='carouselImage'
-                src={item.imgUrl}
-                alt={item.name}
-              />
-              <Carousel.Caption>
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-              </Carousel.Caption>
+              <div className="carousel-frame">
+                <img
+                  className='carouselImage'
+                  src={item.imgUrl}
+                  alt={item.name}
+                />
+              </div>
+                <Carousel.Caption className="carouselCaption">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                </Carousel.Caption>
               </Link>
             </Carousel.Item>
            

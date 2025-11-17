@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
 import { CategoriesList } from "../api/catergories.js";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 function Header(){
 const { user, setUser } = useAuth();
  const [ categories, setCategories] = useState([]);
  useEffect(()=>{ CategoriesList().then(setCategories); },[]);
  function logout(){
-    user = setUser(null);
+    setUser(null);
  }
     return(
         <div className="header">
@@ -24,13 +25,16 @@ const { user, setUser } = useAuth();
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
-                                      return  <NavDropdown.Item key={category.id || index} href="#action/1">{category.name}</NavDropdown.Item>
+                                      return  <NavDropdown.Item as={Link} key={category.id} to={`/category/${category.id}`}>{category.name}</NavDropdown.Item>
                                     })
                          
                                 }
                             </NavDropdown>
                         </Nav>
                         <Nav className="ms-auto align-items-center">
+                            <Navbar.Text className="me-3">
+                            <i className="bi bi-cart"></i>
+                            </Navbar.Text>
                             <Navbar.Text className="me-3">
                             Welcome {user?.name || "Guest"}
                             </Navbar.Text>
