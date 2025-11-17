@@ -66,9 +66,36 @@
   text-decoration: none;
   color: inherit;
 }
-.itemPage img{
-  min-width: 300px;
-  min-height: 300px;
-  max-height: 500px;
-  max-width: 500px;
+.itemPage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  align-items: start;
+  background: #fff;
+}
+
+.itemPage__image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.itemPage__details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.itemPage__price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f7a8c;
+}
+
+.itemPage__description {
+  line-height: 1.6;
+  color: #555;
 }

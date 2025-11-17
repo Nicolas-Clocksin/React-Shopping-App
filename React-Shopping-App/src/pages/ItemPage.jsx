@@ -22,14 +22,19 @@ function ItemPage(){
 
   if (notFound) return <h2>Item not found</h2>;
   if (!item) return <h2>Loading item…</h2>;
-    return (
-      <div className='itemPage'>
-          <h1>{item.name}</h1>
-          <img src={item.imgUrl} alt={item.name} />
-          <p>{item.description}</p>
-          <Button>Add to Cart</Button>
+   return (
+    <section className="itemPage">
+      <div className="itemPage__image">
+        <img src={item.imgUrl} alt={item.name} />
       </div>
-    )
+      <div className="itemPage__details">
+        <h1>{item.name}</h1>
+        <p className="itemPage__price">${item.price} USD</p>
+        <p className="itemPage__description">{item.description}</p>
+        <Button size="lg">Add to Cart</Button>
+      </div>
+    </section>
+  );
 }
 
 export default ItemPage
