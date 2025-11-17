@@ -20,7 +20,12 @@ function CategoryList(){
         <div className="categoryList">
           {categories.map((category) => (
             <div key={category.id}>
-              <h1>{category.name}</h1>
+              <div className="categoryListHeader">
+                <h1>{category.name}</h1>
+                <Link className="seeAllLink" to={`/category/${category.id}`}>
+                  See All
+                </Link>
+              </div>
               <div className="categoryItems">
                 <ul className="d-flex overflow-auto gap-3 px-1 list-unstyled m-0">
                   {items
