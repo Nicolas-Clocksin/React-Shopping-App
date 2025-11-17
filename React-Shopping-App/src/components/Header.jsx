@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useAuth } from '../auth/AuthContext.jsx';
 import { CategoriesList } from "../api/catergories.js";
 function Header(){
- const { user } = useAuth();
+const { user, setUser } = useAuth();
  const [ categories, setCategories] = useState([]);
  useEffect(()=>{ CategoriesList().then(setCategories); },[]);
  function logout(){
-    user = null;
+    user = setUser(null);
  }
     return(
         <div className="header">
