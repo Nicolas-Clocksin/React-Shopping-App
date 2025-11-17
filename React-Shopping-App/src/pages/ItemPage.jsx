@@ -1,6 +1,7 @@
 import { itemList } from '../api/items';
 import { useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
+import Button from "react-bootstrap/esm/Button";
 function ItemPage(){
     const {id} = useParams();
     const [item, setItem] = useState(null);
@@ -22,9 +23,12 @@ function ItemPage(){
   if (notFound) return <h2>Item not found</h2>;
   if (!item) return <h2>Loading item…</h2>;
     return (
-    <>
-        <h1>{item.name}</h1>
-    </>
+      <div className='itemPage'>
+          <h1>{item.name}</h1>
+          <img src={item.imgUrl} alt={item.name} />
+          <p>{item.description}</p>
+          <Button>Add to Cart</Button>
+      </div>
     )
 }
 
