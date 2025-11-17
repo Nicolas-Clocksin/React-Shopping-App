@@ -128,6 +128,18 @@
   text-decoration: underline;
 }
 
+.categoryCardLink{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.categoryCardLink:hover{
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-buttons{
   display: flex;
   justify-content: space-evenly;

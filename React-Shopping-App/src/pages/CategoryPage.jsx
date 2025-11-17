@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { CategoriesList } from '../api/catergories';
@@ -63,6 +64,7 @@ function CategoryPage() {
         {items.map((item) => (
           <div className="col-sm-6 col-md-4 col-lg-3" key={item.id}>
             <Card className="h-100">
+              <Link to={`/item/${item.id}`} className='categoryCardLink'>
               <Card.Img
                 variant="top"
                 src={item.imgUrl}
@@ -77,6 +79,7 @@ function CategoryPage() {
                 <div className="mb-2 fw-bold">${item.price} USD</div>
                 <Button variant="primary">Add to Cart</Button>
               </Card.Body>
+              </Link>
             </Card>
           </div>
         ))}
