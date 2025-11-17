@@ -59,3 +59,10 @@
   overflow: auto;
   white-space: nowrap;
 }
+
+.categoryList a,
+.categoryList a:hover,
+.categoryList a:focus {
+  text-decoration: none;
+  color: inherit;
+}
