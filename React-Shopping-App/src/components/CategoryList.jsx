@@ -27,9 +27,9 @@ function CategoryList(){
                     .filter((item) => item.category === category.id)
                     .map((item) => (
                       <li key={item.id}>
-                          <Card onClick={(item)=>itemClicked(item)} style={{ width: '18rem', height: '315px'}}>
+                          <Card onClick={(item)=>itemClicked(item)} className="category-card">
                             <Link to={`/item/${item.id}`}>
-                              <Card.Img style={{maxHeight: '180px', objectFit: 'contain'}} variant="top" src={item.imgUrl} />
+                              <Card.Img variant="top" src={item.imgUrl} />
                               <CardBody className="card-body">
                                   <Card.Title>{item.name}</Card.Title>
                                   <Card.Text>${item.price} USD</Card.Text>

@@ -12,11 +12,26 @@
   text-align: center;
 }
 
-.card-body{
+.category-card {
+  width: 18rem;
+  min-height: 315px;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-card img {
+  height: 180px;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.category-card .card-body{
+  flex: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 0.5rem;
+  justify-content: center;
   background-color: #e1dedeb7;
 }
 .header{
