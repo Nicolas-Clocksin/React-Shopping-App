@@ -1,6 +1,7 @@
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
 import { CategoriesList } from "../api/catergories.js";
 function Header(){
@@ -15,11 +16,11 @@ const { user, setUser } = useAuth();
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
                    
-                        <Navbar.Brand href="#home">Shopping Application</Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/home">Shopping Application</Navbar.Brand>
                         <Navbar.Toggle aria-controls="main-navbar" />
                         <Navbar.Collapse id="main-navbar">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
