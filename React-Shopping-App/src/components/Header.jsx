@@ -25,7 +25,7 @@ const { user, setUser } = useAuth();
                             <NavDropdown title="Categories" id="nav-categories">
                                 {
                                     categories.map((category, index)=>{
-                                      return  <NavDropdown.Item key={category.id || index} href="#action/1">{category.name}</NavDropdown.Item>
+                                      return  <NavDropdown.Item as={Link} key={category.id} to={`/category/${category.id}`}>{category.name}</NavDropdown.Item>
                                     })
                          
                                 }
