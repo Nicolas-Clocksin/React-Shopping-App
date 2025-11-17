@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/esm/Button";
 import CardBody from "react-bootstrap/esm/CardBody";
+import {Link} from 'react-router-dom'
 import { itemList } from "../api/items";
 import { CategoriesList } from "../api/catergories";
 function CategoryList(){
@@ -26,8 +27,9 @@ function CategoryList(){
                     .filter((item) => item.category === category.id)
                     .map((item) => (
                       <li key={item.id}>
-                          <Card onClick={(item)=>itemClicked(item)} style={{ width: '18rem', height: '315px'}}>
-                              <Card.Img style={{maxHeight: '180px', objectFit: 'contain'}} variant="top" src={item.imgUrl} />
+                          <Card onClick={(item)=>itemClicked(item)} className="category-card">
+                            <Link to={`/item/${item.id}`}>
+                              <Card.Img variant="top" src={item.imgUrl} />
                               <CardBody className="card-body">
                                   <Card.Title>{item.name}</Card.Title>
                                   <Card.Text>${item.price} USD</Card.Text>
@@ -35,6 +37,7 @@ function CategoryList(){
                                   <Button size="sm">Add to Cart</Button>
                                   </div>
                               </CardBody>
+                              </Link>
                           </Card>
                       </li>
                     ))}

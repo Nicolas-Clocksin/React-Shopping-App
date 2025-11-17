@@ -14,7 +14,7 @@ function ItemCarousel() {
           {items.map((item, index) => (
            
             <Carousel.Item key={item.id || index}>
-              <Link to={`item/${item.id}`}>
+              <Link to={`/item/${item.id}`}>
               <img
                 className='carouselImage'
                 src={item.imgUrl}
