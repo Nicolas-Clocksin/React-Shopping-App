@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import { CartContext } from "../context/CartContext";
 import { ItemContext } from "../context/ItemContext";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 function ItemPage() {
   const { id } = useParams();
   const { items } = useContext(ItemContext);
@@ -18,14 +20,9 @@ function ItemPage() {
     setNotFound(!found);
   }, [items, id]);
 
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+  function updateQuantity(value) {
+    setQuantity(value);
+  }
 
   if (notFound) return <h2>Item not found</h2>;
   if (!item) return <h2>Loading item…</h2>;
@@ -39,13 +36,20 @@ function ItemPage() {
         <p className="itemPage__price">${item.price} USD</p>
         <p className="itemPage__description">{item.description}</p>
         <div className="itemPageQuantity">
-          <Button size="sm" onClick={() => decreaseQuantity()}>
-            <i class="bi bi-arrow-left"></i>
-          </Button>
-          <p>{quantity}</p>
-          <Button size="sm" onClick={() => increaseQuantity()}>
-            <i class="bi bi-arrow-right"></i>
-          </Button>
+          <DropdownButton
+            title={`Quantity: ${quantity}`}
+            variant="outline-secondary"
+          >
+            {[1, 2, 3, 4].map((input) => (
+              <Dropdown.Item
+                as="button"
+                key={input}
+                onClick={() => updateQuantity(input)}
+              >
+                {input}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>
         </div>
         <Button size="sm" onClick={() => addToCart(item, quantity)}>
           Add to Cart

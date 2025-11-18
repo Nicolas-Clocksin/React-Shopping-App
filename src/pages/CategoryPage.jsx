@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { ItemList } from "../api/items";
 import { CartContext } from "../context/CartContext";
 import { CategoryContext } from "../context/CategoryContext";
@@ -14,6 +16,18 @@ function CategoryPage() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
+  const [selectedQuantities, setSelectedQuantities] = useState({});
+
+  const getQuantityForItem = (itemId) => selectedQuantities[itemId] ?? 1;
+
+  function updateQuantity(itemId, value) {
+    setSelectedQuantities((prev) => ({ ...prev, [itemId]: value }));
+  }
+
+  function handleAddToCart(item) {
+    const quantity = getQuantityForItem(item.id);
+    addToCart(item, quantity);
+  }
   useEffect(() => {
     let mounted = true;
 
@@ -63,30 +77,48 @@ function CategoryPage() {
         {items.map((item) => (
           <div className="col-sm-6 col-md-4 col-lg-3" key={item.id}>
             <Card className="h-100">
-              <Link to={`/item/${item.id}`} className="categoryCardLink">
+              <Link
+                to={`/item/${item.id}`}
+                className="categoryCardLink d-block"
+              >
                 <Card.Img
                   variant="top"
                   src={item.imgUrl}
                   alt={item.name}
                   style={{ height: "220px", objectFit: "cover" }}
                 />
-                <Card.Body className="d-flex flex-column text-center">
+              </Link>
+              <Card.Body className="d-flex flex-column text-center">
+                <Link
+                  to={`/item/${item.id}`}
+                  className="categoryCardLink flex-grow-1 text-reset text-decoration-none mb-3"
+                >
                   <Card.Title>{item.name}</Card.Title>
-                  <Card.Text className="text-muted flex-grow-1">
+                  <Card.Text className="text-muted">
                     {item.description}
                   </Card.Text>
-                  <div className="mb-2 fw-bold">${item.price} USD</div>
-                  <Button
-                    size="sm"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      addToCart(item, 1);
-                    }}
-                  >
-                    Add to Cart
-                  </Button>
-                </Card.Body>
-              </Link>
+                </Link>
+                <div className="mb-2 fw-bold">${item.price} USD</div>
+                <DropdownButton
+                  id={`quantity-dropdown-${item.id}`}
+                  title={`Quantity: ${getQuantityForItem(item.id)}`}
+                  variant="outline-secondary"
+                >
+                  {[1, 2, 3, 4].map((quantity) => (
+                    <Dropdown.Item
+                      as="button"
+                      key={quantity}
+                      active={quantity === getQuantityForItem(item.id)}
+                      onClick={() => updateQuantity(item.id, quantity)}
+                    >
+                      {quantity}
+                    </Dropdown.Item>
+                  ))}
+                </DropdownButton>
+                <Button className="mt-2" size="sm" onClick={() => handleAddToCart(item)}>
+                  Add to Cart
+                </Button>
+              </Card.Body>
             </Card>
           </div>
         ))}
