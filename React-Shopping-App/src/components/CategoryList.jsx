@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/esm/Button";
 import CardBody from "react-bootstrap/esm/CardBody";
 import {Link} from 'react-router-dom'
 import { itemList } from "../api/items";
 import { CategoriesList } from "../api/catergories";
+import { CartContext } from '../context/CartContext';
 function CategoryList(){
+  const { addToCart } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -32,14 +34,17 @@ function CategoryList(){
                     .filter((item) => item.category === category.id)
                     .map((item) => (
                       <li key={item.id}>
-                          <Card onClick={(item)=>itemClicked(item)} className="category-card">
+                          <Card className="category-card">
                             <Link to={`/item/${item.id}`}>
                               <Card.Img variant="top" src={item.imgUrl} />
                               <CardBody className="card-body">
                                   <Card.Title>{item.name}</Card.Title>
                                   <Card.Text>${item.price} USD</Card.Text>
                                 <div>
-                                  <Button size="sm">Add to Cart</Button>
+                                  <Button size="sm" onClick={(event) => {
+                                    event.preventDefault();
+                                    addToCart(item);
+                                  }}>Add to Cart</Button>
                                   </div>
                               </CardBody>
                               </Link>
