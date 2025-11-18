@@ -1,27 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import {Link} from 'react-router-dom'
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import { CategoriesList } from '../api/catergories';
-import { itemList } from '../api/items';
-import { CartContext } from '../context/CartContext';
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { ItemList } from "../api/items";
+import { CartContext } from "../context/CartContext";
+import { CategoryContext } from "../context/CategoryContext";
 
 function CategoryPage() {
   const { id } = useParams();
   const [category, setCategory] = useState(null);
+  const { categories } = useContext(CategoryContext);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   useEffect(() => {
     let mounted = true;
 
     async function fetchData() {
       try {
-        const [categories, allItems] = await Promise.all([
-          CategoriesList(),
-          itemList(),
-        ]);
+        const [allItems] = await Promise.all([ItemList()]);
         if (!mounted) return;
         const foundCategory = categories.find(
           (cat) => String(cat.id) === String(id)
@@ -56,8 +54,8 @@ function CategoryPage() {
         <h1 className="mb-2">{category.name}</h1>
         <p className="text-muted">
           {items.length
-            ? `${items.length} item${items.length > 1 ? 's' : ''}`
-            : 'No items available'}
+            ? `${items.length} item${items.length > 1 ? "s" : ""}`
+            : "No items available"}
         </p>
       </header>
 
@@ -65,24 +63,29 @@ function CategoryPage() {
         {items.map((item) => (
           <div className="col-sm-6 col-md-4 col-lg-3" key={item.id}>
             <Card className="h-100">
-              <Link to={`/item/${item.id}`} className='categoryCardLink'>
-              <Card.Img
-                variant="top"
-                src={item.imgUrl}
-                alt={item.name}
-                style={{ height: '220px', objectFit: 'cover' }}
-              />
-              <Card.Body className="d-flex flex-column text-center">
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text className="text-muted flex-grow-1">
-                  {item.description}
-                </Card.Text>
-                <div className="mb-2 fw-bold">${item.price} USD</div>
-               <Button size="sm" onClick={(event) => {
-                                    event.preventDefault();
-                                    addToCart(item);
-                                  }}>Add to Cart</Button>
-              </Card.Body>
+              <Link to={`/item/${item.id}`} className="categoryCardLink">
+                <Card.Img
+                  variant="top"
+                  src={item.imgUrl}
+                  alt={item.name}
+                  style={{ height: "220px", objectFit: "cover" }}
+                />
+                <Card.Body className="d-flex flex-column text-center">
+                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Text className="text-muted flex-grow-1">
+                    {item.description}
+                  </Card.Text>
+                  <div className="mb-2 fw-bold">${item.price} USD</div>
+                  <Button
+                    size="sm"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      addToCart(item, 1);
+                    }}
+                  >
+                    Add to Cart
+                  </Button>
+                </Card.Body>
               </Link>
             </Card>
           </div>

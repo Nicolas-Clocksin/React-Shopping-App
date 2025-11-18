@@ -1,29 +1,35 @@
-import { itemList } from '../api/items';
-import { useContext, useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
-import { CartContext } from '../context/CartContext';
-function ItemPage(){
-    const {id} = useParams();
-    const [item, setItem] = useState(null);
-    const [notFound, setNotFound] = useState(false);
-    const {addToCart} = useContext(CartContext);
+import { CartContext } from "../context/CartContext";
+import { ItemContext } from "../context/ItemContext";
+function ItemPage() {
+  const { id } = useParams();
+  const { items } = useContext(ItemContext);
+  const [item, setItem] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+  const { addToCart } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(0);
+
   useEffect(() => {
-    let mounted = true;
-    itemList()
-      .then((items) => {
-        const found = items.find((it) => Number(it.id) === Number(id));
-        if (!mounted) return;
-        if (found) setItem(found);
-        else setNotFound(true);
-      })
-      .catch(() => setNotFound(true));
-    return () => { mounted = false; };
-  }, [id]);
+    if (!items.length) return;
+    const found = items.find((it) => Number(it.id) === Number(id));
+    setItem(found || null);
+    setNotFound(!found);
+  }, [items, id]);
+
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   if (notFound) return <h2>Item not found</h2>;
   if (!item) return <h2>Loading item…</h2>;
-   return (
+  return (
     <section className="itemPage">
       <div className="itemPage__image">
         <img src={item.imgUrl} alt={item.name} />
@@ -32,10 +38,21 @@ function ItemPage(){
         <h1>{item.name}</h1>
         <p className="itemPage__price">${item.price} USD</p>
         <p className="itemPage__description">{item.description}</p>
-         <Button size="sm" onClick={()=>addToCart(item)}>Add to Cart</Button>
+        <div className="itemPageQuantity">
+          <Button size="sm" onClick={() => decreaseQuantity()}>
+            <i class="bi bi-arrow-left"></i>
+          </Button>
+          <p>{quantity}</p>
+          <Button size="sm" onClick={() => increaseQuantity()}>
+            <i class="bi bi-arrow-right"></i>
+          </Button>
+        </div>
+        <Button size="sm" onClick={() => addToCart(item, quantity)}>
+          Add to Cart
+        </Button>
       </div>
     </section>
   );
 }
 
-export default ItemPage
+export default ItemPage;

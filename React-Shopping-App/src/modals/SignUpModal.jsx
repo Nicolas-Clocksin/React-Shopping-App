@@ -36,6 +36,7 @@ function SignUpModal({users, setUsers}){
         
         setShow(false);
     }
+    
 
     return(
         <div>

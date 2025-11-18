@@ -1,24 +1,15 @@
-import ItemCarousel from '../components/ItemCarousel';
-import CategoryList from '../components/CategoryList';
-import { useAuth } from '../auth/AuthContext.jsx';
-import { useEffect, useState } from 'react';
-import { CategoriesList } from '../api/catergories.js';
-import { itemList } from '../api/items';
+import ItemCarousel from "../components/ItemCarousel";
+import CategoryList from "../components/CategoryList";
+import { useAuth } from "../auth/AuthContext.jsx";
 
-function HomePage(){
-    const { user } = useAuth();
-    const [ categories, setCategories] = useState([]);
-    const [items, setItems] = useState([]);
-    useEffect(()=>{ CategoriesList().then(setCategories); },[]);
-    useEffect(()=>{ itemList().then(setItems); },[]);
-    return(
-        <>
-            
-            <ItemCarousel />
-            <CategoryList />
-            
-        </>
-    )
+function HomePage() {
+  const { user } = useAuth();
+  return (
+    <>
+      <ItemCarousel />
+      <CategoryList />
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;
