@@ -15,7 +15,7 @@ function CategoryPage() {
   const { categories } = useContext(CategoryContext);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, inCart } = useContext(CartContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
 
   const getQuantityForItem = (itemId) => selectedQuantities[itemId] ?? 1;
@@ -99,25 +99,35 @@ function CategoryPage() {
                   </Card.Text>
                 </Link>
                 <div className="mb-2 fw-bold">${item.price} USD</div>
-                <DropdownButton
-                  id={`quantity-dropdown-${item.id}`}
-                  title={`Quantity: ${getQuantityForItem(item.id)}`}
-                  variant="outline-secondary"
-                >
-                  {[1, 2, 3, 4].map((quantity) => (
-                    <Dropdown.Item
-                      as="button"
-                      key={quantity}
-                      active={quantity === getQuantityForItem(item.id)}
-                      onClick={() => updateQuantity(item.id, quantity)}
+                {!inCart(item.id) ? (
+                  <div>
+                    <DropdownButton
+                      id={`quantity-dropdown-${item.id}`}
+                      title={`Quantity: ${getQuantityForItem(item.id)}`}
+                      variant="outline-secondary"
                     >
-                      {quantity}
-                    </Dropdown.Item>
-                  ))}
-                </DropdownButton>
-                <Button className="mt-2" size="sm" onClick={() => handleAddToCart(item)}>
-                  Add to Cart
-                </Button>
+                      {[1, 2, 3, 4].map((quantity) => (
+                        <Dropdown.Item
+                          as="button"
+                          key={quantity}
+                          active={quantity === getQuantityForItem(item.id)}
+                          onClick={() => updateQuantity(item.id, quantity)}
+                        >
+                          {quantity}
+                        </Dropdown.Item>
+                      ))}
+                    </DropdownButton>
+                    <Button
+                      className="mt-2"
+                      size="sm"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                ) : (
+                  <div>Added to Cart</div>
+                )}
               </Card.Body>
             </Card>
           </div>
