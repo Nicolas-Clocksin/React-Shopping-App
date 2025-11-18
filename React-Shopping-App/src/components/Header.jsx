@@ -35,8 +35,8 @@ function Header(){
                         </Nav>
                         <Nav className="ms-auto align-items-center">
                             <Navbar.Text className="me-3">
-                            <Link to={`/cart`}>
-                            <i className="bi bi-cart">{cartItems?.length || 0}</i> 
+                            <Link to={`/cart`} className="cartLink">
+                            <i className="bi bi-cart"></i> {cartItems?.length || 0}
                             </Link>
                             </Navbar.Text>
                             <Navbar.Text className="me-3">
