@@ -3,16 +3,14 @@ import { ItemList } from "../api/items";
 
 export const ItemContext = createContext({});
 
-export function ItemProvider({children}){
-    const [items, setItems] = useState([]);
+export function ItemProvider({ children }) {
+  const [items, setItems] = useState([]);
 
-    useEffect(()=>{
-        ItemList().then(setItems);
-    }, []);
+  useEffect(() => {
+    ItemList().then(setItems);
+  }, []);
 
-    return(
-        <ItemContext.Provider value={{items}}>
-                {children}
-        </ItemContext.Provider>
-    )
+  return (
+    <ItemContext.Provider value={{ items }}>{children}</ItemContext.Provider>
+  );
 }
