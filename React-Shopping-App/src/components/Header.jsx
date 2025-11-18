@@ -1,7 +1,7 @@
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { CartContext } from "../context/CartContext.jsx";
 import { CategoryContext } from "../context/CategoryContext.jsx";

@@ -10,7 +10,7 @@ import CategoryPage from "./pages/CategoryPage.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";
 import CartPage from "./pages/CartPage.jsx";
-import { AuthProvider } from "./auth/AuthContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { CategoryProvider } from "./context/CategoryContext.jsx";
 import { ItemProvider } from "./context/ItemContext.jsx";

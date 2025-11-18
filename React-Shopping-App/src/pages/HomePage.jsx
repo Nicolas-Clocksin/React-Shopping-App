@@ -1,6 +1,6 @@
 import ItemCarousel from "../components/ItemCarousel";
 import CategoryList from "../components/CategoryList";
-import { useAuth } from "../auth/AuthContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 
 function HomePage() {
   const { user } = useAuth();

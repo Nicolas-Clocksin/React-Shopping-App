@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import SignUpModal from "../modals/SignUpModal";
 import { UserList } from "../api/users";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
