@@ -10,7 +10,7 @@ function ItemPage() {
   const { items } = useContext(ItemContext);
   const [item, setItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, inCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
@@ -35,25 +35,31 @@ function ItemPage() {
         <h1>{item.name}</h1>
         <p className="itemPage__price">${item.price} USD</p>
         <p className="itemPage__description">{item.description}</p>
-        <div className="itemPageQuantity">
-          <DropdownButton
-            title={`Quantity: ${quantity}`}
-            variant="outline-secondary"
-          >
-            {[1, 2, 3, 4].map((input) => (
-              <Dropdown.Item
-                as="button"
-                key={input}
-                onClick={() => updateQuantity(input)}
+        {!inCart(item.id) ? (
+          <div>
+            <div className="itemPageQuantity">
+              <DropdownButton
+                title={`Quantity: ${quantity}`}
+                variant="outline-secondary"
               >
-                {input}
-              </Dropdown.Item>
-            ))}
-          </DropdownButton>
-        </div>
-        <Button size="sm" onClick={() => addToCart(item, quantity)}>
-          Add to Cart
-        </Button>
+                {[1, 2, 3, 4].map((input) => (
+                  <Dropdown.Item
+                    as="button"
+                    key={input}
+                    onClick={() => updateQuantity(input)}
+                  >
+                    {input}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
+            <Button size="sm" onClick={() => addToCart(item, quantity)}>
+              Add to Cart
+            </Button>
+          </div>
+        ) : (
+          <div>Added to Cart</div>
+        )}
       </div>
     </section>
   );

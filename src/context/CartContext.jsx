@@ -45,7 +45,8 @@ export function CartProvider({ children }) {
       sum + Number(cartEntry.item.price || 0) * Number(cartEntry.quantity || 0),
     0
   );
-
+  const inCart = (itemId) =>
+    cartItems.find((cartItem) => cartItem.item.id === itemId);
   return (
     <CartContext.Provider
       value={{
@@ -54,6 +55,7 @@ export function CartProvider({ children }) {
         removeFromCart,
         totalCost,
         cartQuantityTotal,
+        inCart,
       }}
     >
       {children}

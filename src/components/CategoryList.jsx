@@ -10,7 +10,7 @@ import { CartContext } from "../context/CartContext";
 import { ItemContext } from "../context/ItemContext";
 
 function CategoryList() {
-  const { addToCart } = useContext(CartContext);
+  const { inCart, addToCart } = useContext(CartContext);
   const { items } = useContext(ItemContext);
   const { categories } = useContext(CategoryContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
@@ -43,7 +43,10 @@ function CategoryList() {
                 .map((item) => (
                   <li key={item.id}>
                     <Card className="category-card h-100">
-                      <Link to={`/item/${item.id}`} className="categoryCardLink">
+                      <Link
+                        to={`/item/${item.id}`}
+                        className="categoryCardLink"
+                      >
                         <Card.Img variant="top" src={item.imgUrl} />
                       </Link>
                       <CardBody className="card-body d-flex flex-column">
@@ -55,27 +58,39 @@ function CategoryList() {
                           <Card.Text>${item.price} USD</Card.Text>
                           <p className="text-muted mb-0">{item.description}</p>
                         </Link>
-                        <div className="d-flex flex-column gap-2">
-                          <DropdownButton
-                            id={`quantity-dropdown-${item.id}`}
-                            title={`Quantity: ${getQuantityForItem(item.id)}`}
-                            variant="outline-secondary"
-                          >
-                            {[1, 2, 3, 4].map((quantity) => (
-                              <Dropdown.Item
-                                as="button"
-                                key={quantity}
-                                active={quantity === getQuantityForItem(item.id)}
-                                onClick={() => updateQuantity(item.id, quantity)}
-                              >
-                                {quantity}
-                              </Dropdown.Item>
-                            ))}
-                          </DropdownButton>
-                          <Button size="sm" onClick={() => handleAddToCart(item)}>
-                            Add to Cart
-                          </Button>
-                        </div>
+
+                        {!inCart(item.id) ? (
+                          <div className="d-flex flex-column gap-2">
+                            <DropdownButton
+                              id={`quantity-dropdown-${item.id}`}
+                              title={`Quantity: ${getQuantityForItem(item.id)}`}
+                              variant="outline-secondary"
+                            >
+                              {[1, 2, 3, 4].map((quantity) => (
+                                <Dropdown.Item
+                                  as="button"
+                                  key={quantity}
+                                  active={
+                                    quantity === getQuantityForItem(item.id)
+                                  }
+                                  onClick={() =>
+                                    updateQuantity(item.id, quantity)
+                                  }
+                                >
+                                  {quantity}
+                                </Dropdown.Item>
+                              ))}
+                            </DropdownButton>
+                            <Button
+                              size="sm"
+                              onClick={() => handleAddToCart(item)}
+                            >
+                              Add to Cart
+                            </Button>
+                          </div>
+                        ) : (
+                          <div>Added to Cart</div>
+                        )}
                       </CardBody>
                     </Card>
                   </li>
