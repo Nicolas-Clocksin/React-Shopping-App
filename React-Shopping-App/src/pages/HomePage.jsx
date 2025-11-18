@@ -7,9 +7,7 @@ import { itemList } from '../api/items';
 
 function HomePage(){
     const { user } = useAuth();
-    const [ categories, setCategories] = useState([]);
     const [items, setItems] = useState([]);
-    useEffect(()=>{ CategoriesList().then(setCategories); },[]);
     useEffect(()=>{ itemList().then(setItems); },[]);
     return(
         <>

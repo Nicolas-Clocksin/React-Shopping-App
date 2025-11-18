@@ -4,20 +4,17 @@ import Button from "react-bootstrap/esm/Button";
 import CardBody from "react-bootstrap/esm/CardBody";
 import {Link} from 'react-router-dom'
 import { itemList } from "../api/items";
-import { CategoriesList } from "../api/catergories";
+import { CategoryContext } from "../context/CategoryContext";
 import { CartContext } from '../context/CartContext';
 function CategoryList(){
   const { addToCart } = useContext(CartContext);
   const [items, setItems] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const { categories } = useContext(CategoryContext);
 
   useEffect(()=>{
     itemList().then(setItems);
   }, []);
-  useEffect(()=>{
-    CategoriesList().then(setCategories);
-  }, []);
-
+ 
     return (
         <div className="categoryList">
           {categories.map((category) => (

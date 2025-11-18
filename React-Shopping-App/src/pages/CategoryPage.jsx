@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { CategoriesList } from '../api/catergories';
 import { itemList } from '../api/items';
 import { CartContext } from '../context/CartContext';
+import { CategoryContext } from '../context/CategoryContext';
 
 function CategoryPage() {
   const { id } = useParams();
   const [category, setCategory] = useState(null);
+  const { categories } = useContext(CategoryContext);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const {addToCart} = useContext(CartContext);
@@ -18,9 +19,8 @@ function CategoryPage() {
 
     async function fetchData() {
       try {
-        const [categories, allItems] = await Promise.all([
-          CategoriesList(),
-          itemList(),
+        const [ allItems] = await Promise.all([
+          itemList()
         ]);
         if (!mounted) return;
         const foundCategory = categories.find(
