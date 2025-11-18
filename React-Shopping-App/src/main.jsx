@@ -11,6 +11,7 @@ import ProtectedRoute from './auth/ProtectedRoute.jsx'
 import AppLayout from './layouts/AppLayout.jsx'
 import CartPage from './pages/CartPage.jsx'
 import { AuthProvider } from './auth/AuthContext.jsx'
+import { CartProvider } from './context/CartContext.jsx'
 const router = createBrowserRouter([
 
   { path: '/login', element: <Login /> },
@@ -38,7 +39,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
    
     <AuthProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </AuthProvider>
   </StrictMode>
 );
