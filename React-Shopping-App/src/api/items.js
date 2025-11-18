@@ -1,4 +1,4 @@
-export async function itemList(){
+export async function ItemList(){
     return [
         {  
                 id: 1,

@@ -1,13 +1,10 @@
-import React, {useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom'
-import { itemList } from '../api/items';
+import { Link } from 'react-router-dom'
+import { ItemContext } from '../context/ItemContext';
 function ItemCarousel() {
-  const [items, setItems] = useState([]);
-  useEffect(()=>{
-    itemList().then(setItems);
-  }, []);
+  const { items } = useContext(ItemContext);
     return (
       <div className='hero-carousel'>
         <Carousel indicators controls interval={5000}>

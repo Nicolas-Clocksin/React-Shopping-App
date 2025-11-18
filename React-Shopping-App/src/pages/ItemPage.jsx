@@ -1,25 +1,21 @@
-import { itemList } from '../api/items';
 import { useContext, useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import Button from "react-bootstrap/esm/Button";
 import { CartContext } from '../context/CartContext';
+import { ItemContext } from '../context/ItemContext';
 function ItemPage(){
     const {id} = useParams();
+    const {items} = useContext(ItemContext);
     const [item, setItem] = useState(null);
     const [notFound, setNotFound] = useState(false);
     const {addToCart} = useContext(CartContext);
+    
   useEffect(() => {
-    let mounted = true;
-    itemList()
-      .then((items) => {
-        const found = items.find((it) => Number(it.id) === Number(id));
-        if (!mounted) return;
-        if (found) setItem(found);
-        else setNotFound(true);
-      })
-      .catch(() => setNotFound(true));
-    return () => { mounted = false; };
-  }, [id]);
+  if (!items.length) return;
+  const found = items.find((it) => Number(it.id) === Number(id));
+  setItem(found || null);
+  setNotFound(!found);
+}, [items, id]);
 
   if (notFound) return <h2>Item not found</h2>;
   if (!item) return <h2>Loading item…</h2>;

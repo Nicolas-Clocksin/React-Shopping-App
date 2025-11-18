@@ -3,14 +3,13 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
-import { CategoriesList } from "../api/catergories.js";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { CartContext } from "../context/CartContext.jsx";
+import { CategoryContext } from "../context/CategoryContext.jsx";
 function Header(){
  const { user, setUser } = useAuth();
  const {cartItems} = useContext(CartContext);
- const [ categories, setCategories] = useState([]);
- useEffect(()=>{ CategoriesList().then(setCategories); },[]);
+ const { categories } = useContext(CategoryContext);
  function logout(){
     setUser(null);
  }

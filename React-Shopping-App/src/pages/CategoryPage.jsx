@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { itemList } from '../api/items';
+import { ItemList } from '../api/items';
 import { CartContext } from '../context/CartContext';
 import { CategoryContext } from '../context/CategoryContext';
 
@@ -20,7 +20,7 @@ function CategoryPage() {
     async function fetchData() {
       try {
         const [ allItems] = await Promise.all([
-          itemList()
+          ItemList()
         ]);
         if (!mounted) return;
         const foundCategory = categories.find(
