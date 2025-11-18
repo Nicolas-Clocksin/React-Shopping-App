@@ -4,6 +4,7 @@ import { CartContext } from "../context/CartContext";
 import { Link } from 'react-router-dom';
 function CartPage() {
     const { cartItems, removeFromCart } = useContext(CartContext);
+    if(cartItems.length != 0){
     return(
         <div>
            <ListGroup>
@@ -22,6 +23,14 @@ function CartPage() {
            </ListGroup>
         </div>
     );
+    }
+    else{
+        return(
+            <div className="emptyCart">
+                <h1>Cart is empty</h1>
+            </div>
+        )
+    }
 }
 
 export default CartPage
