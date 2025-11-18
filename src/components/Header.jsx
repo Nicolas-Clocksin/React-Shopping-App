@@ -7,7 +7,7 @@ import { CartContext } from "../context/CartContext.jsx";
 import { CategoryContext } from "../context/CategoryContext.jsx";
 function Header() {
   const { user, setUser } = useAuth();
-  const { cartItems } = useContext(CartContext);
+  const { cartQuantityTotal } = useContext(CartContext);
   const { categories } = useContext(CategoryContext);
   function logout() {
     setUser(null);
@@ -42,7 +42,7 @@ function Header() {
             <Nav className="ms-auto align-items-center">
               <Navbar.Text className="me-3">
                 <Link to={`/cart`} className="cartLink">
-                  <i className="bi bi-cart"></i> {cartItems?.length || 0}
+                  <i className="bi bi-cart"></i> {cartQuantityTotal || 0}
                 </Link>
               </Navbar.Text>
               <Navbar.Text className="me-3">
