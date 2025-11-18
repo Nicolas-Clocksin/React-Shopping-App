@@ -97,7 +97,6 @@
   background-color: #f5f5f5;
   border-top: 1px solid #ccc;
   margin-top: auto; 
-  position: fixed;
   bottom: 0;      
   left: 0;        
   width: 100%;    
@@ -255,4 +254,20 @@
   justify-content: center;
   text-align: center;
   justify-content: center;
+}
+.cartSummary{
+  align-content: center;
+  text-align: center;
+  
+}
+.cartTotal{
+  margin: 20px;
+}
+
+.itemPageQuantity{
+   display: flex;
+  align-items: center;
+  gap: inherit;
+  justify-content: center;
+  text-align: center;
 }
