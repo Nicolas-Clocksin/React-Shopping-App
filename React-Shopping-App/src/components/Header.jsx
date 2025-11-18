@@ -1,12 +1,14 @@
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
 import { CategoriesList } from "../api/catergories.js";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { CartContext } from "../context/CartContext.jsx";
 function Header(){
-const { user, setUser } = useAuth();
+ const { user, setUser } = useAuth();
+ const {cartItems} = useContext(CartContext);
  const [ categories, setCategories] = useState([]);
  useEffect(()=>{ CategoriesList().then(setCategories); },[]);
  function logout(){
@@ -33,7 +35,9 @@ const { user, setUser } = useAuth();
                         </Nav>
                         <Nav className="ms-auto align-items-center">
                             <Navbar.Text className="me-3">
-                            <i className="bi bi-cart"></i>
+                            <Link to={`/cart`} className="cartLink">
+                            <i className="bi bi-cart"></i> {cartItems?.length || 0}
+                            </Link>
                             </Navbar.Text>
                             <Navbar.Text className="me-3">
                             Welcome {user?.name || "Guest"}

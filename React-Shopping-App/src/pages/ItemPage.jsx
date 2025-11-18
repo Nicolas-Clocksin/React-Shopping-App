@@ -1,12 +1,13 @@
 import { itemList } from '../api/items';
-import { useEffect, useState} from 'react'
+import { useContext, useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import Button from "react-bootstrap/esm/Button";
+import { CartContext } from '../context/CartContext';
 function ItemPage(){
     const {id} = useParams();
     const [item, setItem] = useState(null);
     const [notFound, setNotFound] = useState(false);
-
+    const {addToCart} = useContext(CartContext);
   useEffect(() => {
     let mounted = true;
     itemList()
@@ -31,7 +32,7 @@ function ItemPage(){
         <h1>{item.name}</h1>
         <p className="itemPage__price">${item.price} USD</p>
         <p className="itemPage__description">{item.description}</p>
-        <Button size="lg">Add to Cart</Button>
+         <Button size="sm" onClick={()=>addToCart(item)}>Add to Cart</Button>
       </div>
     </section>
   );

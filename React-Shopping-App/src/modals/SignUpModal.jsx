@@ -62,7 +62,7 @@ function SignUpModal({users, setUsers}){
                     </Form>
                 </Modal.Body>
                 <Modal.Footer style={{justifyContent: 'space-evenly'}}>
-                    <Button onClick={createUser}>Sign Up</Button>
+                    <Button onClick={createUser}>Create Account</Button>
                     <Button onClick={handleClose} variant="secondary">Close</Button>
                 </Modal.Footer>
             </Modal>

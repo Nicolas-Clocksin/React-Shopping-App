@@ -9,7 +9,9 @@ import HomePage from './pages/HomePage.jsx'
 import CategoryPage from './pages/CategoryPage.jsx'
 import ProtectedRoute from './auth/ProtectedRoute.jsx'
 import AppLayout from './layouts/AppLayout.jsx'
+import CartPage from './pages/CartPage.jsx'
 import { AuthProvider } from './auth/AuthContext.jsx'
+import { CartProvider } from './context/CartContext.jsx'
 const router = createBrowserRouter([
 
   { path: '/login', element: <Login /> },
@@ -23,7 +25,8 @@ const router = createBrowserRouter([
           { index: true, element: <HomePage /> },    
           { path: '/home', element: <HomePage /> },
           { path: '/item/:id', element: <ItemPage /> },
-          { path: '/category/:id', element: <CategoryPage />}
+          { path: '/category/:id', element: <CategoryPage />},
+          { path: '/cart', element: <CartPage />}
         ],
       },
     ],
@@ -36,7 +39,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
    
     <AuthProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </AuthProvider>
   </StrictMode>
 );

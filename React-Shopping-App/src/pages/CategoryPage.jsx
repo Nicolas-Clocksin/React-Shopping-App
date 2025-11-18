@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { CategoriesList } from '../api/catergories';
 import { itemList } from '../api/items';
+import { CartContext } from '../context/CartContext';
 
 function CategoryPage() {
   const { id } = useParams();
   const [category, setCategory] = useState(null);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const {addToCart} = useContext(CartContext);
   useEffect(() => {
     let mounted = true;
 
@@ -63,6 +65,7 @@ function CategoryPage() {
         {items.map((item) => (
           <div className="col-sm-6 col-md-4 col-lg-3" key={item.id}>
             <Card className="h-100">
+              <Link to={`/item/${item.id}`} className='categoryCardLink'>
               <Card.Img
                 variant="top"
                 src={item.imgUrl}
@@ -75,8 +78,12 @@ function CategoryPage() {
                   {item.description}
                 </Card.Text>
                 <div className="mb-2 fw-bold">${item.price} USD</div>
-                <Button variant="primary">Add to Cart</Button>
+               <Button size="sm" onClick={(event) => {
+                                    event.preventDefault();
+                                    addToCart(item);
+                                  }}>Add to Cart</Button>
               </Card.Body>
+              </Link>
             </Card>
           </div>
         ))}

@@ -73,9 +73,7 @@
   justify-content: center;
   background-color: #e1dedeb7;
 }
-.header{
 
-}
 .login-container{
     display: flex;
     justify-content: center;  
@@ -128,6 +126,18 @@
   text-decoration: underline;
 }
 
+.categoryCardLink{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.categoryCardLink:hover{
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-buttons{
   display: flex;
   justify-content: space-evenly;
@@ -176,4 +186,14 @@
 .itemPage__description {
   line-height: 1.6;
   color: #555;
+}
+
+.cartLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cartLink:hover,
+.cartLink:focus {
+  text-decoration: none;
 }
