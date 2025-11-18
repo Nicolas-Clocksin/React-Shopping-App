@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useAuth } from "./AuthContext";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -6,17 +7,33 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
+  const { user } = useAuth();
   const [cartItems, setCartItems] = useState([]);
   const addToCart = (item, quantity) => {
-    setCartItems((prev) => [
-      ...prev,
-      {
-        item,
-        quantity,
-        added: true,
-      },
-    ]);
+    if (cartItems.find((cartItem) => cartItem.item.id === item.id)) {
+      setCartItems((prev) =>
+        prev.map((cartItem) =>
+          cartItem.item.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem
+        )
+      );
+    } else {
+      setCartItems((prev) => [
+        ...prev,
+        {
+          item,
+          quantity,
+          added: true,
+          user: user,
+        },
+      ]);
+    }
   };
+  const cartQuantityTotal = cartItems.reduce(
+    (sum, cartEntry) => sum + Number(cartEntry.quantity || 0),
+    0
+  );
 
   const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
@@ -31,7 +48,13 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, totalCost }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        totalCost,
+        cartQuantityTotal,
+      }}
     >
       {children}
     </CartContext.Provider>
