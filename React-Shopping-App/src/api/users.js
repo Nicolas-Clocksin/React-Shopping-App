@@ -8,9 +8,16 @@ export async function UserList(){
     },
     {
       id: 2,
+      name: 'username',
+      role: 'user',
+      email: 'test@test.com',
+      password: 'test'
+    },
+    {
+      id: 3,
       name: 'admin',
       role: 'admin',
-      email: 'admin@email.com',
+      email: 'admin@test.com',
       password: 'test'
     }]
 }
