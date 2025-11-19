@@ -10,6 +10,7 @@ export function CartProvider({ children }) {
   const { user } = useAuth();
   const [cartItems, setCartItems] = useState([]);
   const addToCart = (item, quantity) => {
+    if (quantity <= 0) return;
     if (cartItems.find((cartItem) => cartItem.item.id === item.id)) {
       setCartItems((prev) =>
         prev.map((cartItem) =>
