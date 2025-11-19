@@ -5,10 +5,17 @@ export function OrderProvider({ children }) {
   const [order, setOrder] = useState(null);
   const [orders, setOrders] = useState([]);
   const { user } = useAuth();
-  function createOrder(address, paymentMethod, cartItems, totalAmount) {
+  function createOrder(
+    shipping,
+    billing,
+    paymentMethod,
+    cartItems,
+    totalAmount
+  ) {
     setOrder({
       userId: user.id,
-      address,
+      shippingAddress: shipping,
+      billingAddress: billing,
       paymentMethod,
       items: cartItems,
       totalAmount,
