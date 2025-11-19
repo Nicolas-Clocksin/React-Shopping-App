@@ -14,6 +14,7 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { CategoryProvider } from "./context/CategoryContext.jsx";
 import { ItemProvider } from "./context/ItemContext.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
           { path: "/item/:id", element: <ItemPage /> },
           { path: "/category/:id", element: <CategoryPage /> },
           { path: "/cart", element: <CartPage /> },
+          { path: "/checkout", element: <CheckoutPage /> },
         ],
       },
     ],

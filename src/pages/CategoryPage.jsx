@@ -15,7 +15,7 @@ function CategoryPage() {
   const { categories } = useContext(CategoryContext);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart, inCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, inCart } = useContext(CartContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
 
   const getQuantityForItem = (itemId) => selectedQuantities[itemId] ?? 1;
@@ -126,7 +126,15 @@ function CategoryPage() {
                     </Button>
                   </div>
                 ) : (
-                  <div>Added to Cart</div>
+                  <div>
+                    <Button
+                      size="sm"
+                      variant="danger"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove from Cart
+                    </Button>
+                  </div>
                 )}
               </Card.Body>
             </Card>

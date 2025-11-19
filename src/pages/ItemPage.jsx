@@ -10,7 +10,7 @@ function ItemPage() {
   const { items } = useContext(ItemContext);
   const [item, setItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
-  const { addToCart, inCart } = useContext(CartContext);
+  const { addToCart, inCart, removeFromCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
@@ -58,7 +58,15 @@ function ItemPage() {
             </Button>
           </div>
         ) : (
-          <div>Added to Cart</div>
+          <div>
+            <Button
+              size="sm"
+              variant="danger"
+              onClick={() => removeFromCart(item.id)}
+            >
+              Remove from Cart
+            </Button>
+          </div>
         )}
       </div>
     </section>

@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { CartContext } from "../context/CartContext";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function CartPage() {
+  const navigate = useNavigate();
   const { cartItems, removeFromCart, totalCost, quantity } =
     useContext(CartContext);
   if (cartItems.length != 0) {
@@ -29,7 +30,9 @@ function CartPage() {
         </ListGroup>
         <div className="cartSummary">
           <span className="cartTotal">Total: ${totalCost}</span>
-          <Button className="cartButton">Checkout</Button>
+          <Button className="cartButton" onClick={() => navigate("/checkout")}>
+            Checkout
+          </Button>
         </div>
       </div>
     );

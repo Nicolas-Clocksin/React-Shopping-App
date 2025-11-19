@@ -10,7 +10,7 @@ import { CartContext } from "../context/CartContext";
 import { ItemContext } from "../context/ItemContext";
 
 function CategoryList() {
-  const { inCart, addToCart } = useContext(CartContext);
+  const { inCart, addToCart, removeFromCart } = useContext(CartContext);
   const { items } = useContext(ItemContext);
   const { categories } = useContext(CategoryContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
@@ -89,7 +89,15 @@ function CategoryList() {
                             </Button>
                           </div>
                         ) : (
-                          <div>Added to Cart</div>
+                          <div>
+                            <Button
+                              size="sm"
+                              variant="danger"
+                              onClick={() => removeFromCart(item.id)}
+                            >
+                              Remove from Cart
+                            </Button>
+                          </div>
                         )}
                       </CardBody>
                     </Card>
