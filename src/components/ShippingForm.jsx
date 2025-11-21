@@ -93,7 +93,7 @@ function ShippingForm({ typeShipment }) {
           <Form.Control
             type="text"
             placeholder="Enter your address"
-            onChange={(event) => updateStreet(event.target)}
+            onChange={(event) => updateStreet(event)}
           />
         </Form.Group>
 
@@ -104,7 +104,7 @@ function ShippingForm({ typeShipment }) {
               <Form.Control
                 type="text"
                 placeholder="Enter your city"
-                onChange={(event) => updateCity(event.target)}
+                onChange={(event) => updateCity(event)}
               />
             </Form.Group>
           </Col>
@@ -139,7 +139,7 @@ function ShippingForm({ typeShipment }) {
               <Form.Control
                 type="text"
                 placeholder="Enter your postal code"
-                onChange={(event) => updatePostalCode(event.target)}
+                onChange={(event) => updatePostalCode(event)}
               />
             </Form.Group>
           </Col>

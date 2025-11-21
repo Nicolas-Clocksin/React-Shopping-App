@@ -8,17 +8,17 @@ export function AddressProvider({ children }) {
   const { state, setState } = useState("");
   const { address, setAddress } = useState([]);
 
-  function updateStreet(target) {
-    setStreet(target.value);
+  function updateStreet(event) {
+    setStreet(event.target.value);
   }
-  function updateCity(target) {
-    setCity(target.value);
+  function updateCity(event) {
+    setCity(event.target.value);
   }
-  function updatePostalCode(target) {
-    setPostalCode(target.value);
+  function updatePostalCode(event) {
+    setPostalCode(event.target.value);
   }
-  function updateState(target) {
-    setState(target.value);
+  function updateState(event) {
+    setState(event.target.value);
   }
   function addAddress() {
     setAddress([street, city, postalCode, state]);

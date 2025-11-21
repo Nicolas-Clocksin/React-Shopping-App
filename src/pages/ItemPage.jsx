@@ -11,7 +11,7 @@ function ItemPage() {
   const [item, setItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const { addToCart, inCart, removeFromCart } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     if (!items.length) return;
@@ -53,7 +53,11 @@ function ItemPage() {
                 ))}
               </DropdownButton>
             </div>
-            <Button size="sm" onClick={() => addToCart(item, quantity)}>
+            <Button
+              size="sm"
+              className="itemPageButton"
+              onClick={() => addToCart(item, quantity)}
+            >
               Add to Cart
             </Button>
           </div>

@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { ListGroup, Badge, Button } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
+import { AddressConext } from "../context/AddressContext";
 function OrderSummary() {
   const { totalCost, cartItems } = useContext(CartContext);
+  const { addAddress } = useContext(AddressConext);
   return (
     <div className="order-summary p-3 border rounded">
       <h5 className="mb-3">Your Order</h5>
@@ -32,7 +34,13 @@ function OrderSummary() {
         <strong>${Number(totalCost || 0).toFixed(2)}</strong>
       </div>
 
-      <Button variant="primary" className="w-100">
+      <Button
+        variant="primary"
+        className="w-100"
+        onClick={() => {
+          addAddress();
+        }}
+      >
         Proceed to Pay
       </Button>
     </div>
