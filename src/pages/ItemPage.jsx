@@ -53,7 +53,11 @@ function ItemPage() {
                 ))}
               </DropdownButton>
             </div>
-            <Button size="sm" onClick={() => addToCart(item, quantity)}>
+            <Button
+              size="sm"
+              className="itemPageButton"
+              onClick={() => addToCart(item, quantity)}
+            >
               Add to Cart
             </Button>
           </div>
