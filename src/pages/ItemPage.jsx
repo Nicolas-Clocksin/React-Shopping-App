@@ -11,7 +11,7 @@ function ItemPage() {
   const [item, setItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const { addToCart, inCart, removeFromCart } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     if (!items.length) return;
