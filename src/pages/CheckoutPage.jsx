@@ -18,7 +18,7 @@ function CheckoutPage() {
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 d-flex flex-column gap-3">
           <ShippingForm typeShipment="shipping" />
-          <Form>
+          {/* <Form>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check
                 type="checkbox"
@@ -27,7 +27,7 @@ function CheckoutPage() {
               />
             </Form.Group>
           </Form>
-          {diffBilling ? <ShippingForm typeShipment="billing" /> : null}
+          {diffBilling ? <ShippingForm typeShipment="billing" /> : null} */}
         </div>
         <div className="col-12 col-md-4">
           <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />

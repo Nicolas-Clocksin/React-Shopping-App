@@ -7,15 +7,16 @@ export function OrderProvider({ children }) {
   const { user } = useAuth();
   function createOrder(
     shipping,
-    billing,
+    // billing,
     paymentMethod,
     cartItems,
     totalAmount
   ) {
     setOrder({
+      id: Math.random(),
       userId: user.id,
       shippingAddress: shipping,
-      billingAddress: billing,
+      // billingAddress: billing,
       paymentMethod,
       items: cartItems,
       totalAmount,
