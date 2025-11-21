@@ -71,6 +71,32 @@
 
 ```
 {
+    "id": "id_for_order",
+    "shipping": "address_for_shipping",
+    "paymentMethod": "method_of_payment",
+    "items": "items_for_the_order",
+    "totalAmount": "total_of_the_order",
+    "date": "date_order_was_created"
+}
+```
 
+### Address
+
+```
+{
+    "street": "street_address",
+    "city": "city_address",
+    "postal_code": "zip_code",
+    "state": "state_abbreviation"
+}
+```
+
+### Payment Method
+
+```
+{
+    "cardNumber": "card_number",
+    "expiration_date": "expiration_date",
+    "ccv": "cvv"
 }
 ```
