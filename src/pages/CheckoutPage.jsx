@@ -5,6 +5,7 @@ import ShippingForm from "../components/ShippingForm";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import OrderSummary from "../components/OrderSummary";
+import PaymentMethodForm from "../components/PaymentMethodForm";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);
@@ -28,6 +29,7 @@ function CheckoutPage() {
             </Form.Group>
           </Form>
           {diffBilling ? <ShippingForm typeShipment="billing" /> : null} */}
+          <PaymentMethodForm />
         </div>
         <div className="col-12 col-md-4">
           <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />
