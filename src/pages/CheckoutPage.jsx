@@ -1,15 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { OrderContext } from "../context/OrderContext";
 import ShippingForm from "../components/ShippingForm";
-
+import Button from "react-bootstrap/Button";
+import { Form } from "react-bootstrap";
+import OrderSummary from "../components/OrderSummary";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);
+  const [diffBilling, setDiffBilling] = useState(false);
 
+  function updateDiffBilling() {
+    setDiffBilling((prev) => !prev);
+  }
   return (
-    <div className="checkoutPage">
-      <ShippingForm />
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 d-flex flex-column gap-3">
+          <ShippingForm typeShipment="shipping" />
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                label="Billing Different from Shipping"
+                onClick={() => updateDiffBilling()}
+              />
+            </Form.Group>
+          </Form>
+          {diffBilling ? <ShippingForm typeShipment="billing" /> : null}
+        </div>
+        <div className="col-12 col-md-4">
+          <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />
+        </div>
+      </div>
     </div>
   );
 }
