@@ -1,8 +1,9 @@
 /*
-  Title:
+  Title: CartContext
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Context used to add/remove/update the cart. Also used to define the total
+  of the cart items as well as their quantity.
 */
 import { createContext, useState } from "react";
 import { useAuth } from "./AuthContext";
@@ -15,6 +16,12 @@ export const CartContext = createContext({
 export function CartProvider({ children }) {
   const { user } = useAuth();
   const [cartItems, setCartItems] = useState([]);
+
+  /*
+     Method that take in an item/quantity and verifies it is more
+     than 0 and verify if the item is in the cart. If it is in the cart,
+     the quantity is update otherwise the item is added to the cart.
+  */
   const addToCart = (item, quantity) => {
     if (quantity <= 0) return;
     if (cartItems.find((cartItem) => cartItem.item.id === item.id)) {
@@ -37,21 +44,24 @@ export function CartProvider({ children }) {
       ]);
     }
   };
+  // Method to sum up the quantity of each cart item
   const cartQuantityTotal = cartItems.reduce(
     (sum, cartEntry) => sum + Number(cartEntry.quantity || 0),
     0
   );
-
+  // Method used to remove an item from the cart
   const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
       prevCartItems.filter((item) => item.item.id !== id)
     );
   };
+  // Method to sum up the total cost of each item and their quantity
   const totalCost = cartItems.reduce(
     (sum, cartEntry) =>
       sum + Number(cartEntry.item.price || 0) * Number(cartEntry.quantity || 0),
     0
   );
+  // Method to vaidate if an item is in the cart
   const inCart = (itemId) =>
     cartItems.find((cartItem) => cartItem.item.id === itemId);
   return (
