@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import ItemCarousel from "../components/ItemCarousel";
 import CategoryList from "../components/CategoryList";
 import { useAuth } from "../context/AuthContext.jsx";

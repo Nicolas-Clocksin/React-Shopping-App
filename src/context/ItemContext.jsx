@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { createContext, useEffect, useState } from "react";
 import { ItemList } from "../api/items";
 

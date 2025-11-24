@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { createContext } from "react";
 export const PaymentMethodContext = createContext({});
 export function PaymentMethodProvider({ children }) {

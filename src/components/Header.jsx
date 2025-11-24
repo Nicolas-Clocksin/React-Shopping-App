@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";

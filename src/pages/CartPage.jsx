@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import React, { useContext } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { CartContext } from "../context/CartContext";

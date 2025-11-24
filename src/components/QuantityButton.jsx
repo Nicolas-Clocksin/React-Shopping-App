@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { useState } from "react";
 function QuantityButton(value) {
   const [quantity, setQuantity] = useState(value);

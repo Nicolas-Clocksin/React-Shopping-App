@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { createContext, useState } from "react";
 import { useAuth } from "./AuthContext";
 
