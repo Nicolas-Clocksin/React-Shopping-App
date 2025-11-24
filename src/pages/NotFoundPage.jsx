@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: NotFoundPage
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Defaut when a router page is not found. Dispays error to the user.
 */
 import { Link } from "react-router-dom";
 

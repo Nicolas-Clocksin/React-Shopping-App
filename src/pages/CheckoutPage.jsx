@@ -1,8 +1,10 @@
 /*
-  Title:
+  Title: CheckoutPage
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: CheckoutPage is used for user to enter their shipping information/Payment information. The 
+  Summary of their cart items are displayed to the user in OrderSummary. On submit the order is created
+  and attached to the user.
 */
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";

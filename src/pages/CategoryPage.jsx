@@ -1,8 +1,10 @@
 /*
-  Title:
+  Title: CategoryPage
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Category page is used to display to the user a list of items from a specific category.
+  The user can either click on the item to be redirected to the ItemPage or they can add the item with
+  specified quantity to their cart. 
 */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -24,16 +26,19 @@ function CategoryPage() {
   const { addToCart, removeFromCart, inCart } = useContext(CartContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
 
+  // Method used to get the quantity of specific item
   const getQuantityForItem = (itemId) => selectedQuantities[itemId] ?? 1;
 
+  // Updates the quantity of an item on change
   function updateQuantity(itemId, value) {
     setSelectedQuantities((prev) => ({ ...prev, [itemId]: value }));
   }
-
+  // Add item based off its id to the cart
   function handleAddToCart(item) {
     const quantity = getQuantityForItem(item.id);
     addToCart(item, quantity);
   }
+  // useEffect() used to fetch the category selected and dispaly items in that category
   useEffect(() => {
     let mounted = true;
 

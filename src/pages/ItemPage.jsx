@@ -1,8 +1,9 @@
 /*
-  Title:
+  Title: ItemPage
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Displays a selected item (found by using the id). The page gives a description of the item
+  and allows the user to add the item based of quantity to the cart. 
 */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
