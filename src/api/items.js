@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Items API
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: API functions to manage items.
 */
 export async function ItemList() {
   return [

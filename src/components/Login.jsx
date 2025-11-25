@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Login
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to display the form and hande login authentication.
 */
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";

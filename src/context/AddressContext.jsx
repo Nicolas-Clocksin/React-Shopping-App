@@ -1,8 +1,9 @@
 /*
-  Title:
+  Title: AddressContext
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Context used to update and create address to be used
+  in shipping/billing information.
 */
 import { createContext } from "react";
 export const AddressConext = createContext({});
@@ -13,7 +14,7 @@ export function AddressProvider({ children }) {
   const { postalCode, setPostalCode } = useState("");
   const { state, setState } = useState("");
   const { address, setAddress } = useState([]);
-
+  
   function updateStreet(event) {
     setStreet(event.target.value);
   }

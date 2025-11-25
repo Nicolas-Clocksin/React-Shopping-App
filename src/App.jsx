@@ -1,8 +1,8 @@
-/*
-  Title:
+/* 
+  Title: App
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Application root component for the Shopping application.
 */
 import { useEffect, useState, useContext, createContext } from "react";
 import Login from "./components/Login";

@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: ItemCarousel
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Componenet used to display a carousel of items on the home page.
 */
 import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";

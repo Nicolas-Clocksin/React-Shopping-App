@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: OrderSummary
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used in order checkout to summarize the order total.
 */
 import React, { useContext } from "react";
 import { ListGroup, Badge, Button } from "react-bootstrap";

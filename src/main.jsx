@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Main
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Central entry point of the Shopping application.
 */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

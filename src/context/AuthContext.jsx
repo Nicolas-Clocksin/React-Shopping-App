@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: AuthContext
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Context to autherize user for application access
 */
 import { createContext, useContext, useState, useMemo } from "react";
 

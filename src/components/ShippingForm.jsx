@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: ShippingForm
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to dispaly a form for shipping information of an order.
 */
 import { AddressConext } from "../context/AddressContext";
 import { Col, Dropdown, DropdownButton, Form, Row } from "react-bootstrap";

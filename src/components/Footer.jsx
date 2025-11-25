@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Footer
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to display the footer of the application.
 */
 import React from "react";
 function Footer() {
