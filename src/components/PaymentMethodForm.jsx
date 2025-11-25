@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: PaymentMethodForm
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to display payment method form on order checkout.
 */
 import { Button, Form } from "react-bootstrap";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
