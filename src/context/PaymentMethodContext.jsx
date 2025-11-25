@@ -4,7 +4,7 @@
 
   Description: Context for payment method for the user to update and create.
 */
-import { createContext } from "react";
+import { createContext, useState } from "react";
 export const PaymentMethodContext = createContext({});
 export function PaymentMethodProvider({ children }) {
   const [paymentMethod, setPaymentMethod] = useState([]);
@@ -32,7 +32,6 @@ export function PaymentMethodProvider({ children }) {
   return (
     <PaymentMethodContext.Provider
       value={{
-        updateSelectedMethod,
         updateCardNumber,
         updateExpirationDate,
         updateCvv,
