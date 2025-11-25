@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { Button, Form } from "react-bootstrap";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { useContext } from "react";

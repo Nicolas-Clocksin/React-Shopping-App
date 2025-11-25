@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import React, { useContext } from "react";
 import { ListGroup, Badge, Button } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";

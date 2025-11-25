@@ -1,3 +1,10 @@
+/*
+  Title: SignUpModal
+  Created By: Nicolas Clocksin
+
+  Description: Modal design to pop up when user is requesting to sign up. Requests user to fil
+  out fields. On completion, the form is submitted and user is created.
+*/
 import React, { useState } from "react";
 import { addUser } from "../api/users";
 import { Modal, Button, Form } from 'react-bootstrap';

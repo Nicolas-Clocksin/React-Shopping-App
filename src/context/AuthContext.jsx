@@ -1,3 +1,9 @@
+/*
+  Title:
+  Created By: Nicolas Clocksin
+
+  Description: 
+*/
 import { createContext, useContext, useState, useMemo } from "react";
 
 const AuthContext = createContext(null);

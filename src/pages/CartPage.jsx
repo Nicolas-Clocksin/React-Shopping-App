@@ -1,3 +1,11 @@
+/*
+  Title: CartPage
+  Created By: Nicolas Clocksin
+
+  Description: This is a page used to represent the items in the cart. When loaded the user is
+  presented with a list of items from their cart. The total cost of the items are displayed to
+  the user. On Checkout being clicked. User is redirected to the Checkout page.
+*/
 import React, { useContext } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { CartContext } from "../context/CartContext";
