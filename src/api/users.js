@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: users API
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: API functions to manage users.
 */
 export async function UserList() {
   return [

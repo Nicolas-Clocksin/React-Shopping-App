@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Categories API
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: API functions to manage categories.
 */
 export async function CategoriesList() {
   return [
