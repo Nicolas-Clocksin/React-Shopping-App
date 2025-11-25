@@ -1,5 +1,5 @@
 /*
-  Title:
+  Title: Login
   Created By: Nicolas Clocksin
 
   Description: Component used to display the form and hande login authentication.

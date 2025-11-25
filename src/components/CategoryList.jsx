@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: CategoryList
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to display a list of categories with items on the home page.
 */
 import React, { useContext, useState } from "react";
 import Card from "react-bootstrap/Card";

@@ -1,8 +1,8 @@
 /*
-  Title:
+  Title: Header
   Created By: Nicolas Clocksin
 
-  Description: 
+  Description: Component used to display the header and navigation bar.
 */
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
