@@ -119,22 +119,19 @@ function ShippingForm({ typeShipment }) {
             <Form.Group>
               <Form.Label>State</Form.Label>
               <DropdownButton
-                title="State"
-                variant="outline-secondary"
-                id="checkout-state-dropdown"
-                className="w-100"
+                title={address?.state || "Select state"}
+                id="state-dropdown"
               >
-                <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-                  {STATE_OPTIONS.map((stateAbbr) => (
-                    <Dropdown.Item
-                      as="button"
-                      key={stateAbbr}
-                      onClick={() => updateState({ value: stateAbbr })}
-                    >
-                      {stateAbbr}
-                    </Dropdown.Item>
-                  ))}
-                </div>
+                {STATE_OPTIONS.map((s) => (
+                  <Dropdown.Item
+                    as="button"
+                    key={s}
+                    type="button"
+                    onClick={() => updateState(s)}
+                  >
+                    {s}
+                  </Dropdown.Item>
+                ))}
               </DropdownButton>
             </Form.Group>
           </Col>
