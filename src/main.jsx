@@ -21,6 +21,10 @@ import { CartProvider } from "./context/CartContext.jsx";
 import { CategoryProvider } from "./context/CategoryContext.jsx";
 import { ItemProvider } from "./context/ItemContext.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+import OrderCompletePage from "./pages/OrderCompletePage.jsx";
+import { AddressProvider } from "./context/AddressContext.jsx";
+import { PaymentMethodProvider } from "./context/PaymentMethodContext.jsx";
+import { OrderProvider } from "./context/OrderContext.jsx";
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
 
@@ -36,6 +40,7 @@ const router = createBrowserRouter([
           { path: "/category/:id", element: <CategoryPage /> },
           { path: "/cart", element: <CartPage /> },
           { path: "/checkout", element: <CheckoutPage /> },
+          { path: "/checkout/complete", element: <OrderCompletePage /> },
         ],
       },
     ],
@@ -50,7 +55,13 @@ createRoot(document.getElementById("root")).render(
       <CartProvider>
         <CategoryProvider>
           <ItemProvider>
-            <RouterProvider router={router} />
+            <AddressProvider>
+              <PaymentMethodProvider>
+                <OrderProvider>
+                  <RouterProvider router={router} />
+                </OrderProvider>
+              </PaymentMethodProvider>
+            </AddressProvider>
           </ItemProvider>
         </CategoryProvider>
       </CartProvider>
