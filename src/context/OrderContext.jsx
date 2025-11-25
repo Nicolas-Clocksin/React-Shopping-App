@@ -5,6 +5,7 @@
   Description: Context used to handle the creation and addition to orders.
 */
 import { createContext, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 export const OrderContext = createContext({});
 
 export function OrderProvider({ children }) {

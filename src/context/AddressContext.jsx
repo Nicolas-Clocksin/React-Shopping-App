@@ -5,7 +5,8 @@
   Description: Context used to update and create address to be used
   in shipping/billing information.
 */
-import { createContext } from "react";
+import { createContext, useState } from "react";
+
 export const AddressConext = createContext({});
 
 export function AddressProvider({ children }) {
@@ -14,7 +15,7 @@ export function AddressProvider({ children }) {
   const { postalCode, setPostalCode } = useState("");
   const { state, setState } = useState("");
   const { address, setAddress } = useState([]);
-  
+
   function updateStreet(event) {
     setStreet(event.target.value);
   }
