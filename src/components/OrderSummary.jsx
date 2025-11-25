@@ -8,9 +8,13 @@ import React, { useContext } from "react";
 import { ListGroup, Badge, Button } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import { AddressConext } from "../context/AddressContext";
+import { PaymentMethodContext } from "../context/PaymentMethodContext";
+import { OrderContext } from "../context/OrderContext";
 function OrderSummary() {
   const { totalCost, cartItems } = useContext(CartContext);
-  const { addAddress } = useContext(AddressConext);
+  const { addAddress, address } = useContext(AddressConext);
+  const { addPaymentMethod, paymentMethod } = useContext(PaymentMethodContext);
+  const { createOrder } = useContext(OrderContext);
   return (
     <div className="order-summary p-3 border rounded">
       <h5 className="mb-3">Your Order</h5>
@@ -45,9 +49,11 @@ function OrderSummary() {
         className="w-100"
         onClick={() => {
           addAddress();
+          addPaymentMethod();
+          createOrder(address, paymentMethod, cartItems, totalCost);
         }}
       >
-        Proceed to Pay
+        Complete Order
       </Button>
     </div>
   );
