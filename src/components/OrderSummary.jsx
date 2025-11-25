@@ -10,11 +10,13 @@ import { CartContext } from "../context/CartContext";
 import { AddressConext } from "../context/AddressContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { OrderContext } from "../context/OrderContext";
+import { useNavigate } from "react-router-dom";
 function OrderSummary() {
   const { totalCost, cartItems } = useContext(CartContext);
   const { addAddress, address } = useContext(AddressConext);
   const { addPaymentMethod, paymentMethod } = useContext(PaymentMethodContext);
   const { createOrder } = useContext(OrderContext);
+  const navigate = useNavigate();
   return (
     <div className="order-summary p-3 border rounded">
       <h5 className="mb-3">Your Order</h5>
@@ -51,6 +53,7 @@ function OrderSummary() {
           addAddress();
           addPaymentMethod();
           createOrder(address, paymentMethod, cartItems, totalCost);
+          navigate("/checkout/complete");
         }}
       >
         Complete Order
