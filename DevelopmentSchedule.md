@@ -2,22 +2,22 @@
 
 ## To Do
 
-- [] Create Checkout Process
+- [ ] Create Checkout Process
   - [x] Create Order Context
-  - [] Update objects to handle ordering/checkout process
-- [] Add Models for Each Object
-- [] Create an User Page
-  - [] History of Order Section
-  - [] Ability for User to Edit Profile
-  - [] Payment Information Section
-- [] Create Admin Portal
-  - [] Add/Remove/Edit Users
-  - [] Add/Remove/Edit Items for Sale
-  - [] Add/Remove/Edit Categories
-- [] Update sign up form
-  - [] Remove Role Selection
-- [] Update Styling
-- [] Update ReadMe
+  - [ ] Update objects to handle ordering/checkout process
+- [ ] Add Models for Each Object
+- [ ] Create an User Page
+  - [ ] History of Order Section
+  - [ ] Ability for User to Edit Profile
+  - [ ] Payment Information Section
+- [ ] Create Admin Portal
+  - [ ] Add/Remove/Edit Users
+  - [ ] Add/Remove/Edit Items for Sale
+  - [ ] Add/Remove/Edit Categories
+- [ ] Update sign up form
+  - [ ] Remove Role Selection
+- [ ] Update Styling
+- [ ] Update ReadMe
 
 ## Completed
 

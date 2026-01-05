@@ -43,6 +43,7 @@ export function CartProvider({ children }) {
         },
       ]);
     }
+    user.cart = cartItems;
   };
   // Method to sum up the quantity of each cart item
   const cartQuantityTotal = cartItems.reduce(
@@ -54,6 +55,7 @@ export function CartProvider({ children }) {
     setCartItems((prevCartItems) =>
       prevCartItems.filter((item) => item.item.id !== id)
     );
+    user.cart = cartItems;
   };
   // Method to sum up the total cost of each item and their quantity
   const totalCost = cartItems.reduce(
