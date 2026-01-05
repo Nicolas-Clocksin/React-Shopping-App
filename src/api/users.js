@@ -15,6 +15,7 @@ export async function UserList() {
       orders: [],
       cart: [],
       paymentMethod: [],
+      addresses: [],
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ export async function UserList() {
       orders: [],
       cart: [],
       paymentMethod: [],
+      addresses: [],
     },
     {
       id: 3,
@@ -35,6 +37,7 @@ export async function UserList() {
       orders: [],
       cart: [],
       paymentMethod: [],
+      addresses: [],
     },
   ];
 }
@@ -49,5 +52,6 @@ export async function addUser({ name, role, email, password }) {
     orders: [],
     cart: [],
     paymentMethod: [],
+    addresses: [],
   };
 }
