@@ -68,8 +68,7 @@ function ShippingForm({ typeShipment }) {
     updateCity,
     updatePostalCode,
     updateState,
-    addAddress,
-    address,
+    updateName,
   } = useContext(AddressConext);
   function shippingType() {
     if (typeShipment === "shipping") {
