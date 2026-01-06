@@ -52,7 +52,11 @@
     "name": "user_name",
     "role": "user_assigned_role",
     "email": "users_email",
-    "password": "users_password"
+    "password": "users_password",
+    "cart": "cart_object",
+    "orders": "array_of_orders",
+    "paymentMethods": "array_of_payment_methods",
+    "addresses": "array_of_addresses"
 }
 ```
 
@@ -62,8 +66,7 @@
 {
     "item": "item_object",
     "quantity": "quantity_of_item_in_cart",
-    "added": "boolean_if_added",
-    "user": "user_associated_with_cart"
+    "added": "boolean_if_added"
 }
 ```
 
@@ -72,7 +75,9 @@
 ```
 {
     "id": "id_for_order",
-    "shipping": "address_for_shipping",
+    "userId": "id_of_user",
+    "shippingAddress": "address_for_shipping",
+    "billingAddress": "address_for_billing",
     "paymentMethod": "method_of_payment",
     "items": "items_for_the_order",
     "totalAmount": "total_of_the_order",
@@ -95,8 +100,11 @@
 
 ```
 {
+    "id": "id_of_payment_method",
+    "type": "payment_method_type",
     "cardNumber": "card_number",
     "expiration_date": "expiration_date",
-    "ccv": "cvv"
+    "ccv": "cvv",
+    "cardHolderName": "name_of_card_holders"
 }
 ```

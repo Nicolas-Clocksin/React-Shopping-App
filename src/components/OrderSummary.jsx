@@ -50,9 +50,9 @@ function OrderSummary() {
         variant="primary"
         className="w-100"
         onClick={() => {
-          addAddress();
-          addPaymentMethod();
-          createOrder(address, paymentMethod, cartItems, totalCost);
+          const newAddress = addAddress();
+          const newPayment = addPaymentMethod();
+          createOrder(newAddress, newPayment, cartItems, totalCost);
           navigate("/checkout/complete");
         }}
       >
