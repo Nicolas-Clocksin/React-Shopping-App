@@ -122,6 +122,8 @@ function ShippingForm({ typeShipment }) {
               <DropdownButton
                 title={state || "Select state"}
                 id="state-dropdown"
+                variant="light"
+                className="text-dark"
               >
                 {STATE_OPTIONS.map((s) => (
                   <Dropdown.Item
