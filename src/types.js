@@ -29,7 +29,7 @@
  * @property {string} password - Password of the user
  * @property {CartEntry[]} cart - Items in the user's cart
  * @property {Object[]} orders - Orders made by the user
- * @property {Object[]} paymentMethod - Payment methods of the user
+ * @property {Object[]} paymentMethods - Payment methods of the user
  * @property {Address[]} addresses - Addresses of the user
  */
 
