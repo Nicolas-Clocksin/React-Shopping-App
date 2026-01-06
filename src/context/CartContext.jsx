@@ -8,7 +8,10 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
 import { useAuth } from "./AuthContext";
-
+import "../types.js";
+/**
+ * @typedef {import("../types.js").CartEntry[]}
+ */
 export const CartContext = createContext({
   cartItems: [],
   addToCart: () => {},
@@ -16,6 +19,9 @@ export const CartContext = createContext({
 
 export function CartProvider({ children }) {
   const { user } = useAuth();
+  /**
+   * @type {CartEntry[]}
+   */
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     setCartItems(user?.cart ?? []);
@@ -29,6 +35,11 @@ export function CartProvider({ children }) {
     setCartItems(updatedCart);
     if (user) setUser((u) => ({ ...u, cart: updatedCart }));
   };
+  /**
+   *
+   * @param {Item} item
+   * @param {number} quantity
+   */
   const addToCart = (item, quantity) => {
     if (quantity <= 0) return;
     const next = cartItems.find((c) => c.item.id === item.id)
