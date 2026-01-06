@@ -7,17 +7,20 @@
   - [x] Update objects to handle ordering/checkout process 01/26/2026
   - [ ] Fix forms
     - [ ] Add Option to select stored payment methods/addresses
-    - [ ] Fix Dropdown for State Selection
+    - [ ] Update payment method form
+    - [x] Fix Dropdown for State Selection 01/26/2026
   - [ ] Update Address/Payment method to store in user
-  - [ ]
-- [ ] Create an User Page
-  - [ ] History of Order Section
-  - [ ] Ability for User to Edit Profile
-  - [ ] Payment Information Section
-- [ ] Create Admin Portal
-  - [ ] Add/Remove/Edit Users
-  - [ ] Add/Remove/Edit Items for Sale
-  - [ ] Add/Remove/Edit Categories
+  - [ ] Add data validation
+  - [ ] Add storing of new payments/addresses into user
+- [ ] Create an User/Admin Page
+  - [ ] User Page
+    - [ ] History of Order Section
+    - [ ] Ability for User to Edit Profile
+    - [ ] Payment Information Section
+  - [ ] Admin Permissions/Page
+    - [ ] Add/Remove/Edit Users
+    - [ ] Add/Remove/Edit Items for Sale
+    - [ ] Add/Remove/Edit Categories
 - [ ] Update sign up form
   - [ ] Remove Role Selection
 - [ ] Update Styling
