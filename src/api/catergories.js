@@ -4,6 +4,11 @@
 
   Description: API functions to manage categories.
 */
+import "../types.js";
+/**
+ *
+ * @returns {Promise<Category[]>}
+ */
 export async function CategoriesList() {
   return [
     {

@@ -4,6 +4,11 @@
 
   Description: API functions to manage items.
 */
+import "../types.js";
+/**
+ *
+ * @returns {Promise<Item[]>}
+ */
 export async function ItemList() {
   return [
     {
