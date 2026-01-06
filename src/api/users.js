@@ -4,6 +4,11 @@
 
   Description: API functions to manage users.
 */
+import "../types.js";
+/**
+ *
+ * @returns {Promise<User[]>}
+ */
 export async function UserList() {
   return [
     {
@@ -80,7 +85,10 @@ export async function UserList() {
     },
   ];
 }
-
+/**
+ * @param {Pick<User, "name"|"role"|"email"|"password">} data
+ * @returns {Promise<User>}
+ */
 export async function addUser({ name, role, email, password }) {
   return {
     id: Math.random(),
