@@ -7,7 +7,7 @@
 import { createContext, useState } from "react";
 export const PaymentMethodContext = createContext({});
 export function PaymentMethodProvider({ children }) {
-  const [paymentMethod, setPaymentMethod] = useState([]);
+  const [paymentMethod, setPaymentMethod] = useState({});
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [nameOnCard, setNameOnCard] = useState("");
@@ -35,7 +35,15 @@ export function PaymentMethodProvider({ children }) {
   }
   // creates payment method
   function addPaymentMethod() {
-    setPaymentMethod([cardNumber, expirationDate, cvv, nameOnCard, cardType]);
+    const newPayment = {
+      cardNumber,
+      expirationDate,
+      cvv,
+      nameOnCard,
+      cardType,
+    };
+    setPaymentMethod(newPayment);
+    return newPayment;
   }
   // context that is returned and used by the application
   return (
@@ -48,6 +56,11 @@ export function PaymentMethodProvider({ children }) {
         updateCardName,
         addPaymentMethod,
         paymentMethod,
+        cardNumber,
+        expirationDate,
+        cvv,
+        nameOnCard,
+        cardType,
       }}
     >
       {children}
