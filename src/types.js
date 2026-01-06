@@ -61,6 +61,6 @@
  * @property {string} type - Type of payment method (e.g., credit card, PayPal)
  * @property {int} cardNumber - Card number
  * @property {string} expiryDate - Expiration date
- * @property {string} cardHolderName - Name of the card holder
+ * @property {string} nameOnCard - Name of the card holder
  * @property {int} cvv - CVV code
  */
