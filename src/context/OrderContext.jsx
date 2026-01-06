@@ -53,7 +53,7 @@ export function OrderProvider({ children }) {
     }
   }
   return (
-    <OrderContext.Provider value={{ order, createOrder }}>
+    <OrderContext.Provider value={{ order, orders, userOrders, createOrder }}>
       {children}
     </OrderContext.Provider>
   );
