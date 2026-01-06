@@ -7,12 +7,14 @@
 */
 import { createContext, useEffect, useState } from "react";
 import { CategoriesList } from "../api/catergories";
-
+import "../types.js";
+/**
+ * @typedef {import("../types.js").Category[]} Category[]
+ */
 export const CategoryContext = createContext({});
-
 export function CategoryProvider({ children }) {
   const [categories, setCategories] = useState([]);
-// Call to API to get list of categories
+  // Call to API to get list of categories
   useEffect(() => {
     CategoriesList().then(setCategories);
   }, []);

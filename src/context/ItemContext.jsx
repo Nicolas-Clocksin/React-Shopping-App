@@ -6,7 +6,10 @@
 */
 import { createContext, useEffect, useState } from "react";
 import { ItemList } from "../api/items";
-
+import "../types.js";
+/**
+ * @typedef {import("../types.js").Item[]} Item[]
+ */
 export const ItemContext = createContext({});
 
 export function ItemProvider({ children }) {
