@@ -14,7 +14,7 @@ export function AddressProvider({ children }) {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [state, setState] = useState("");
-  const [address, setAddress] = useState([]);
+  const [address, setAddress] = useState({});
 
   function updateStreet(event) {
     setStreet(event.target.value);

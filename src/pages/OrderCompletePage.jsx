@@ -1,8 +1,13 @@
 import { Form } from "react-bootstrap";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { OrderContext } from "../context/OrderContext";
+import { useAuth } from "../context/AuthContext";
 function OrderCompletePage() {
-  const { order } = useContext(OrderContext);
+  const { order, userOrders } = useContext(OrderContext);
+
+  useEffect(() => {
+    console.log("Order Complete Page - User orders:", userOrders);
+  }, [userOrders]);
 
   return (
     <div>
@@ -11,7 +16,7 @@ function OrderCompletePage() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Order Complete</Form.Label>
             <Form.Text>
-              Thank you for your order! Your order number is {order.id}.
+              Thank you for your order! Your order number is {order?.id}.
             </Form.Text>
           </Form.Group>
         </Form>

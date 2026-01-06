@@ -63,6 +63,7 @@ function ShippingForm({ typeShipment }) {
   ];
   const { user } = useAuth();
   const {
+    state,
     updateStreet,
     updateCity,
     updatePostalCode,
@@ -119,8 +120,10 @@ function ShippingForm({ typeShipment }) {
             <Form.Group>
               <Form.Label>State</Form.Label>
               <DropdownButton
-                title={address?.state || "Select state"}
+                title={state || "Select state"}
                 id="state-dropdown"
+                variant="light"
+                className="text-dark"
               >
                 {STATE_OPTIONS.map((s) => (
                   <Dropdown.Item
