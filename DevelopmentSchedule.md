@@ -5,7 +5,6 @@
 - [ ] Create Checkout Process
   - [x] Create Order Context
   - [ ] Update objects to handle ordering/checkout process
-- [ ] Add Models for Each Object
 - [ ] Create an User Page
   - [ ] History of Order Section
   - [ ] Ability for User to Edit Profile
@@ -39,3 +38,4 @@
     - [x] Update quantity select to dropdown
     - [x] Update quantity displayed of items in cart
 - [x] Update Categories/items to useContext
+- [x] Add Models for Each Object 01/06/2026
