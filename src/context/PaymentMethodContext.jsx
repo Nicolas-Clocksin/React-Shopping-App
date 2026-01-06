@@ -25,10 +25,6 @@ export function PaymentMethodProvider({ children }) {
   function updateCvv(event) {
     setCvv(event.target.value);
   }
-  // creates payment method
-  function addPaymentMethod() {
-    setPaymentMethod([cardNumber, expirationDate, cvv]);
-  }
   // update name on card
   function updateCardName(event) {
     setNameOnCard(event.target.value);
@@ -36,6 +32,10 @@ export function PaymentMethodProvider({ children }) {
   // update card type
   function updateCardType(value) {
     setCardType(value);
+  }
+  // creates payment method
+  function addPaymentMethod() {
+    setPaymentMethod([cardNumber, expirationDate, cvv, nameOnCard, cardType]);
   }
   // context that is returned and used by the application
   return (
