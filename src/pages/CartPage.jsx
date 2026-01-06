@@ -11,8 +11,10 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { CartContext } from "../context/CartContext";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "../types.js";
 function CartPage() {
   const navigate = useNavigate();
+  /** @type {{ cartItems: CartEntry[]; removeFromCart: (id: number) => void; totalCost: number }} */
   const { cartItems, removeFromCart, totalCost, quantity } =
     useContext(CartContext);
   if (cartItems.length != 0) {

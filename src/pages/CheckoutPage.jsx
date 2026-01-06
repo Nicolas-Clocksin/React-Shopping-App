@@ -14,6 +14,7 @@ import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import OrderSummary from "../components/OrderSummary";
 import PaymentMethodForm from "../components/PaymentMethodForm";
+import "../types.js";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);

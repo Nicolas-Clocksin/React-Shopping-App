@@ -16,13 +16,16 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { ItemList } from "../api/items";
 import { CartContext } from "../context/CartContext";
 import { CategoryContext } from "../context/CategoryContext";
-
+import "../types.js";
 function CategoryPage() {
   const { id } = useParams();
+  /** @type {import("../types.js").Category | null} */
   const [category, setCategory] = useState(null);
   const { categories } = useContext(CategoryContext);
+  /** @type {import("../types.js").Item[]} */
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  /** @type {{ addToCart: (item: import("../types.js").Item, quantity: number) => void; removeFromCart: (id: number) => void; inCart: (id: number) => boolean }} */
   const { addToCart, removeFromCart, inCart } = useContext(CartContext);
   const [selectedQuantities, setSelectedQuantities] = useState({});
 

@@ -12,11 +12,14 @@ import { CartContext } from "../context/CartContext";
 import { ItemContext } from "../context/ItemContext";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import "../types.js";
 function ItemPage() {
   const { id } = useParams();
   const { items } = useContext(ItemContext);
+  /** @type {import("../types.js").Item | null} */
   const [item, setItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
+  /** @type {{ addToCart: (item: import("../types.js").Item, quantity: number) => void; inCart: (id: number) => boolean; removeFromCart: (id: number) => void }} */
   const { addToCart, inCart, removeFromCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
 
