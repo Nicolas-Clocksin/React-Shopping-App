@@ -30,7 +30,7 @@ export function PaymentMethodProvider({ children }) {
     setPaymentMethod([cardNumber, expirationDate, cvv]);
   }
   // update name on card
-  function updateCardName() {
+  function updateCardName(event) {
     setNameOnCard(event.target.value);
   }
   // update card type
