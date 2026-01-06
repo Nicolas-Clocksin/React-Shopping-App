@@ -23,6 +23,23 @@ function PaymentMethodForm() {
         ></Form.Control>
       </Form.Group>
       <Form.Group className="mb-4">
+        <Form.Label>Name on Card</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter name on card"
+          onChange={(event) => updateCardName(event)}
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-4">
+        <Form.Label>Card Type</Form.Label>
+        <Form.Select onChange={(event) => updateCardType(event.target.value)}>
+          <option value="">Select Card Type</option>
+          <option value="visa">Visa</option>
+          <option value="mastercard">MasterCard</option>
+          <option value="amex">American Express</option>
+        </Form.Select>
+      </Form.Group>
+      <Form.Group className="mb-4">
         <Form.Label>Expiration Date</Form.Label>
         <Form.Control
           type="text"

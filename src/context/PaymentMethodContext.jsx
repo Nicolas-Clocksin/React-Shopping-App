@@ -10,8 +10,9 @@ export function PaymentMethodProvider({ children }) {
   const [paymentMethod, setPaymentMethod] = useState([]);
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
+  const [nameOnCard, setNameOnCard] = useState("");
   const [cvv, setCvv] = useState("");
-
+  const [cardType, setCardType] = useState("");
   // update the card number entered into field
   function updateCardNumber(event) {
     setCardNumber(event.target.value);
@@ -28,13 +29,23 @@ export function PaymentMethodProvider({ children }) {
   function addPaymentMethod() {
     setPaymentMethod([cardNumber, expirationDate, cvv]);
   }
+  // update name on card
+  function updateCardName() {
+    setNameOnCard(event.target.value);
+  }
+  // update card type
+  function updateCardType(value) {
+    setCardType(value);
+  }
   // context that is returned and used by the application
   return (
     <PaymentMethodContext.Provider
       value={{
         updateCardNumber,
+        updateCardType,
         updateExpirationDate,
         updateCvv,
+        updateCardName,
         addPaymentMethod,
         paymentMethod,
       }}
