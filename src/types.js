@@ -46,11 +46,13 @@
 /**
  * @typedef {Object} Order
  * @property {number} id - Unique identifier for the order
+ * @property {number} userId - ID of the user who made the order
  * @property {CartEntry[]} items - Items in the order
  * @property {number} totalAmount - Total amount of the order
  * @property {PaymentMethod} paymentMethod - Payment method used for the order
  * @property {Address} shippingAddress - Shipping address for the order
  * @property {Address} billingAddress - Billing address for the order
+ * @property {string} date - Date of the order
  */
 
 /**
