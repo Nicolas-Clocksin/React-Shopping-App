@@ -4,7 +4,12 @@
 
 - [ ] Create Checkout Process
   - [x] Create Order Context
-  - [ ] Update objects to handle ordering/checkout process
+  - [x] Update objects to handle ordering/checkout process 01/26/2026
+  - [ ] Fix forms
+    - [ ] Add Option to select stored payment methods/addresses
+    - [ ] Fix Dropdown for State Selection
+  - [ ] Update Address/Payment method to store in user
+  - [ ]
 - [ ] Create an User Page
   - [ ] History of Order Section
   - [ ] Ability for User to Edit Profile
