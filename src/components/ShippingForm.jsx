@@ -92,6 +92,7 @@ function ShippingForm({ typeShipment }) {
             type="text"
             placeholder="Enter your name"
             value={user.name}
+            onChange={(event) => updateName(event)}
           />
         </Form.Group>
 
