@@ -15,6 +15,7 @@ function PaymentMethodForm() {
     updateExpirationDate,
     updateCvv,
     updateIsDefault,
+    isDefault,
   } = useContext(PaymentMethodContext);
 
   return (
@@ -79,6 +80,7 @@ function PaymentMethodForm() {
             <Form.Check
               type="checkbox"
               label="Set as default payment method"
+              checked={isDefault}
               onChange={(event) => updateIsDefault(event.target.checked)}
             />
           </Form.Group>

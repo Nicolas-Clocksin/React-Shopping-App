@@ -40,13 +40,16 @@ export function PaymentMethodProvider({ children }) {
   function updateCardType(value) {
     setCardType(value);
   }
+  // update default payment method
   function updateIsDefault(value) {
     setIsDefault(value);
   }
+  // updates user's payment methods
   function updateUserPaymentMethods(updatedPayments) {
     setPaymentMethod(updatedPayments);
     if (user) setUser((u) => ({ ...u, paymentMethods: updatedPayments }));
   }
+  // update user's default payment method
   function updateUserDefaultPaymentMethod(newDefaultId) {
     const updatedPayments = paymentMethod.map((payment) => ({
       ...payment,
@@ -75,6 +78,7 @@ export function PaymentMethodProvider({ children }) {
         : [...paymentMethod, newPayment];
 
     updateUserPaymentMethods(updateDefault);
+    setIsDefault(false);
     return newPayment;
   }
   // context that is returned and used by the application
