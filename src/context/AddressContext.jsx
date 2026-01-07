@@ -16,6 +16,7 @@ export function AddressProvider({ children }) {
   const [state, setState] = useState("");
   const [address, setAddress] = useState({});
   const [name, setName] = useState("");
+  const [isDefaultAddress, setIsDefaultAddress] = useState(false);
   function updateName(event) {
     setName(event.target.value);
   }
@@ -28,11 +29,21 @@ export function AddressProvider({ children }) {
   function updatePostalCode(event) {
     setPostalCode(event.target.value);
   }
+  function updateIsDefaultAddress(value) {
+    setIsDefaultAddress(value);
+  }
   function updateState(value) {
     setState(value);
   }
   function addAddress() {
-    const newAddress = { name, street, city, postalCode, state };
+    const newAddress = {
+      name,
+      street,
+      city,
+      postalCode,
+      state,
+      isDefaultAddress,
+    };
     setAddress(newAddress);
     return newAddress;
   }
@@ -43,6 +54,8 @@ export function AddressProvider({ children }) {
         city,
         postalCode,
         state,
+        isDefaultAddress,
+        updateIsDefaultAddress,
         updateStreet,
         updateCity,
         updatePostalCode,
