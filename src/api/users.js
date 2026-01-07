@@ -47,13 +47,13 @@ export async function UserList() {
       ],
       paymentMethods: [
         {
-          paymentMethod: {
-            id: 1,
-            nameOnCard: "John Doe",
-            cardNumber: "4111111111111111",
-            expirationDate: "12/25",
-            cvv: "123",
-          },
+          id: 1,
+          nameOnCard: "John Doe",
+          cardType: "visa",
+          cardNumber: "4111111111111111",
+          expirationDate: "12/25",
+          cvv: "123",
+          isDefault: true,
         },
       ],
       addresses: [
@@ -92,13 +92,13 @@ export async function UserList() {
       ],
       paymentMethods: [
         {
-          paymentMethod: {
-            id: 1,
-            nameOnCard: "John Doe",
-            cardNumber: "4111111111111111",
-            expirationDate: "12/25",
-            cvv: "123",
-          },
+          id: 1,
+          nameOnCard: "John Doe",
+          cardType: "visa",
+          cardNumber: "4111111111111111",
+          expirationDate: "12/25",
+          cvv: "123",
+          isDefault: true,
         },
       ],
       addresses: [
@@ -124,13 +124,13 @@ export async function UserList() {
       cart: [],
       paymentMethods: [
         {
-          paymentMethod: {
-            id: 1,
-            nameOnCard: "John Doe",
-            cardNumber: "4111111111111111",
-            expirationDate: "12/25",
-            cvv: "123",
-          },
+          id: 1,
+          nameOnCard: "John Doe",
+          cardType: "visa",
+          cardNumber: "4111111111111111",
+          expirationDate: "12/25",
+          cvv: "123",
+          isDefault: true,
         },
       ],
       addresses: [
