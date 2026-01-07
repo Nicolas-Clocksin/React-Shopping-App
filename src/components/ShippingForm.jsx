@@ -149,6 +149,17 @@ function ShippingForm({ typeShipment }) {
               />
             </Form.Group>
           </Col>
+          <Col>
+            <Form.Group>
+              <Form.Check
+                type="checkbox"
+                label="Set as default address"
+                onChange={(event) =>
+                  updateIsDefaultAddress(event.target.checked)
+                }
+              />
+            </Form.Group>
+          </Col>
         </Row>
       </Form>
     </>
