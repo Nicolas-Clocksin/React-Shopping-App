@@ -4,9 +4,9 @@ import { OrderContext } from "../context/OrderContext";
 import { useAuth } from "../context/AuthContext";
 function OrderCompletePage() {
   const { order, userOrders } = useContext(OrderContext);
-
+  const { user } = useAuth();
   useEffect(() => {
-    console.log("Order Complete Page - User orders:", userOrders);
+    console.log("Order Complete Page - User orders:", user);
   }, [userOrders]);
 
   return (

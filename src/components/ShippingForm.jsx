@@ -69,6 +69,8 @@ function ShippingForm({ typeShipment }) {
     updatePostalCode,
     updateState,
     updateName,
+    updateIsDefault,
+    isDefault,
   } = useContext(AddressConext);
   function shippingType() {
     if (typeShipment === "shipping") {
@@ -154,8 +156,9 @@ function ShippingForm({ typeShipment }) {
               <Form.Check
                 type="checkbox"
                 label="Set as default address"
+                checked={isDefault}
                 onChange={(event) =>
-                  updateIsDefaultAddress(event.target.checked)
+                  updateIsDefault(event.target.checked)
                 }
               />
             </Form.Group>

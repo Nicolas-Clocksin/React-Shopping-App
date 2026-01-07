@@ -5,18 +5,22 @@
   Description: Context used to update and create address to be used
   in shipping/billing information.
 */
-import { createContext, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
+import { useAuth } from "./AuthContext";
 export const AddressConext = createContext({});
 
 export function AddressProvider({ children }) {
+  const [addresses, setAddresses] = useState([]);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [state, setState] = useState("");
-  const [address, setAddress] = useState({});
   const [name, setName] = useState("");
-  const [isDefaultAddress, setIsDefaultAddress] = useState(false);
+  const [isDefault, setIsDefault] = useState(false);
+  const { user, setUser } = useAuth();
+  useEffect(() => {
+    setAddresses(user?.addresses ?? []);
+  }, [user]);
   function updateName(event) {
     setName(event.target.value);
   }
@@ -29,12 +33,17 @@ export function AddressProvider({ children }) {
   function updatePostalCode(event) {
     setPostalCode(event.target.value);
   }
-  function updateIsDefaultAddress(value) {
-    setIsDefaultAddress(value);
+  function updateIsDefault(value) {
+    setIsDefault(value);
   }
   function updateState(value) {
     setState(value);
   }
+  function updateUserAddresses(updatedAddresses) {
+    setAddresses(updatedAddresses);
+    if (user) setUser((u) => ({ ...u, addresses: updatedAddresses }));
+  }
+
   function addAddress() {
     const newAddress = {
       name,
@@ -42,9 +51,21 @@ export function AddressProvider({ children }) {
       city,
       postalCode,
       state,
-      isDefaultAddress,
+      isDefault,
     };
-    setAddress(newAddress);
+    const hasDefault = addresses.some((address) => address.isDefault);
+    const updateDefault =
+      isDefault || !hasDefault
+        ? [
+            ...addresses.map((address) => ({
+              ...address,
+              isDefault: false,
+            })),
+            { ...newAddress, isDefault: true },
+          ]
+        : [...addresses, newAddress];
+    updateUserAddresses(updateDefault);
+    setIsDefault(false);
     return newAddress;
   }
   return (
@@ -54,15 +75,16 @@ export function AddressProvider({ children }) {
         city,
         postalCode,
         state,
-        isDefaultAddress,
-        updateIsDefaultAddress,
+        isDefault,
+        updateIsDefault,
         updateStreet,
         updateCity,
         updatePostalCode,
         updateState,
         addAddress,
         updateName,
-        address,
+        name,
+        addresses,
       }}
     >
       {children}
