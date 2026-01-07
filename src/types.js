@@ -41,7 +41,7 @@
  * @property {string} state - State
  * @property {string} zipCode - ZIP code
  * @property {string} country - Country
- * @property {boolean} isDefaultShipping - Indicates if this is the default shipping address
+ * @property {boolean} isDefault - Indicates if this is the default address
  */
 
 /**
