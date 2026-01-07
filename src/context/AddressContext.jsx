@@ -18,8 +18,18 @@ export function AddressProvider({ children }) {
   const [name, setName] = useState("");
   const [isDefault, setIsDefault] = useState(false);
   const { user, setUser } = useAuth();
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
   useEffect(() => {
-    setAddresses(user?.addresses ?? []);
+    const nextAddresses = user?.addresses ?? [];
+    setAddresses(nextAddresses);
+    if (nextAddresses.length > 0) {
+      setSelectedAddressIndex(0);
+      setSelectedAddress(nextAddresses[0]);
+    } else {
+      setSelectedAddressIndex(0);
+      setSelectedAddress(null);
+    }
   }, [user]);
   function updateName(event) {
     setName(event.target.value);
@@ -42,6 +52,10 @@ export function AddressProvider({ children }) {
   function updateUserAddresses(updatedAddresses) {
     setAddresses(updatedAddresses);
     if (user) setUser((u) => ({ ...u, addresses: updatedAddresses }));
+  }
+  function updateSelectedAddress(index) {
+    setSelectedAddressIndex(index);
+    setSelectedAddress(addresses[index] ?? null);
   }
 
   function addAddress() {
@@ -76,15 +90,18 @@ export function AddressProvider({ children }) {
         postalCode,
         state,
         isDefault,
+        name,
+        addresses,
+        selectedAddress,
+        selectedAddressIndex,
         updateIsDefault,
+        updateSelectedAddress,
         updateStreet,
         updateCity,
         updatePostalCode,
         updateState,
         addAddress,
         updateName,
-        name,
-        addresses,
       }}
     >
       {children}
