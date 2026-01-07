@@ -14,6 +14,7 @@ function PaymentMethodForm() {
     updateCardType,
     updateExpirationDate,
     updateCvv,
+    updateIsDefault,
   } = useContext(PaymentMethodContext);
 
   return (
@@ -33,7 +34,9 @@ function PaymentMethodForm() {
         <Col md={5}>
           <Form.Group>
             <Form.Label>Card Type</Form.Label>
-            <Form.Select onChange={(event) => updateCardType(event.target.value)}>
+            <Form.Select
+              onChange={(event) => updateCardType(event.target.value)}
+            >
               <option value="">Select Card Type</option>
               <option value="visa">Visa</option>
               <option value="mastercard">MasterCard</option>
@@ -68,6 +71,15 @@ function PaymentMethodForm() {
               type="text"
               placeholder="CVV"
               onChange={(event) => updateCvv(event)}
+            />
+          </Form.Group>
+        </Col>
+        <Col>
+          <Form.Group>
+            <Form.Check
+              type="checkbox"
+              label="Set as default payment method"
+              onChange={(event) => updateIsDefault(event.target.checked)}
             />
           </Form.Group>
         </Col>
