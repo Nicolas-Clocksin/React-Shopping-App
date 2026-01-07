@@ -24,8 +24,8 @@
     - [ ] Add/Remove/Edit Categories
 - [ ] Update sign up form
   - [ ] Remove Role Selection
+- [ ] Develop Backend
 - [ ] Update Styling
-- [ ] Update ReadMe
 
 ## Completed
 
