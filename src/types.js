@@ -41,6 +41,7 @@
  * @property {string} state - State
  * @property {string} zipCode - ZIP code
  * @property {string} country - Country
+ * @property {boolean} isDefaultShipping - Indicates if this is the default shipping address
  */
 
 /**
@@ -63,4 +64,5 @@
  * @property {string} expiryDate - Expiration date
  * @property {string} nameOnCard - Name of the card holder
  * @property {int} cvv - CVV code
+ * @property {boolean} isDefault - Indicates if this is the default payment method
  */
