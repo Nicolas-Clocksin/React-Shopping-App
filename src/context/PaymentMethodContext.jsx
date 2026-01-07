@@ -13,6 +13,7 @@ export function PaymentMethodProvider({ children }) {
   const [nameOnCard, setNameOnCard] = useState("");
   const [cvv, setCvv] = useState("");
   const [cardType, setCardType] = useState("");
+  const [isDefault, setIsDefault] = useState(false);
   // update the card number entered into field
   function updateCardNumber(event) {
     setCardNumber(event.target.value);
@@ -33,6 +34,9 @@ export function PaymentMethodProvider({ children }) {
   function updateCardType(value) {
     setCardType(value);
   }
+  function updateIsDefault(value) {
+    setIsDefault(value);
+  }
   // creates payment method
   function addPaymentMethod() {
     const newPayment = {
@@ -41,6 +45,7 @@ export function PaymentMethodProvider({ children }) {
       cvv,
       nameOnCard,
       cardType,
+      isDefault,
     };
     setPaymentMethod(newPayment);
     return newPayment;
@@ -53,8 +58,10 @@ export function PaymentMethodProvider({ children }) {
         updateCardType,
         updateExpirationDate,
         updateCvv,
+        updateIsDefault,
         updateCardName,
         addPaymentMethod,
+        isDefault,
         paymentMethod,
         cardNumber,
         expirationDate,

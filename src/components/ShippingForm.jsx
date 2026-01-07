@@ -68,8 +68,7 @@ function ShippingForm({ typeShipment }) {
     updateCity,
     updatePostalCode,
     updateState,
-    addAddress,
-    address,
+    updateName,
   } = useContext(AddressConext);
   function shippingType() {
     if (typeShipment === "shipping") {
@@ -92,6 +91,7 @@ function ShippingForm({ typeShipment }) {
             type="text"
             placeholder="Enter your name"
             value={user.name}
+            onChange={(event) => updateName(event)}
           />
         </Form.Group>
 
@@ -146,6 +146,17 @@ function ShippingForm({ typeShipment }) {
                 type="text"
                 placeholder="Enter your postal code"
                 onChange={(event) => updatePostalCode(event)}
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Check
+                type="checkbox"
+                label="Set as default address"
+                onChange={(event) =>
+                  updateIsDefaultAddress(event.target.checked)
+                }
               />
             </Form.Group>
           </Col>

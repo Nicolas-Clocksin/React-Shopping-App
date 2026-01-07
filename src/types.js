@@ -41,6 +41,7 @@
  * @property {string} state - State
  * @property {string} zipCode - ZIP code
  * @property {string} country - Country
+ * @property {boolean} isDefault - Indicates if this is the default address
  */
 
 /**
@@ -61,6 +62,7 @@
  * @property {string} type - Type of payment method (e.g., credit card, PayPal)
  * @property {int} cardNumber - Card number
  * @property {string} expiryDate - Expiration date
- * @property {string} cardHolderName - Name of the card holder
+ * @property {string} nameOnCard - Name of the card holder
  * @property {int} cvv - CVV code
+ * @property {boolean} isDefault - Indicates if this is the default payment method
  */

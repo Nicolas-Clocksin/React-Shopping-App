@@ -7,11 +7,12 @@
   - [x] Update objects to handle ordering/checkout process 01/26/2026
   - [ ] Fix forms
     - [ ] Add Option to select stored payment methods/addresses
-    - [ ] Update payment method form
+    - [x] Update payment method form 01/26/2026
     - [x] Fix Dropdown for State Selection 01/26/2026
-  - [ ] Update Address/Payment method to store in user
+  - [x] Update Address/Payment method to store in user 01/26/2026
   - [ ] Add data validation
   - [ ] Add storing of new payments/addresses into user
+    - [x] Add default variable for addresses/payment 01/27/2026
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section

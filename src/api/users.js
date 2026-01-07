@@ -45,8 +45,29 @@ export async function UserList() {
           quantity: 1,
         },
       ],
-      paymentMethod: [],
-      addresses: [],
+      paymentMethods: [
+        {
+          paymentMethod: {
+            id: 1,
+            nameOnCard: "John Doe",
+            cardNumber: "4111111111111111",
+            expirationDate: "12/25",
+            cvv: "123",
+          },
+        },
+      ],
+      addresses: [
+        {
+          address: {
+            id: 1,
+            street: "123 Main St",
+            city: "Anytown",
+            state: "CA",
+            zipCode: "12345",
+            country: "USA",
+          },
+        },
+      ],
     },
     {
       id: 2,
@@ -69,8 +90,29 @@ export async function UserList() {
           quantity: 1,
         },
       ],
-      paymentMethod: [],
-      addresses: [],
+      paymentMethods: [
+        {
+          paymentMethod: {
+            id: 1,
+            nameOnCard: "John Doe",
+            cardNumber: "4111111111111111",
+            expirationDate: "12/25",
+            cvv: "123",
+          },
+        },
+      ],
+      addresses: [
+        {
+          address: {
+            id: 1,
+            street: "123 Main St",
+            city: "Anytown",
+            state: "CA",
+            zipCode: "12345",
+            country: "USA",
+          },
+        },
+      ],
     },
     {
       id: 3,
@@ -80,8 +122,29 @@ export async function UserList() {
       password: "test",
       orders: [],
       cart: [],
-      paymentMethod: [],
-      addresses: [],
+      paymentMethods: [
+        {
+          paymentMethod: {
+            id: 1,
+            nameOnCard: "John Doe",
+            cardNumber: "4111111111111111",
+            expirationDate: "12/25",
+            cvv: "123",
+          },
+        },
+      ],
+      addresses: [
+        {
+          address: {
+            id: 1,
+            street: "123 Main St",
+            city: "Anytown",
+            state: "CA",
+            zipCode: "12345",
+            country: "USA",
+          },
+        },
+      ],
     },
   ];
 }
