@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { Button, Form } from "react-bootstrap";
-function PaymentMethodDropdown(props) {
+function PaymentMethodDropdown() {
   const {
     paymentMethods,
     selectedPaymentMethodIndex,
     updateSelectedPaymentMethod,
+    setShowPaymentMethodDropdown,
   } = useContext(PaymentMethodContext);
   const { user } = useAuth();
 
@@ -30,7 +31,7 @@ function PaymentMethodDropdown(props) {
           </option>
         ))}
       </Form.Select>
-      <Button onClick={() => props.setShowPaymentMethodDropdown(false)}>
+      <Button onClick={() => setShowPaymentMethodDropdown(false)}>
         Add New Payment Method
       </Button>
     </Form>

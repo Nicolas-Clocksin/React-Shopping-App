@@ -19,6 +19,8 @@ export function PaymentMethodProvider({ children }) {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [selectedPaymentMethodIndex, setSelectedPaymentMethodIndex] =
     useState(0);
+  const [showPaymentMethodDropdown, setShowPaymentMethodDropdown] =
+    useState(true);
   const [paymentMethods, setPaymentMethods] = useState([]);
   useState(0);
   useEffect(() => {
@@ -102,6 +104,8 @@ export function PaymentMethodProvider({ children }) {
         updateCardName,
         addPaymentMethod,
         updateSelectedAddress,
+        setShowPaymentMethodDropdown,
+        showPaymentMethodDropdown,
         selectedPaymentMethod,
         paymentMethods,
         selectedPaymentMethodIndex,
