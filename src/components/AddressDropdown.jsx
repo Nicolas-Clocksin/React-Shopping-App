@@ -4,8 +4,12 @@ import { useAuth } from "../context/AuthContext";
 import { AddressConext } from "../context/AddressContext";
 import { Button, Form } from "react-bootstrap";
 function AddressDropdown(props) {
-  const { addresses, selectedAddressIndex, updateSelectedAddress } =
-    useContext(AddressConext);
+  const {
+    addresses,
+    selectedAddressIndex,
+    updateSelectedAddress,
+    setShowAddressDropdown,
+  } = useContext(AddressConext);
   const { user } = useAuth();
 
   if (!user || !addresses || addresses.length === 0) {
@@ -25,7 +29,7 @@ function AddressDropdown(props) {
           </option>
         ))}
       </Form.Select>
-      <Button onClick={() => props.setShowAddressDropdown(false)}>
+      <Button onClick={() => setShowAddressDropdown(false)}>
         Add New Address
       </Button>
     </Form>

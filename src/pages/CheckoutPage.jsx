@@ -18,11 +18,11 @@ import OrderSummary from "../components/OrderSummary";
 import PaymentMethodForm from "../components/PaymentMethodForm";
 import "../types.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import { PaymentMethodContext } from "../context/PaymentMethodContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
-  const [showPaymentMethodDropdown, setShowPaymentMethodDropdown] =
-    useState(true);
+  const { showPaymentMethodDropdown } = useContext(PaymentMethodContext);
   const { user } = useAuth();
 
   return (
@@ -44,15 +44,18 @@ function CheckoutPage() {
           user.paymentMethods &&
           user.paymentMethods.length > 0 &&
           showPaymentMethodDropdown ? (
-            <PaymentMethodDropdown
-              setShowPaymentMethodDropdown={setShowPaymentMethodDropdown}
-            />
+            <PaymentMethodDropdown />
           ) : (
             <PaymentMethodForm />
           )}
         </div>
         <div className="col-12 col-md-4">
-          <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />
+          <OrderSummary
+            cartItems={cartItems}
+            totalAmount={totalAmount}
+            showAddressDropdown={showAddressDropdown}
+            showPaymentMethodDropdown={showPaymentMethodDropdown}
+          />
         </div>
       </div>
     </div>
