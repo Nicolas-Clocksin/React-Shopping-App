@@ -2,6 +2,11 @@
 
 ## To Do
 
+- [ ] Update Complete Order Page
+  - [ ] Display results of order
+    - [ ] Show items ordered/total
+    - [ ] Address Choosen
+    - [ ] Payment method
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
