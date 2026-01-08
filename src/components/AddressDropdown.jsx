@@ -3,12 +3,11 @@ import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { AddressConext } from "../context/AddressContext";
 import { Button, Form } from "react-bootstrap";
-function AddressDropdown(props) {
+function AddressDropdown({ setShowAddressDropdown }) {
   const {
     addresses,
     selectedAddressIndex,
     updateSelectedAddress,
-    setShowAddressDropdown,
   } = useContext(AddressConext);
   const { user } = useAuth();
 
