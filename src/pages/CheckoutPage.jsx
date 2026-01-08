@@ -20,7 +20,6 @@ import "../types.js";
 import { useAuth } from "../context/AuthContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
-  const { createOrder } = useContext(OrderContext);
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
   const [showPaymentMethodDropdown, setShowPaymentMethodDropdown] =
     useState(true);
@@ -45,7 +44,9 @@ function CheckoutPage() {
           user.paymentMethods &&
           user.paymentMethods.length > 0 &&
           showPaymentMethodDropdown ? (
-            <PaymentMethodDropdown />
+            <PaymentMethodDropdown
+              setShowPaymentMethodDropdown={setShowPaymentMethodDropdown}
+            />
           ) : (
             <PaymentMethodForm />
           )}

@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 function PaymentMethodDropdown(props) {
   const {
     paymentMethods,
@@ -30,6 +30,9 @@ function PaymentMethodDropdown(props) {
           </option>
         ))}
       </Form.Select>
+      <Button onClick={() => props.setShowPaymentMethodDropdown(false)}>
+        Add New Payment Method
+      </Button>
     </Form>
   );
 }
