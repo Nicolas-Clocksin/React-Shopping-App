@@ -2,21 +2,20 @@
 
 ## To Do
 
-- [ ] Create Checkout Process
+- [x] Create Checkout Process
   - [x] Create Order Context
   - [x] Update objects to handle ordering/checkout process 01/26/2026
-  - [ ] Update forms
-    - [ ] Add Option to select stored payment methods/addresses
-      - [x]Addresses
+  - [x] Update forms
+    - [x] Add Option to select stored payment methods/addresses 01/28/26
+      - [x]Addresses 01/28/26
         - [x] Display selection of stored values 01/27/2026
-        - [x] Ability to add new value (button)
-      - [ ] Payment
-        - [ ] Display selection of stored values
-        - [ ] Ability to add new value
+        - [x] Ability to add new value (button) 01/28/26
+      - [x] Payment 01/28/26
+        - [x] Display selection of stored values 01/28/26
+        - [x] Ability to add new value 01/28/26
     - [x] Update payment method form 01/26/2026
     - [x] Fix Dropdown for State Selection 01/26/2026
   - [x] Update Address/Payment method to store in user 01/26/2026
-  - [ ] Add data validation
   - [x] Add storing of new payments/addresses into user 01/27/2026
     - [x] Add default variable for addresses/payment 01/27/2026
 - [ ] Create an User/Admin Page
