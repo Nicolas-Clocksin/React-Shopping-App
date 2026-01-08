@@ -10,16 +10,18 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { OrderContext } from "../context/OrderContext";
 import ShippingForm from "../components/ShippingForm";
+import AddressDropdown from "../components/AddressDropdown";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import OrderSummary from "../components/OrderSummary";
 import PaymentMethodForm from "../components/PaymentMethodForm";
 import "../types.js";
+import { useAuth } from "../context/AuthContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);
   const [diffBilling, setDiffBilling] = useState(false);
-
+  const { user } = useAuth();
   function updateDiffBilling() {
     setDiffBilling((prev) => !prev);
   }
@@ -27,7 +29,11 @@ function CheckoutPage() {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 d-flex flex-column gap-3">
-          <ShippingForm typeShipment="shipping" />
+          {user && user.addresses && user.addresses.length > 0 ? (
+            <AddressDropdown />
+          ) : (
+            <ShippingForm typeShipment="shipping" />
+          )}
           {/* <Form>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check
