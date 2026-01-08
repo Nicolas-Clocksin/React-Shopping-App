@@ -21,6 +21,7 @@ function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);
   const [diffBilling, setDiffBilling] = useState(false);
+  const [showAddressDropdown, setShowAddressDropdown] = useState(true);
   const { user } = useAuth();
   function updateDiffBilling() {
     setDiffBilling((prev) => !prev);
@@ -29,10 +30,16 @@ function CheckoutPage() {
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 d-flex flex-column gap-3">
-          {user && user.addresses && user.addresses.length > 0 ? (
-            <AddressDropdown />
+          {user &&
+          user.addresses &&
+          user.addresses.length > 0 &&
+          showAddressDropdown ? (
+            <AddressDropdown setShowAddressDropdown={setShowAddressDropdown} />
           ) : (
-            <ShippingForm typeShipment="shipping" />
+            <ShippingForm
+              typeShipment="shipping"
+              setShowAddressDropdown={setShowAddressDropdown}
+            />
           )}
           {/* <Form>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">

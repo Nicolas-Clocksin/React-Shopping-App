@@ -7,9 +7,9 @@
   - [x] Update objects to handle ordering/checkout process 01/26/2026
   - [ ] Update forms
     - [ ] Add Option to select stored payment methods/addresses
-      - [ ]Addresses
+      - [x]Addresses
         - [x] Display selection of stored values 01/27/2026
-        - [ ] Ability to add new value (button)
+        - [x] Ability to add new value (button)
       - [ ] Payment
         - [ ] Display selection of stored values
         - [ ] Ability to add new value
