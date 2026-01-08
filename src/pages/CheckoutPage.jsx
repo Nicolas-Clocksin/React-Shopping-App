@@ -11,6 +11,7 @@ import { CartContext } from "../context/CartContext";
 import { OrderContext } from "../context/OrderContext";
 import ShippingForm from "../components/ShippingForm";
 import AddressDropdown from "../components/AddressDropdown";
+import PaymentMethodDropdown from "../components/PaymentMethodDropdown.jsx";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import OrderSummary from "../components/OrderSummary";
@@ -20,12 +21,11 @@ import { useAuth } from "../context/AuthContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
   const { createOrder } = useContext(OrderContext);
-  const [diffBilling, setDiffBilling] = useState(false);
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
+  const [showPaymentMethodDropdown, setShowPaymentMethodDropdown] =
+    useState(true);
   const { user } = useAuth();
-  function updateDiffBilling() {
-    setDiffBilling((prev) => !prev);
-  }
+
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
@@ -41,17 +41,14 @@ function CheckoutPage() {
               setShowAddressDropdown={setShowAddressDropdown}
             />
           )}
-          {/* <Form>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Billing Different from Shipping"
-                onClick={() => updateDiffBilling()}
-              />
-            </Form.Group>
-          </Form>
-          {diffBilling ? <ShippingForm typeShipment="billing" /> : null} */}
-          <PaymentMethodForm />
+          {user &&
+          user.paymentMethods &&
+          user.paymentMethods.length > 0 &&
+          showPaymentMethodDropdown ? (
+            <PaymentMethodDropdown />
+          ) : (
+            <PaymentMethodForm />
+          )}
         </div>
         <div className="col-12 col-md-4">
           <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />

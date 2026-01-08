@@ -16,9 +16,22 @@ export function PaymentMethodProvider({ children }) {
   const [cardType, setCardType] = useState("");
   const [isDefault, setIsDefault] = useState(false);
   const { user, setUser } = useAuth();
-
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [selectedPaymentMethodIndex, setSelectedPaymentMethodIndex] =
+    useState(0);
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  useState(0);
   useEffect(() => {
-    setPaymentMethod(user?.paymentMethods ?? []);
+    const nextPaymentMethod = user?.paymentMethods ?? [];
+    setPaymentMethod(nextPaymentMethod);
+    if (nextPaymentMethod.length > 0) {
+      setSelectedPaymentMethodIndex(0);
+      setSelectedPaymentMethod(nextPaymentMethod[0]);
+      setPaymentMethods(user.paymentMethods);
+    } else {
+      setSelectedPaymentMethodIndex(0);
+      setSelectedPaymentMethod(null);
+    }
   }, [user]);
   // update the card number entered into field
   function updateCardNumber(event) {
@@ -49,13 +62,9 @@ export function PaymentMethodProvider({ children }) {
     setPaymentMethod(updatedPayments);
     if (user) setUser((u) => ({ ...u, paymentMethods: updatedPayments }));
   }
-  // update user's default payment method
-  function updateUserDefaultPaymentMethod(newDefaultId) {
-    const updatedPayments = paymentMethod.map((payment) => ({
-      ...payment,
-      isDefault: payment.id === newDefaultId,
-    }));
-    updateUserPaymentMethods(updatedPayments);
+  function updateSelectedAddress(index) {
+    setSelectedPaymentMethodIndex(index);
+    setSelectedPaymentMethod(paymentMethod[index] ?? null);
   }
   // creates payment method
   function addPaymentMethod() {
@@ -92,6 +101,10 @@ export function PaymentMethodProvider({ children }) {
         updateIsDefault,
         updateCardName,
         addPaymentMethod,
+        updateSelectedAddress,
+        selectedPaymentMethod,
+        paymentMethods,
+        selectedPaymentMethodIndex,
         isDefault,
         paymentMethod,
         cardNumber,
