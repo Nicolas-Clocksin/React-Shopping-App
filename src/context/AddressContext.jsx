@@ -20,6 +20,7 @@ export function AddressProvider({ children }) {
   const { user, setUser } = useAuth();
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
+  const [showAddressDropdown, setShowAddressDropdown] = useState(true);
   useEffect(() => {
     const nextAddresses = user?.addresses ?? [];
     setAddresses(nextAddresses);
@@ -94,6 +95,8 @@ export function AddressProvider({ children }) {
         addresses,
         selectedAddress,
         selectedAddressIndex,
+        showAddressDropdown,
+        setShowAddressDropdown,
         updateIsDefault,
         updateSelectedAddress,
         updateStreet,

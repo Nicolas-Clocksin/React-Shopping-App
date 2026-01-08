@@ -11,10 +11,11 @@ import { AddressConext } from "../context/AddressContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { OrderContext } from "../context/OrderContext";
 import { useNavigate } from "react-router-dom";
-function OrderSummary() {
+function OrderSummary({ showAddressDropdown, showPaymentMethodDropdown }) {
   const { totalCost, cartItems } = useContext(CartContext);
   const { addAddress, selectedAddress } = useContext(AddressConext);
-  const { addPaymentMethod, paymentMethod } = useContext(PaymentMethodContext);
+  const { addPaymentMethod, selectedPaymentMethod } =
+    useContext(PaymentMethodContext);
   const { createOrder } = useContext(OrderContext);
   const navigate = useNavigate();
   return (
@@ -50,9 +51,15 @@ function OrderSummary() {
         variant="primary"
         className="w-100"
         onClick={() => {
-          const address = selectedAddress ? selectedAddress : addAddress();
-          const newPayment = addPaymentMethod();
-          createOrder(address, newPayment, cartItems, totalCost);
+          const useSelectedAddress =
+            showAddressDropdown !== false && selectedAddress;
+          const useSelectedPayment =
+            showPaymentMethodDropdown !== false && selectedPaymentMethod;
+          const address = useSelectedAddress ? selectedAddress : addAddress();
+          const payment = useSelectedPayment
+            ? selectedPaymentMethod
+            : addPaymentMethod();
+          createOrder(address, payment, cartItems, totalCost);
           navigate("/checkout/complete");
         }}
       >

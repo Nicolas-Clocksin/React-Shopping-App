@@ -11,43 +11,51 @@ import { CartContext } from "../context/CartContext";
 import { OrderContext } from "../context/OrderContext";
 import ShippingForm from "../components/ShippingForm";
 import AddressDropdown from "../components/AddressDropdown";
+import PaymentMethodDropdown from "../components/PaymentMethodDropdown.jsx";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import OrderSummary from "../components/OrderSummary";
 import PaymentMethodForm from "../components/PaymentMethodForm";
 import "../types.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import { PaymentMethodContext } from "../context/PaymentMethodContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
-  const { createOrder } = useContext(OrderContext);
-  const [diffBilling, setDiffBilling] = useState(false);
+  const [showAddressDropdown, setShowAddressDropdown] = useState(true);
+  const { showPaymentMethodDropdown } = useContext(PaymentMethodContext);
   const { user } = useAuth();
-  function updateDiffBilling() {
-    setDiffBilling((prev) => !prev);
-  }
+
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 d-flex flex-column gap-3">
-          {user && user.addresses && user.addresses.length > 0 ? (
-            <AddressDropdown />
+          {user &&
+          user.addresses &&
+          user.addresses.length > 0 &&
+          showAddressDropdown ? (
+            <AddressDropdown setShowAddressDropdown={setShowAddressDropdown} />
           ) : (
-            <ShippingForm typeShipment="shipping" />
+            <ShippingForm
+              typeShipment="shipping"
+              setShowAddressDropdown={setShowAddressDropdown}
+            />
           )}
-          {/* <Form>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Billing Different from Shipping"
-                onClick={() => updateDiffBilling()}
-              />
-            </Form.Group>
-          </Form>
-          {diffBilling ? <ShippingForm typeShipment="billing" /> : null} */}
-          <PaymentMethodForm />
+          {user &&
+          user.paymentMethods &&
+          user.paymentMethods.length > 0 &&
+          showPaymentMethodDropdown ? (
+            <PaymentMethodDropdown />
+          ) : (
+            <PaymentMethodForm />
+          )}
         </div>
         <div className="col-12 col-md-4">
-          <OrderSummary cartItems={cartItems} totalAmount={totalAmount} />
+          <OrderSummary
+            cartItems={cartItems}
+            totalAmount={totalAmount}
+            showAddressDropdown={showAddressDropdown}
+            showPaymentMethodDropdown={showPaymentMethodDropdown}
+          />
         </div>
       </div>
     </div>
