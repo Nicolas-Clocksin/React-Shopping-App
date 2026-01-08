@@ -3,12 +3,11 @@ import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { AddressConext } from "../context/AddressContext";
 import { Button, Form } from "react-bootstrap";
-function AddressDropdown(props) {
+function AddressDropdown({ setShowAddressDropdown }) {
   const {
     addresses,
     selectedAddressIndex,
     updateSelectedAddress,
-    setShowAddressDropdown,
   } = useContext(AddressConext);
   const { user } = useAuth();
 
@@ -17,21 +16,28 @@ function AddressDropdown(props) {
   }
 
   return (
-    <Form>
-      <Form.Label>Shipping Address</Form.Label>
-      <Form.Select
-        value={selectedAddressIndex}
-        onChange={(event) => updateSelectedAddress(Number(event.target.value))}
-      >
-        {addresses.map((address, index) => (
-          <option key={index} value={index}>
-            {address.street} - {address.city}, {address.state} {address.zipCode}
-          </option>
-        ))}
-      </Form.Select>
-      <Button onClick={() => setShowAddressDropdown(false)}>
-        Add New Address
-      </Button>
+    <Form className="d-flex flex-column gap-2">
+      <Form.Group>
+        <Form.Label>Shipping Address</Form.Label>
+        <Form.Select
+          value={selectedAddressIndex}
+          onChange={(event) =>
+            updateSelectedAddress(Number(event.target.value))
+          }
+        >
+          {addresses.map((address, index) => (
+            <option key={index} value={index}>
+              {address.street} - {address.city}, {address.state}{" "}
+              {address.zipCode}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
+      <div className="d-flex justify-content-end">
+        <Button onClick={() => setShowAddressDropdown(false)}>
+          Add New Address
+        </Button>
+      </div>
     </Form>
   );
 }
