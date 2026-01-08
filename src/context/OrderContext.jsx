@@ -12,7 +12,7 @@ export function OrderProvider({ children }) {
   const [order, setOrder] = useState(null);
   const [orders, setOrders] = useState([]);
   const [userOrders, setUserOrders] = useState([]);
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   useEffect(() => {
     if (user) {
       setUserOrders(orders.filter((o) => o.userId === user.id));
@@ -50,6 +50,11 @@ export function OrderProvider({ children }) {
     if (!user) return;
     if (newOrder.userId === user.id) {
       setUserOrders((prev) => [...prev, newOrder]);
+      setUser((prevUser) => {
+        if (!prevUser) return prevUser;
+        const existingOrders = prevUser.orders ?? [];
+        return { ...prevUser, orders: [...existingOrders, newOrder] };
+      });
     }
   }
   return (

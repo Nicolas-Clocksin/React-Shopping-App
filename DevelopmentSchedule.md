@@ -5,8 +5,14 @@
 - [ ] Create Checkout Process
   - [x] Create Order Context
   - [x] Update objects to handle ordering/checkout process 01/26/2026
-  - [] Fix forms
-    - [] Add Option to select stored payment methods/addresses
+  - [ ] Update forms
+    - [ ] Add Option to select stored payment methods/addresses
+      - [ ]Addresses
+        - [x] Display selection of stored values 01/27/2026
+        - [ ] Ability to add new value (button)
+      - [ ] Payment
+        - [ ] Display selection of stored values
+        - [ ] Ability to add new value
     - [x] Update payment method form 01/26/2026
     - [x] Fix Dropdown for State Selection 01/26/2026
   - [x] Update Address/Payment method to store in user 01/26/2026
