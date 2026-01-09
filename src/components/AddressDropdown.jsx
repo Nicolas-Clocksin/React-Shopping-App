@@ -55,19 +55,15 @@ function AddressDropdown({
       </Form.Group>
 
       <div className="d-flex justify-content-end">
-        {differentBilling ? null : (
+        {addressType === "shipping" && !differentBilling ? (
           <Button
             variant="secondary"
             className="me-2"
-            onClick={() => {
-              if (typeShipment?.toLowerCase() === "shipping") {
-                setDifferentBilling(true);
-              }
-            }}
+            onClick={() => setDifferentBilling(true)}
           >
-            Billing is Different then shipping
+            Billing is Different than Shipping
           </Button>
-        )}
+        ) : null}
         <Button onClick={() => setShowAddressDropdown(false)}>
           Add New Address
         </Button>
