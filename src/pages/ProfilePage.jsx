@@ -1,7 +1,43 @@
+import { Form } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
+import { Button } from "react-bootstrap";
+
 function ProfilePage() {
+  const { user } = useAuth();
   return (
-    <div>
-      <h1>Profile Page</h1>
+    <div className="profilePage">
+      <Form className="profileCard">
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            defaultValue={user?.name || ""}
+            disabled
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            defaultValue={user?.email || ""}
+            disabled
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            defaultValue={user?.password || ""}
+            disabled
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Update Profile
+        </Button>
+      </Form>
     </div>
   );
 }
