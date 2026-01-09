@@ -36,7 +36,18 @@ function CheckoutPage() {
             <AddressDropdown setShowAddressDropdown={setShowAddressDropdown} />
           ) : (
             <ShippingForm
-              typeShipment="shipping"
+              typeShipment="Shipping"
+              setShowAddressDropdown={setShowAddressDropdown}
+            />
+          )}
+          {user &&
+          user.addresses &&
+          user.addresses.length > 0 &&
+          showAddressDropdown ? (
+            <AddressDropdown setShowAddressDropdown={setShowAddressDropdown} />
+          ) : (
+            <ShippingForm
+              typeShipment="Billing"
               setShowAddressDropdown={setShowAddressDropdown}
             />
           )}

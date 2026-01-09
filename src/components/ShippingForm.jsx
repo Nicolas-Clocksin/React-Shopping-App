@@ -82,11 +82,8 @@ function ShippingForm({ typeShipment }) {
   return (
     <>
       <Form className="checkoutForm">
-        {shippingType() ? (
-          <Form.Label>Shipping Information</Form.Label>
-        ) : (
-          <Form.Label>Billing Information</Form.Label>
-        )}
+        <Form.Label>{typeShipment} Information</Form.Label>
+
         <Form.Group className="mb-4">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -157,9 +154,7 @@ function ShippingForm({ typeShipment }) {
                 type="checkbox"
                 label="Set as default address"
                 checked={isDefault}
-                onChange={(event) =>
-                  updateIsDefault(event.target.checked)
-                }
+                onChange={(event) => updateIsDefault(event.target.checked)}
               />
             </Form.Group>
           </Col>
