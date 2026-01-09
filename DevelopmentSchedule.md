@@ -5,7 +5,9 @@
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
-    - [ ] Ability for User to Edit Profile
+    - [ ] User Profile Page
+      - [ ] Ability for User to Edit Profile
+      - [x] User can see their information on profile page 01/09/2026
     - [ ] Payment Information Section
   - [ ] Admin Permissions/Page
     - [ ] Add/Remove/Edit Users

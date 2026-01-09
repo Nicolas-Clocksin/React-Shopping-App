@@ -377,3 +377,28 @@
   text-align: center;
   background-color: #f8f9fa;
 }
+.profilePage {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: #fff;
+}
+
+.profileCard {
+  width: 100%;
+  max-width: 560px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.profileCard .form-control {
+  border: none;
+  background-color: #eef1f4;
+}
+
+.profileCard .form-control:focus {
+  box-shadow: none;
+}
