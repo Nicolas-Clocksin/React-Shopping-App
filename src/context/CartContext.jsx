@@ -18,7 +18,7 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   /**
    * @type {CartEntry[]}
    */
@@ -64,6 +64,10 @@ export function CartProvider({ children }) {
       sum + Number(cartEntry.item.price || 0) * Number(cartEntry.quantity || 0),
     0
   );
+  // Method to clear the cart
+  const clearCart = () => {
+    syncUserCart([]);
+  };
   // Method to vaidate if an item is in the cart
   const inCart = (itemId) =>
     cartItems.find((cartItem) => cartItem.item.id === itemId);
@@ -71,11 +75,12 @@ export function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cartItems,
-        addToCart,
-        removeFromCart,
         totalCost,
         cartQuantityTotal,
         inCart,
+        addToCart,
+        removeFromCart,
+        clearCart,
       }}
     >
       {children}

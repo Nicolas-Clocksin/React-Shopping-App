@@ -10,6 +10,7 @@ import { useAuth } from "./AuthContext";
 export const AddressConext = createContext({});
 
 export function AddressProvider({ children }) {
+  // State variables for address fields and list of addresses
   const [addresses, setAddresses] = useState([]);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
@@ -21,6 +22,7 @@ export function AddressProvider({ children }) {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
+  // Sync addresses with user data
   useEffect(() => {
     const nextAddresses = user?.addresses ?? [];
     setAddresses(nextAddresses);
@@ -32,33 +34,43 @@ export function AddressProvider({ children }) {
       setSelectedAddress(null);
     }
   }, [user]);
+  // Update functions for address fields
+
+  // Update name for the address
   function updateName(event) {
     setName(event.target.value);
   }
+  // Update street for the address
   function updateStreet(event) {
     setStreet(event.target.value);
   }
+  // Update city for the address
   function updateCity(event) {
     setCity(event.target.value);
   }
+  // Update postal code for the address
   function updatePostalCode(event) {
     setPostalCode(event.target.value);
   }
+  // Update isDefault for the address
   function updateIsDefault(value) {
     setIsDefault(value);
   }
+  // Update state for the address
   function updateState(value) {
     setState(value);
   }
+  // Update the users addresses both locally and in the user context
   function updateUserAddresses(updatedAddresses) {
     setAddresses(updatedAddresses);
     if (user) setUser((u) => ({ ...u, addresses: updatedAddresses }));
   }
+  // Update the selected address based on index
   function updateSelectedAddress(index) {
     setSelectedAddressIndex(index);
     setSelectedAddress(addresses[index] ?? null);
   }
-
+  // Add a new address to the user's addresses
   function addAddress() {
     const newAddress = {
       name,
@@ -83,6 +95,7 @@ export function AddressProvider({ children }) {
     setIsDefault(false);
     return newAddress;
   }
+  // Provide context values to children components
   return (
     <AddressConext.Provider
       value={{

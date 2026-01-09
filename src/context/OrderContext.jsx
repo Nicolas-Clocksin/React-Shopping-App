@@ -5,10 +5,13 @@
   Description: Context used to handle the creation and addition to orders.
 */
 import { createContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 import { useAuth } from "../context/AuthContext";
 export const OrderContext = createContext({});
 
 export function OrderProvider({ children }) {
+  const { clearCart } = useContext(CartContext);
   const [order, setOrder] = useState(null);
   const [orders, setOrders] = useState([]);
   const [userOrders, setUserOrders] = useState([]);
@@ -38,6 +41,7 @@ export function OrderProvider({ children }) {
     };
     setOrder(newOrder);
     addToOrders(newOrder);
+    clearCart();
   }
 
   // Method used to add the created order to the orders list
