@@ -2,11 +2,11 @@
 
 ## To Do
 
-- [ ] Update Complete Order Page
-  - [ ] Display results of order
-    - [ ] Show items ordered/total
-    - [ ] Address Choosen
-    - [ ] Payment method
+- [ ] Add Billing section for order checkout
+  - [ ] Update Shipping payment form to do both shipping/billing
+  - [ ] Update Order context to accept billing
+  - [ ] Associate Billing Address with payment method
+  - [ ] Update order completion page to show billing address
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
@@ -58,3 +58,8 @@
   - [x] Update Address/Payment method to store in user 01/26/2026
   - [x] Add storing of new payments/addresses into user 01/27/2026
     - [x] Add default variable for addresses/payment 01/27/2026
+  - [x] Update Complete Order Page 01/09/2026
+  - [x] Display results of order 01/09/2026
+    - [x] Show items ordered/total 01/09/2026
+    - [x] Address Choosen 01/09/2026
+    - [x] Payment method 01/09/2026
