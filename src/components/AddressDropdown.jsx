@@ -10,11 +10,26 @@ import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { AddressConext } from "../context/AddressContext";
 import { Button, Form } from "react-bootstrap";
-function AddressDropdown({ setShowAddressDropdown, typeShipment }) {
+function AddressDropdown({
+  setShowAddressDropdown,
+  typeShipment,
+  setDifferentBilling,
+  differentBilling,
+}) {
   // Get addresses and selected address index from AddressContext
-  const { addresses, selectedAddressIndex, updateSelectedAddress } =
-    useContext(AddressConext);
+  const {
+    addresses,
+    selectedShippingAddressIndex,
+    selectedBillingAddressIndex,
+    updateSelectedAddress,
+  } = useContext(AddressConext);
   const { user } = useAuth();
+  const addressType =
+    typeShipment?.toLowerCase() === "billing" ? "billing" : "shipping";
+  const selectedIndex =
+    addressType === "billing"
+      ? selectedBillingAddressIndex
+      : selectedShippingAddressIndex;
   // Validate if use/addresses exist
   if (!user || !addresses || addresses.length === 0) {
     return null;
@@ -25,9 +40,9 @@ function AddressDropdown({ setShowAddressDropdown, typeShipment }) {
       <Form.Group>
         <Form.Label>{typeShipment} Address</Form.Label>
         <Form.Select
-          value={selectedAddressIndex}
+          value={selectedIndex}
           onChange={(event) =>
-            updateSelectedAddress(Number(event.target.value))
+            updateSelectedAddress(addressType, Number(event.target.value))
           }
         >
           {addresses.map((address, index) => (
@@ -38,7 +53,21 @@ function AddressDropdown({ setShowAddressDropdown, typeShipment }) {
           ))}
         </Form.Select>
       </Form.Group>
+
       <div className="d-flex justify-content-end">
+        {differentBilling ? null : (
+          <Button
+            variant="secondary"
+            className="me-2"
+            onClick={() => {
+              if (typeShipment?.toLowerCase() === "shipping") {
+                setDifferentBilling(true);
+              }
+            }}
+          >
+            Billing is Different then shipping
+          </Button>
+        )}
         <Button onClick={() => setShowAddressDropdown(false)}>
           Add New Address
         </Button>

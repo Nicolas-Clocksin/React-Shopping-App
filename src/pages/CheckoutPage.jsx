@@ -24,7 +24,7 @@ function CheckoutPage() {
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
   const { showPaymentMethodDropdown } = useContext(PaymentMethodContext);
   const { user } = useAuth();
-
+  const [differentBilling, setDifferentBilling] = useState(false);
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
@@ -36,6 +36,8 @@ function CheckoutPage() {
             <AddressDropdown
               setShowAddressDropdown={setShowAddressDropdown}
               typeShipment="Shipping"
+              setDifferentBilling={setDifferentBilling}
+              differentBilling={differentBilling}
             />
           ) : (
             <ShippingForm
@@ -43,20 +45,21 @@ function CheckoutPage() {
               setShowAddressDropdown={setShowAddressDropdown}
             />
           )}
-          {user &&
-          user.addresses &&
-          user.addresses.length > 0 &&
-          showAddressDropdown ? (
-            <AddressDropdown
-              setShowAddressDropdown={setShowAddressDropdown}
-              typeShipment="Billing"
-            />
-          ) : (
-            <ShippingForm
-              typeShipment="Billing"
-              setShowAddressDropdown={setShowAddressDropdown}
-            />
-          )}
+          {differentBilling &&
+            (user &&
+            user.addresses &&
+            user.addresses.length > 0 &&
+            showAddressDropdown ? (
+              <AddressDropdown
+                setShowAddressDropdown={setShowAddressDropdown}
+                typeShipment="Billing"
+              />
+            ) : (
+              <ShippingForm
+                typeShipment="Billing"
+                setShowAddressDropdown={setShowAddressDropdown}
+              />
+            ))}
           {user &&
           user.paymentMethods &&
           user.paymentMethods.length > 0 &&
