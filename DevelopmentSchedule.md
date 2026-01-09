@@ -7,7 +7,7 @@
     - [ ] History of Order Section
     - [ ] User Profile Page
       - [ ] Ability for User to Edit Profile
-      - [x] User can see their information on profile page 01/09/2026
+      - [x] [User can see their information on profile page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/38)
     - [ ] Payment Information Section
   - [ ] Admin Permissions/Page
     - [ ] Add/Remove/Edit Users
