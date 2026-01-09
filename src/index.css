@@ -298,3 +298,67 @@
   justify-content: center;
   text-align: center;
 }
+
+.orderCompletePage {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: #fff;
+}
+
+.orderCompleteCard {
+  width: 100%;
+  max-width: 720px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.orderCompleteTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.orderCompleteList {
+  margin-top: 1rem;
+}
+
+.list-group-item.orderCompleteItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.orderCompleteItem-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.orderCompleteItem-left img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.orderCompleteItem-name {
+  font-weight: 600;
+}
+
+.orderCompleteItem-qty {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.orderCompleteItem-price {
+  font-weight: 600;
+}
+
+.list-group-item.orderCompleteTotal {
+  text-align: center;
+  background-color: #f8f9fa;
+}
