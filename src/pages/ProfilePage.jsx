@@ -1,6 +1,8 @@
 import { Form } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
+import EditProfileModal from "../modals/EditProfileModal";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -34,9 +36,7 @@ function ProfilePage() {
             disabled
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Update Profile
-        </Button>
+        <EditProfileModal />
       </Form>
     </div>
   );
