@@ -7,6 +7,11 @@
     - [ ] Show items ordered/total
     - [ ] Address Choosen
     - [ ] Payment method
+- [ ] Add Billing section for order checkout
+  - [ ] Update Shipping payment form to do both shipping/billing
+  - [ ] Update Order context to accept billing
+  - [ ] Associate Billing Address with payment method
+  - [ ] Update order completion page to show billing address
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
