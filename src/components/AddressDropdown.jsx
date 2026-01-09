@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
 import { AddressConext } from "../context/AddressContext";
 import { Button, Form } from "react-bootstrap";
-function AddressDropdown({ setShowAddressDropdown }) {
+function AddressDropdown({ setShowAddressDropdown, typeShipment }) {
   // Get addresses and selected address index from AddressContext
   const { addresses, selectedAddressIndex, updateSelectedAddress } =
     useContext(AddressConext);
@@ -23,7 +23,7 @@ function AddressDropdown({ setShowAddressDropdown }) {
   return (
     <Form className="d-flex flex-column gap-2">
       <Form.Group>
-        <Form.Label>Shipping Address</Form.Label>
+        <Form.Label>{typeShipment} Address</Form.Label>
         <Form.Select
           value={selectedAddressIndex}
           onChange={(event) =>
