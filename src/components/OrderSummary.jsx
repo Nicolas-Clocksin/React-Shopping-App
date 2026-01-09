@@ -11,7 +11,12 @@ import { AddressConext } from "../context/AddressContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { OrderContext } from "../context/OrderContext";
 import { useNavigate } from "react-router-dom";
-function OrderSummary({ showAddressDropdown, showPaymentMethodDropdown }) {
+function OrderSummary({
+  showShippingAddressDropdown,
+  showBillingAddressDropdown,
+  showPaymentMethodDropdown,
+  differentBilling,
+}) {
   const { totalCost, cartItems } = useContext(CartContext);
   const { addAddress, selectedShippingAddress, selectedBillingAddress } =
     useContext(AddressConext);
@@ -52,16 +57,22 @@ function OrderSummary({ showAddressDropdown, showPaymentMethodDropdown }) {
         variant="primary"
         className="w-100"
         onClick={() => {
-          const useSelectedAddresses = showAddressDropdown !== false;
+          const useSelectedShipping =
+            showShippingAddressDropdown !== false && selectedShippingAddress;
+          const useSelectedBilling =
+            showBillingAddressDropdown !== false && selectedBillingAddress;
           const useSelectedPayment =
             showPaymentMethodDropdown !== false && selectedPaymentMethod;
-          let newAddress = null;
-          const shippingAddress = useSelectedAddresses
+          let shippingNewAddress = null;
+          let billingNewAddress = null;
+          const shippingAddress = useSelectedShipping
             ? selectedShippingAddress
-            : (newAddress ??= addAddress());
-          const billingAddress = useSelectedAddresses
-            ? selectedBillingAddress
-            : (newAddress ??= addAddress());
+            : (shippingNewAddress ??= addAddress("shipping"));
+          const billingAddress = differentBilling
+            ? useSelectedBilling
+              ? selectedBillingAddress
+              : (billingNewAddress ??= addAddress("billing"))
+            : shippingAddress;
           const payment = useSelectedPayment
             ? selectedPaymentMethod
             : addPaymentMethod();

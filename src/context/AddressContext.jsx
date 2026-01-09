@@ -12,12 +12,22 @@ export const AddressConext = createContext({});
 export function AddressProvider({ children }) {
   // State variables for address fields and list of addresses
   const [addresses, setAddresses] = useState([]);
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [state, setState] = useState("");
-  const [name, setName] = useState("");
-  const [isDefault, setIsDefault] = useState(false);
+  const [shippingDraft, setShippingDraft] = useState({
+    name: "",
+    street: "",
+    city: "",
+    postalCode: "",
+    state: "",
+    isDefault: false,
+  });
+  const [billingDraft, setBillingDraft] = useState({
+    name: "",
+    street: "",
+    city: "",
+    postalCode: "",
+    state: "",
+    isDefault: false,
+  });
   const { user, setUser } = useAuth();
   const [selectedShippingAddress, setSelectedShippingAddress] = useState(null);
   const [selectedBillingAddress, setSelectedBillingAddress] = useState(null);
@@ -45,28 +55,35 @@ export function AddressProvider({ children }) {
   // Update functions for address fields
 
   // Update name for the address
-  function updateName(event) {
-    setName(event.target.value);
+  function updateDraft(type, patch) {
+    if (type === "billing") {
+      setBillingDraft((prev) => ({ ...prev, ...patch }));
+      return;
+    }
+    setShippingDraft((prev) => ({ ...prev, ...patch }));
+  }
+  function updateName(type, event) {
+    updateDraft(type, { name: event.target.value });
   }
   // Update street for the address
-  function updateStreet(event) {
-    setStreet(event.target.value);
+  function updateStreet(type, event) {
+    updateDraft(type, { street: event.target.value });
   }
   // Update city for the address
-  function updateCity(event) {
-    setCity(event.target.value);
+  function updateCity(type, event) {
+    updateDraft(type, { city: event.target.value });
   }
   // Update postal code for the address
-  function updatePostalCode(event) {
-    setPostalCode(event.target.value);
+  function updatePostalCode(type, event) {
+    updateDraft(type, { postalCode: event.target.value });
   }
   // Update isDefault for the address
-  function updateIsDefault(value) {
-    setIsDefault(value);
+  function updateIsDefault(type, value) {
+    updateDraft(type, { isDefault: value });
   }
   // Update state for the address
-  function updateState(value) {
-    setState(value);
+  function updateState(type, value) {
+    updateDraft(type, { state: value });
   }
   // Update the users addresses both locally and in the user context
   function updateUserAddresses(updatedAddresses) {
@@ -84,18 +101,20 @@ export function AddressProvider({ children }) {
     setSelectedShippingAddress(addresses[index] ?? null);
   }
   // Add a new address to the user's addresses
-  function addAddress() {
+  function addAddress(type = "shipping") {
+    const draft = type === "billing" ? billingDraft : shippingDraft;
     const newAddress = {
-      name,
-      street,
-      city,
-      postalCode,
-      state,
-      isDefault,
+      name: draft.name,
+      street: draft.street,
+      city: draft.city,
+      postalCode: draft.postalCode,
+      zipCode: draft.postalCode,
+      state: draft.state,
+      isDefault: draft.isDefault,
     };
     const hasDefault = addresses.some((address) => address.isDefault);
     const updateDefault =
-      isDefault || !hasDefault
+      draft.isDefault || !hasDefault
         ? [
             ...addresses.map((address) => ({
               ...address,
@@ -105,19 +124,15 @@ export function AddressProvider({ children }) {
           ]
         : [...addresses, newAddress];
     updateUserAddresses(updateDefault);
-    setIsDefault(false);
+    updateDraft(type, { isDefault: false });
     return newAddress;
   }
   // Provide context values to children components
   return (
     <AddressConext.Provider
       value={{
-        street,
-        city,
-        postalCode,
-        state,
-        isDefault,
-        name,
+        shippingDraft,
+        billingDraft,
         addresses,
         selectedShippingAddress,
         selectedBillingAddress,
