@@ -25,6 +25,7 @@ import OrderCompletePage from "./pages/OrderCompletePage.jsx";
 import { AddressProvider } from "./context/AddressContext.jsx";
 import { PaymentMethodProvider } from "./context/PaymentMethodContext.jsx";
 import { OrderProvider } from "./context/OrderContext.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
 
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
           { path: "/cart", element: <CartPage /> },
           { path: "/checkout", element: <CheckoutPage /> },
           { path: "/checkout/complete", element: <OrderCompletePage /> },
+          { path: "/profile", element: <ProfilePage /> },
         ],
       },
     ],

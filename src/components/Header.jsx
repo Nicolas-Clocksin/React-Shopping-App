@@ -52,7 +52,9 @@ function Header() {
                 </Link>
               </Navbar.Text>
               <Navbar.Text className="me-3">
-                Welcome {user?.name || "Guest"}
+                <Nav.Link as={Link} to="/profile">
+                  Welcome {user?.name || "Guest"}
+                </Nav.Link>
               </Navbar.Text>
               <Nav.Link
                 as="button"
