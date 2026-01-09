@@ -13,20 +13,23 @@ function OrderCompletePage() {
     <div className="orderCompletePage">
       <Form className="orderCompleteCard">
         <Form.Group className="mb-3 text-center" controlId="formBasicEmail">
-          <Form.Label className="orderCompleteTitle">
-            Order Complete
-          </Form.Label>
+          <Form.Label className="orderCompleteTitle">Order Complete</Form.Label>
           <Form.Text className="d-block">
             Thank you for your order! Your order number is {order?.id}.
           </Form.Text>
           <Form.Text className="d-block">
-            Order will be sent to {order?.shippingAddress.street},{" "}
-            {order?.shippingAddress.city}, {order?.shippingAddress.state}{" "}
-            {order?.shippingAddress.zipCode}.
+            Order will be sent to {order?.shippingAddress?.street},{" "}
+            {order?.shippingAddress?.city}, {order?.shippingAddress?.state}{" "}
+            {order?.shippingAddress?.zipCode}.
           </Form.Text>
           <Form.Text className="d-block">
-            Payment Method: {order?.paymentMethod.cardType} ending in{" "}
-            {order?.paymentMethod.cardNumber.slice(-4)}.
+            Billing will be sent to {order?.billingAddress?.street},{" "}
+            {order?.billingAddress?.city}, {order?.billingAddress?.state}{" "}
+            {order?.billingAddress?.zipCode}.
+          </Form.Text>
+          <Form.Text className="d-block">
+            Payment Method: {order?.paymentMethod?.cardType} ending in{" "}
+            {order?.paymentMethod?.cardNumber?.slice(-4)}.
           </Form.Text>
         </Form.Group>
         <ListGroup className="orderCompleteList">

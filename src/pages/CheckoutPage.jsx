@@ -43,6 +43,8 @@ function CheckoutPage() {
             <ShippingForm
               typeShipment="Shipping"
               setShowAddressDropdown={setShowAddressDropdown}
+              setDifferentBilling={setDifferentBilling}
+              differentBilling={differentBilling}
             />
           )}
           {differentBilling &&
