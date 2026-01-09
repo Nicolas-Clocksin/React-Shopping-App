@@ -46,7 +46,7 @@ function ItemPage() {
         <p className="itemPage__price">${item.price} USD</p>
         <p className="itemPage__description">{item.description}</p>
         {!inCart(item.id) ? (
-          <div>
+          <div className="itemPage__actions">
             <div className="itemPageQuantity">
               <DropdownButton
                 title={`Quantity: ${quantity}`}
@@ -72,7 +72,7 @@ function ItemPage() {
             </Button>
           </div>
         ) : (
-          <div>
+          <div className="itemPage__actions">
             <Button
               size="sm"
               variant="danger"
