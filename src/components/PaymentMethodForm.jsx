@@ -39,9 +39,9 @@ function PaymentMethodForm() {
               onChange={(event) => updateCardType(event.target.value)}
             >
               <option value="">Select Card Type</option>
-              <option value="visa">Visa</option>
-              <option value="mastercard">MasterCard</option>
-              <option value="amex">American Express</option>
+              <option value="Visa">Visa</option>
+              <option value="MasterCard">MasterCard</option>
+              <option value="American Express">American Express</option>
             </Form.Select>
           </Form.Group>
         </Col>

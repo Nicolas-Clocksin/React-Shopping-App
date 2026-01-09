@@ -11,9 +11,15 @@ import { AddressConext } from "../context/AddressContext";
 import { PaymentMethodContext } from "../context/PaymentMethodContext";
 import { OrderContext } from "../context/OrderContext";
 import { useNavigate } from "react-router-dom";
-function OrderSummary({ showAddressDropdown, showPaymentMethodDropdown }) {
+function OrderSummary({
+  showShippingAddressDropdown,
+  showBillingAddressDropdown,
+  showPaymentMethodDropdown,
+  differentBilling,
+}) {
   const { totalCost, cartItems } = useContext(CartContext);
-  const { addAddress, selectedAddress } = useContext(AddressConext);
+  const { addAddress, selectedShippingAddress, selectedBillingAddress } =
+    useContext(AddressConext);
   const { addPaymentMethod, selectedPaymentMethod } =
     useContext(PaymentMethodContext);
   const { createOrder } = useContext(OrderContext);
@@ -51,15 +57,32 @@ function OrderSummary({ showAddressDropdown, showPaymentMethodDropdown }) {
         variant="primary"
         className="w-100"
         onClick={() => {
-          const useSelectedAddress =
-            showAddressDropdown !== false && selectedAddress;
+          const useSelectedShipping =
+            showShippingAddressDropdown !== false && selectedShippingAddress;
+          const useSelectedBilling =
+            showBillingAddressDropdown !== false && selectedBillingAddress;
           const useSelectedPayment =
             showPaymentMethodDropdown !== false && selectedPaymentMethod;
-          const address = useSelectedAddress ? selectedAddress : addAddress();
+          let shippingNewAddress = null;
+          let billingNewAddress = null;
+          const shippingAddress = useSelectedShipping
+            ? selectedShippingAddress
+            : (shippingNewAddress ??= addAddress("shipping"));
+          const billingAddress = differentBilling
+            ? useSelectedBilling
+              ? selectedBillingAddress
+              : (billingNewAddress ??= addAddress("billing"))
+            : shippingAddress;
           const payment = useSelectedPayment
             ? selectedPaymentMethod
             : addPaymentMethod();
-          createOrder(address, payment, cartItems, totalCost);
+          createOrder(
+            shippingAddress,
+            billingAddress,
+            payment,
+            cartItems,
+            totalCost
+          );
           navigate("/checkout/complete");
         }}
       >

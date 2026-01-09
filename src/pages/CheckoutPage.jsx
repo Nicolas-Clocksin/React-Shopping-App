@@ -21,10 +21,13 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { PaymentMethodContext } from "../context/PaymentMethodContext.jsx";
 function CheckoutPage() {
   const { cartItems, totalAmount } = useContext(CartContext);
-  const [showAddressDropdown, setShowAddressDropdown] = useState(true);
+  const [showShippingAddressDropdown, setShowShippingAddressDropdown] =
+    useState(true);
+  const [showBillingAddressDropdown, setShowBillingAddressDropdown] =
+    useState(true);
   const { showPaymentMethodDropdown } = useContext(PaymentMethodContext);
   const { user } = useAuth();
-
+  const [differentBilling, setDifferentBilling] = useState(false);
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
@@ -32,14 +35,36 @@ function CheckoutPage() {
           {user &&
           user.addresses &&
           user.addresses.length > 0 &&
-          showAddressDropdown ? (
-            <AddressDropdown setShowAddressDropdown={setShowAddressDropdown} />
+          showShippingAddressDropdown ? (
+            <AddressDropdown
+              setShowAddressDropdown={setShowShippingAddressDropdown}
+              typeShipment="Shipping"
+              setDifferentBilling={setDifferentBilling}
+              differentBilling={differentBilling}
+            />
           ) : (
             <ShippingForm
-              typeShipment="shipping"
-              setShowAddressDropdown={setShowAddressDropdown}
+              typeShipment="Shipping"
+              setShowAddressDropdown={setShowShippingAddressDropdown}
+              setDifferentBilling={setDifferentBilling}
+              differentBilling={differentBilling}
             />
           )}
+          {differentBilling &&
+            (user &&
+            user.addresses &&
+            user.addresses.length > 0 &&
+            showBillingAddressDropdown ? (
+              <AddressDropdown
+                setShowAddressDropdown={setShowBillingAddressDropdown}
+                typeShipment="Billing"
+              />
+            ) : (
+              <ShippingForm
+                typeShipment="Billing"
+                setShowAddressDropdown={setShowBillingAddressDropdown}
+              />
+            ))}
           {user &&
           user.paymentMethods &&
           user.paymentMethods.length > 0 &&
@@ -53,8 +78,10 @@ function CheckoutPage() {
           <OrderSummary
             cartItems={cartItems}
             totalAmount={totalAmount}
-            showAddressDropdown={showAddressDropdown}
+            showShippingAddressDropdown={showShippingAddressDropdown}
+            showBillingAddressDropdown={showBillingAddressDropdown}
             showPaymentMethodDropdown={showPaymentMethodDropdown}
+            differentBilling={differentBilling}
           />
         </div>
       </div>

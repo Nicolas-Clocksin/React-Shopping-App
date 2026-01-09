@@ -2,11 +2,6 @@
 
 ## To Do
 
-- [ ] Add Billing section for order checkout
-  - [ ] Update Shipping payment form to do both shipping/billing
-  - [ ] Update Order context to accept billing
-  - [ ] Associate Billing Address with payment method
-  - [ ] Update order completion page to show billing address
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
@@ -63,3 +58,8 @@
     - [x] Show items ordered/total 01/09/2026
     - [x] Address Choosen 01/09/2026
     - [x] Payment method 01/09/2026
+- [x] Add Billing section for order checkout 01/09/2026
+  - [x] Update Shipping payment form to do both shipping/billing 01/09/2026
+  - [x] Update Order context to accept billing 01/09/2026
+  - [x] Associate Billing Address with payment method 01/09/2026
+  - [x] Update order completion page to show billing address 01/09/2026

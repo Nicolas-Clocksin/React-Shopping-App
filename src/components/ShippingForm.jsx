@@ -5,10 +5,17 @@
   Description: Component used to dispaly a form for shipping information of an order.
 */
 import { AddressConext } from "../context/AddressContext";
-import { Col, Dropdown, DropdownButton, Form, Row } from "react-bootstrap";
+import {
+  Col,
+  Dropdown,
+  DropdownButton,
+  Form,
+  Row,
+  Button,
+} from "react-bootstrap";
 import { useContext } from "react";
 import { useAuth } from "../context/AuthContext";
-function ShippingForm({ typeShipment }) {
+function ShippingForm({ typeShipment, setDifferentBilling, differentBilling }) {
   const STATE_OPTIONS = [
     "AL",
     "AK",
@@ -62,16 +69,20 @@ function ShippingForm({ typeShipment }) {
     "WY",
   ];
   const { user } = useAuth();
+  const addressType =
+    typeShipment?.toLowerCase() === "billing" ? "billing" : "shipping";
   const {
-    state,
+    shippingDraft,
+    billingDraft,
     updateStreet,
     updateCity,
     updatePostalCode,
     updateState,
     updateName,
     updateIsDefault,
-    isDefault,
   } = useContext(AddressConext);
+  const addressDraft =
+    addressType === "billing" ? billingDraft : shippingDraft;
   function shippingType() {
     if (typeShipment === "shipping") {
       return true;
@@ -82,18 +93,15 @@ function ShippingForm({ typeShipment }) {
   return (
     <>
       <Form className="checkoutForm">
-        {shippingType() ? (
-          <Form.Label>Shipping Information</Form.Label>
-        ) : (
-          <Form.Label>Billing Information</Form.Label>
-        )}
+        <Form.Label>{typeShipment} Information</Form.Label>
+
         <Form.Group className="mb-4">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your name"
-            value={user.name}
-            onChange={(event) => updateName(event)}
+            value={addressDraft.name || user.name || ""}
+            onChange={(event) => updateName(addressType, event)}
           />
         </Form.Group>
 
@@ -102,7 +110,8 @@ function ShippingForm({ typeShipment }) {
           <Form.Control
             type="text"
             placeholder="Enter your address"
-            onChange={(event) => updateStreet(event)}
+            value={addressDraft.street}
+            onChange={(event) => updateStreet(addressType, event)}
           />
         </Form.Group>
 
@@ -113,7 +122,8 @@ function ShippingForm({ typeShipment }) {
               <Form.Control
                 type="text"
                 placeholder="Enter your city"
-                onChange={(event) => updateCity(event)}
+                value={addressDraft.city}
+                onChange={(event) => updateCity(addressType, event)}
               />
             </Form.Group>
           </Col>
@@ -122,7 +132,7 @@ function ShippingForm({ typeShipment }) {
             <Form.Group>
               <Form.Label>State</Form.Label>
               <DropdownButton
-                title={state || "Select state"}
+                title={addressDraft.state || "Select state"}
                 id="state-dropdown"
                 variant="light"
                 className="text-dark"
@@ -132,7 +142,7 @@ function ShippingForm({ typeShipment }) {
                     as="button"
                     key={s}
                     type="button"
-                    onClick={() => updateState(s)}
+                    onClick={() => updateState(addressType, s)}
                   >
                     {s}
                   </Dropdown.Item>
@@ -147,7 +157,8 @@ function ShippingForm({ typeShipment }) {
               <Form.Control
                 type="text"
                 placeholder="Enter your postal code"
-                onChange={(event) => updatePostalCode(event)}
+                value={addressDraft.postalCode}
+                onChange={(event) => updatePostalCode(addressType, event)}
               />
             </Form.Group>
           </Col>
@@ -156,13 +167,28 @@ function ShippingForm({ typeShipment }) {
               <Form.Check
                 type="checkbox"
                 label="Set as default address"
-                checked={isDefault}
+                checked={addressDraft.isDefault}
                 onChange={(event) =>
-                  updateIsDefault(event.target.checked)
+                  updateIsDefault(addressType, event.target.checked)
                 }
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row>
+          <div className="d-flex justify-content-end">
+            {addressType === "shipping" &&
+            !differentBilling &&
+            typeof setDifferentBilling === "function" ? (
+              <Button
+                variant="secondary"
+                className="me-2"
+                onClick={() => setDifferentBilling(true)}
+              >
+                Billing is Different than Shipping
+              </Button>
+            ) : null}
+          </div>
         </Row>
       </Form>
     </>
