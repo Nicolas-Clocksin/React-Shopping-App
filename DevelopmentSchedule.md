@@ -20,48 +20,53 @@
 
 ## Completed
 
+- [x] [Create footer/header](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/2)
 - [x] Create login page
   - [x] Login will only redirect if user exists
   - [x] Allow users to sign up
-- [x] Create homepage
-  - [x] Displays list of products for sale
-- [x] Create Cart
-  - [x] Cart displays current items added
-    - [x] quantity of items is shown
-  - [x] Cart totals the number of items
-- [x] Create item page
-  - [x] Displays description of item
-  - [x] Item can be added to cart
-- [x] useContext for Cart
-  - [x] Add/remove items from cart
-  - [x] Update Quantity
-    - [x] Update quantity select to dropdown
-    - [x] Update quantity displayed of items in cart
-- [x] Update Categories/items to useContext
-- [x] Add Models for Each Object 01/06/2026
-- [x] Create Checkout Process 01/28/2026
-  - [x] Create Order Context
-  - [x] Update objects to handle ordering/checkout process 01/26/2026
-  - [x] Update forms
-    - [x] Add Option to select stored payment methods/addresses 01/28/26
-      - [x]Addresses 01/28/26
-        - [x] Display selection of stored values 01/27/2026
-        - [x] Ability to add new value (button) 01/28/26
-      - [x] Payment 01/28/26
-        - [x] Display selection of stored values 01/28/26
-        - [x] Ability to add new value 01/28/26
-    - [x] Update payment method form 01/26/2026
-    - [x] Fix Dropdown for State Selection 01/26/2026
-  - [x] Update Address/Payment method to store in user 01/26/2026
-  - [x] Add storing of new payments/addresses into user 01/27/2026
-    - [x] Add default variable for addresses/payment 01/27/2026
-  - [x] Update Complete Order Page 01/09/2026
-  - [x] Display results of order 01/09/2026
-    - [x] Show items ordered/total 01/09/2026
-    - [x] Address Choosen 01/09/2026
-    - [x] Payment method 01/09/2026
-- [x] Add Billing section for order checkout 01/09/2026
-  - [x] Update Shipping payment form to do both shipping/billing 01/09/2026
-  - [x] Update Order context to accept billing 01/09/2026
-  - [x] Associate Billing Address with payment method 01/09/2026
-  - [x] Update order completion page to show billing address 01/09/2026
+- [x] [Create homepage](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/4)
+  - [x] [Displays list of products for sale](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/4)
+- [x] [Create Cart](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/8)
+  - [x] [Cart displays current items added](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/13)
+    - [x] [quantity of items is shown](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/12)
+  - [x] [Cart totals the number of items](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/12)
+- [x] [Create item page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/6)
+  - [x] [Displays description of item](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/6)
+  - [x] [Item can be added to cart](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/6)
+- [x] [Create category page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/7)
+- [x] [useContext for Cart](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/8)
+  - [x] [Add/remove items from cart](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/13)
+  - [x] [Update Quantity](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/12)
+    - [x] [Update quantity select to dropdown](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/11)
+    - [x] [Update quantity displayed of items in cart](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/12)
+- [x] [Update Categories/items to useContext](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/9)
+- [x] [Add Models for Each Object](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/26)
+- [x] [Create Checkout Process](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+  - [x] [Create checkout page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/14)
+  - [x] [Create payment method](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/17)
+  - [x] [Create Shipping](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/16)
+  - [x] [Create Order Context](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/27)
+  - [x] [Update objects to handle ordering/checkout process](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/27)
+  - [x] [Update forms](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+    - [x] [Add Option to select stored payment methods/addresses](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/32)
+      - [x] Addresses
+        - [x] [Display selection of stored values](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/32)
+        - [x] [Ability to add new value](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/33)
+      - [x] Payment
+        - [x] [Display selection of stored values](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/29)
+        - [x] [Ability to add new value](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/33)
+    - [x] [Update payment method form](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/28)
+    - [x] [Fix Dropdown for State Selection](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/28)
+  - [x] [Update Address/Payment method to store in user](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/31)
+  - [x] [Add storing of new payments/addresses into user](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/29)
+    - [x] [Add default variable for addresses/payment](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/31)
+  - [x] [Update Complete Order Page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/36)
+  - [x] [Display results of order](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+    - [x] [Show items ordered/total](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+    - [x] [Address Choosen](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+    - [x] [Payment method](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/34)
+- [x] [Add Billing section for order checkout](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/37)
+  - [x] [Update Shipping payment form to do both shipping/billing](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/37)
+  - [x] [Update Order context to accept billing](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/37)
+  - [x] [Associate Billing Address with payment method](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/37)
+  - [x] [Update order completion page to show billing address](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/37)
