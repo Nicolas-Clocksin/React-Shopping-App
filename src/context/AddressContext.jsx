@@ -19,19 +19,27 @@ export function AddressProvider({ children }) {
   const [name, setName] = useState("");
   const [isDefault, setIsDefault] = useState(false);
   const { user, setUser } = useAuth();
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
+  const [selectedShippingAddress, setSelectedShippingAddress] = useState(null);
+  const [selectedBillingAddress, setSelectedBillingAddress] = useState(null);
+  const [selectedShippingAddressIndex, setSelectedShippingAddressIndex] =
+    useState(0);
+  const [selectedBillingAddressIndex, setSelectedBillingAddressIndex] =
+    useState(0);
   const [showAddressDropdown, setShowAddressDropdown] = useState(true);
   // Sync addresses with user data
   useEffect(() => {
     const nextAddresses = user?.addresses ?? [];
     setAddresses(nextAddresses);
     if (nextAddresses.length > 0) {
-      setSelectedAddressIndex(0);
-      setSelectedAddress(nextAddresses[0]);
+      setSelectedShippingAddressIndex(0);
+      setSelectedBillingAddressIndex(0);
+      setSelectedShippingAddress(nextAddresses[0]);
+      setSelectedBillingAddress(null);
     } else {
-      setSelectedAddressIndex(0);
-      setSelectedAddress(null);
+      setSelectedShippingAddressIndex(0);
+      setSelectedBillingAddressIndex(0);
+      setSelectedShippingAddress(null);
+      setSelectedBillingAddress(null);
     }
   }, [user]);
   // Update functions for address fields
@@ -66,9 +74,14 @@ export function AddressProvider({ children }) {
     if (user) setUser((u) => ({ ...u, addresses: updatedAddresses }));
   }
   // Update the selected address based on index
-  function updateSelectedAddress(index) {
-    setSelectedAddressIndex(index);
-    setSelectedAddress(addresses[index] ?? null);
+  function updateSelectedAddress(type, index) {
+    if (type === "billing") {
+      setSelectedBillingAddressIndex(index);
+      setSelectedBillingAddress(addresses[index] ?? null);
+      return;
+    }
+    setSelectedShippingAddressIndex(index);
+    setSelectedShippingAddress(addresses[index] ?? null);
   }
   // Add a new address to the user's addresses
   function addAddress() {
@@ -106,8 +119,10 @@ export function AddressProvider({ children }) {
         isDefault,
         name,
         addresses,
-        selectedAddress,
-        selectedAddressIndex,
+        selectedShippingAddress,
+        selectedBillingAddress,
+        selectedShippingAddressIndex,
+        selectedBillingAddressIndex,
         showAddressDropdown,
         setShowAddressDropdown,
         updateIsDefault,

@@ -24,16 +24,16 @@ export function OrderProvider({ children }) {
   // Method used to define/create an order
   function createOrder(
     shipping,
-    // billing,
+    billing,
     paymentMethod,
     cartItems,
     totalAmount
   ) {
     const newOrder = {
-      id: Math.random(),
+      id: Math.floor(Math.random() * 1000000),
       userId: user.id,
       shippingAddress: shipping,
-      billingAddress: shipping,
+      billingAddress: billing ?? shipping,
       paymentMethod,
       items: cartItems,
       totalAmount,
