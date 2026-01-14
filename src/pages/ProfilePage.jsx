@@ -1,6 +1,8 @@
 import { Form } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
+import EditProfileModal from "../modals/EditProfileModal";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -12,7 +14,7 @@ function ProfilePage() {
           <Form.Control
             type="text"
             placeholder="Enter name"
-            defaultValue={user?.name || ""}
+            value={user?.name || ""}
             disabled
           />
         </Form.Group>
@@ -21,7 +23,7 @@ function ProfilePage() {
           <Form.Control
             type="email"
             placeholder="Enter email"
-            defaultValue={user?.email || ""}
+            value={user?.email || ""}
             disabled
           />
         </Form.Group>
@@ -30,13 +32,11 @@ function ProfilePage() {
           <Form.Control
             type="password"
             placeholder="Password"
-            defaultValue={user?.password || ""}
+            value={user?.password || ""}
             disabled
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Update Profile
-        </Button>
+        <EditProfileModal />
       </Form>
     </div>
   );
