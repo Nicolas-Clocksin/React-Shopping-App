@@ -23,6 +23,12 @@ function EditProfileModal() {
     setPassword(event.target.value);
   };
   const updateProfile = () => {
+    setUser((prev) => ({
+      ...prev,
+      name: name || prev.name,
+      email: email || prev.email,
+      password: password || prev.password,
+    }));
     setShow(false);
   };
   const { user, setUser } = useAuth();
