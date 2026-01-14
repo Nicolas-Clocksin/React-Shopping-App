@@ -14,7 +14,7 @@ function ProfilePage() {
           <Form.Control
             type="text"
             placeholder="Enter name"
-            defaultValue={user?.name || ""}
+            value={user?.name || ""}
             disabled
           />
         </Form.Group>
@@ -23,7 +23,7 @@ function ProfilePage() {
           <Form.Control
             type="email"
             placeholder="Enter email"
-            defaultValue={user?.email || ""}
+            value={user?.email || ""}
             disabled
           />
         </Form.Group>
@@ -32,7 +32,7 @@ function ProfilePage() {
           <Form.Control
             type="password"
             placeholder="Password"
-            defaultValue={user?.password || ""}
+            value={user?.password || ""}
             disabled
           />
         </Form.Group>
