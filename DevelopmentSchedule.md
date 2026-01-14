@@ -16,6 +16,10 @@
 - [ ] Update sign up form
   - [ ] Remove Role Selection
 - [ ] Develop Backend
+  - [ ] Create basic database structure for categories
+  - [ ] Create basic database structure for items
+  - [ ] Create basic database structure for users
+  - [ ] Create basic database structure for orders
 - [ ] Update Styling
 
 ## Completed
