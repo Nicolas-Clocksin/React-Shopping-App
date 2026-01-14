@@ -81,8 +81,7 @@ function ShippingForm({ typeShipment, setDifferentBilling, differentBilling }) {
     updateName,
     updateIsDefault,
   } = useContext(AddressConext);
-  const addressDraft =
-    addressType === "billing" ? billingDraft : shippingDraft;
+  const addressDraft = addressType === "billing" ? billingDraft : shippingDraft;
   function shippingType() {
     if (typeShipment === "shipping") {
       return true;
@@ -100,7 +99,7 @@ function ShippingForm({ typeShipment, setDifferentBilling, differentBilling }) {
           <Form.Control
             type="text"
             placeholder="Enter your name"
-            value={addressDraft.name || user.name || ""}
+            defaultValue={addressDraft.name || user.name || ""}
             onChange={(event) => updateName(addressType, event)}
           />
         </Form.Group>
