@@ -5,8 +5,8 @@
 - [ ] Create an User/Admin Page
   - [ ] User Page
     - [ ] History of Order Section
-    - [ ] User Profile Page
-      - [ ] Ability for User to Edit Profile
+    - [x] [User Profile Page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/40)
+      - [x] [Ability for User to Edit Profile](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/40)
       - [x] [User can see their information on profile page](https://github.com/Nicolas-Clocksin/React-Shopping-App/pull/38)
     - [ ] Payment Information Section
   - [ ] Admin Permissions/Page
