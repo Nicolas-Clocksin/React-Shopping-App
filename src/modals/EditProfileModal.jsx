@@ -34,6 +34,10 @@ function EditProfileModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
+        <Modal.Footer>
+          <Button>Update Profile</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
