@@ -45,7 +45,7 @@ function EditProfileModal() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={user.name}
+                defaultValue={user.name}
                 onChange={(event) => updateName(event)}
               ></Form.Control>
             </Form.Group>
@@ -53,7 +53,7 @@ function EditProfileModal() {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder={user.email}
+                defaultValue={user.email}
                 onChange={(event) => updateEmail(event)}
               ></Form.Control>
             </Form.Group>
@@ -61,7 +61,7 @@ function EditProfileModal() {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder={user.password}
+                defaultValue={user.password}
                 onChange={(event) => updatePassword(event)}
               ></Form.Control>
             </Form.Group>
