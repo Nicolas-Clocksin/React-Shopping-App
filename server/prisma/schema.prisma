@@ -13,3 +13,87 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  cart      Cart[]
+  orders    Order[]
+  addresses Address[]
+  paymentMethods PaymentMethod[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  items     CartEntry[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Item {
+  id        String   @id @default(cuid())
+  categoryId Int
+  name      String
+  quantity  Int
+  description String
+  imgUrl   String
+  price     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model CartEntry{
+  item Item 
+  quantity Int
+}
+model Address {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  street    String
+  city      String
+  state     String
+  zipCode   String
+  country   String
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Order {
+  id          String      @id @default(cuid())
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String
+  cart        Cart       @relation(fields: [cartId], references: [id])
+  cartId      String
+  paymentMethod PaymentMethod @relation(fields: [paymentMethodId], references: [id])
+  paymentMethodId String
+  shippingAddress Address   @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId String
+  billingAddress  Address   @relation(fields: [billingAddressId], references: [id])
+  billingAddressId String
+  totalAmount Float
+  status      String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+model PaymentMethod {
+  id            String   @id @default(cuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  cardNumber    String
+  cardHolderName String
+  expirationDate String
+  cvv           Int
+  isDefault     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
