@@ -10,6 +10,11 @@ dist/
 dist-ssr/
 *.local
 
+# --- Next.js ---
+.next/
+out/
+.vercel/
+
 # --- Environment Files ---
 .env
 .env.*
