@@ -22,15 +22,21 @@ function EditProfileModal() {
           <Form>
             <Form.Group>
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text"></Form.Control>
+              <Form.Control type="text" placeholder={user.name}></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email"></Form.Control>
+              <Form.Control
+                type="email"
+                placeholder={user.email}
+              ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password"></Form.Control>
+              <Form.Control
+                type="password"
+                placeholder={user.password}
+              ></Form.Control>
             </Form.Group>
           </Form>
         </Modal.Body>
